@@ -1,9 +1,8 @@
 # Python代码风格规范
 
-
-> 来源：
+> **参考来源**：
 > 1. https://zhuanlan.zhihu.com/p/389055515  
-> 2. https://google.github.io/styleguide/pyguide.html#s3.16-naming
+> 2. 【谷歌-样式指南】https://google.github.io/styleguide/pyguide.html#s3.16-naming
 
 
 - [Python代码风格规范](#python代码风格规范)
@@ -243,9 +242,9 @@ if __name__ == '__main__':
     ```
 
 ### 2.6 条件表达式（“三元运算符”）
-1. if语句提供较短语法的机制
+1. if语句提供较短语法的机制  
     例如：`x = 1 if cond else 2`
-2. 代码风格规则：
+2. 代码风格规则：  
     每个部分必须适合一行：真表达式、if表达式、别式表达式。当事情变得更加复杂时，请使用完整的if语句。
     ```python
     Yes:
