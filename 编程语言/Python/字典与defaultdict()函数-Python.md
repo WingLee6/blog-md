@@ -1,4 +1,4 @@
-# 字典 与 defauldict()函数
+# 字典 与 defaultdict()函数
 
 defaultdict(param) 相当于给字典设置一个默认值
 1. 默认值包括
