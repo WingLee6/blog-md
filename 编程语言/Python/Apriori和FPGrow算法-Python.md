@@ -1,4 +1,4 @@
-# 使用网上Python算法（Apriori算法和FPGrowth算法），实现关联结果
+# 使用网上Python算法（Apriori算法和FPGrowth算法），实现关联结果 -Python
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
@@ -273,7 +273,7 @@ frozenset({'网球拍'}) ---> frozenset({'网球'}) conf: 0.75
     ```
 
     得到链表：   
-    ![1](./pic/FP算法.png)
+    ![](https://raw.githubusercontent.com/lukelee98/PicBed/main/Pic2022/FP%E7%AE%97%E6%B3%95.png)
     
 
 ## 4. 完整代码
