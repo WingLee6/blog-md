@@ -8,6 +8,25 @@
     + sorted函数有返回值；
     + 不会改变原元素的值；
 
+示例：
+```python
+l1 = [10, 3, 13, 3, 8, 20, 55]
+
+print(sorted(l1))                   # 默认升序：[3, 3, 8, 10, 13, 20, 55]
+print(sorted(l1, reverse=True))     # True降序：[55, 20, 13, 10, 8, 3, 3]
+print(sorted(l1, reverse=False))    # False升序：[3, 3, 8, 10, 13, 20, 55]
+
+print(l1)                           # sorted()对l1不影响：[10, 3, 13, 3, 8, 20, 55]
+
+l1.sort()                           
+print(l1)                           # 默认升序：[3, 3, 8, 10, 13, 20, 55]
+l1.sort(reverse=True)               
+print(l1)                           # True降序：[55, 20, 13, 10, 8, 3, 3]
+l1.sort(reverse=False)
+print(l1)                           # False升序：[3, 3, 8, 10, 13, 20, 55]
+
+```
+
 
 ## 二、 SortedList
 包含三个类：`SortedList`、`SortedDict`、`SortedSet`
