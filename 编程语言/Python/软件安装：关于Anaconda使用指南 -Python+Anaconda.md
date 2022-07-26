@@ -1,5 +1,17 @@
 # 软件安装：关于Anaconda使用指南 -Python+Anaconda
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [软件安装：关于Anaconda使用指南 -Python+Anaconda](#软件安装关于anaconda使用指南-pythonanaconda)
+  - [Anaconda的环境管理](#anaconda的环境管理)
+  - [Anaconda的包管理](#anaconda的包管理)
+  - [设置清华镜像](#设置清华镜像)
+  - [Mac 中 PyCharm 配置 Anaconda环境](#mac-中-pycharm-配置-anaconda环境)
+
+<!-- /code_chunk_output -->
+
 ## Anaconda的环境管理
 1. 创建  
     Conda的环境管理功能允许我们同时安装若干不同版本的Python，并能自由切换。  

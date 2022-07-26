@@ -1,4 +1,5 @@
 # 关于插件Markdown Preview Enhanced（MPE）的使用技巧 -MarkDown
+> https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/
 ---
 目录：
 

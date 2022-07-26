@@ -1,5 +1,16 @@
 # 计算凸包 ConvexHull -Python
-## 凸包的定义：
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [计算凸包 ConvexHull -Python](#计算凸包-convexhull-python)
+  - [凸包的定义](#凸包的定义)
+  - [Python计算](#python计算)
+
+<!-- /code_chunk_output -->
+
+## 凸包的定义
 https://baike.baidu.com/item/%E5%87%B8%E5%8C%85/179150?fr=aladdin
 
 

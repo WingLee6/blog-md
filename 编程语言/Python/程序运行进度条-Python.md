@@ -1,13 +1,6 @@
 # 程序运行进度条 —Python
 
 ```python
-
-# -*- coding: utf-8 -*-
-# @Time    : 2019/12/21 
-# @Author  : li
-# @FileName: demo001.py
-# @Desc    : 程序运行进度条
-
 import sys
 import math
 

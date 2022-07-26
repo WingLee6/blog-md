@@ -1,5 +1,18 @@
 # 问题解决：报错'django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module. django' -Python
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [问题解决：报错'django.core.exceptions.ImproperlyConfigured: Error loading MySQLdb module. django' -Python](#问题解决报错djangocoreexceptionsimproperlyconfigured-error-loading-mysqldb-module-django-python)
+  - [博客概述：连续修正三个错误即可](#博客概述连续修正三个错误即可)
+  - [环境：Django2.2 + Python3.7](#环境django22-python37)
+    - [出错原因：](#出错原因)
+    - [1. mysqldb只支持python2.X，pymysql只支持python3.X](#1-mysqldb只支持python2xpymysql只支持python3x)
+    - [2. django2.2和pymysql版本不匹配。mysqldb不支持python3.](#2-django22和pymysql版本不匹配mysqldb不支持python3)
+
+<!-- /code_chunk_output -->
+
 ## 博客概述：连续修正三个错误即可
 ## 环境：Django2.2 + Python3.7
 

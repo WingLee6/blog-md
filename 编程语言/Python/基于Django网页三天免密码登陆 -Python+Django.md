@@ -1,6 +1,18 @@
 # 基于Django网页三天免密码登陆 -Python+Django
 
-> 由于.md格式文件若插入图片无法单文件发送，故转为word格式提交，部分格式稍有错位。
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [基于Django网页三天免密码登陆 -Python+Django](#基于django网页三天免密码登陆-pythondjango)
+  - [一、实验简述](#一-实验简述)
+  - [二、基本实现效果图](#二-基本实现效果图)
+  - [三、实现步骤：](#三-实现步骤)
+  - [四、代码整体预览](#四-代码整体预览)
+
+<!-- /code_chunk_output -->
+
 ## 一、实验简述
 基于Django实现三天免密码登陆,以及附带实现常规登陆界面应有功能，包括判断密码是否符合后台信息、登陆失败等内容。
 
@@ -55,7 +67,7 @@
         ```
 
 
-## 四、代码整体预览：
+## 四、代码整体预览
 ```python
 # 处理登陆功能函数
 def login(request):

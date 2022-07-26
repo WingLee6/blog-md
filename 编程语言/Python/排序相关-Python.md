@@ -1,5 +1,21 @@
 # 排序相关
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [排序相关](#排序相关)
+  - [一、 sort()与sorted()函数](#一-sort与sorted函数)
+  - [二、 SortedList](#二-sortedlist)
+    - [`SortedList`相关](#sortedlist相关)
+    - [`SortedDict`相关](#sorteddict相关)
+    - [`SortedSet`相关](#sortedset相关)
+  - [三、bisect用法](#三-bisect用法)
+    - [查找](#查找)
+    - [插入](#插入)
+
+<!-- /code_chunk_output -->
+
 ## 一、 sort()与sorted()函数
 1. sort函数:
     + sort函数没有返回值；
@@ -134,7 +150,7 @@ print(l1)                           # False升序：[3, 3, 8, 10, 13, 20, 55]
 ## 三、bisect用法
 > bisect是python内置模块，用于**有序**序列的插入和查找。
 
-### 查找：
+### 查找
 1. `bisect_left(array, item)`:
     在**有序**列表`array`中查找`item`元素；
     + 若`item`存在，返回`item`**左侧**下标（若有多个相同`item`，返回第一个下标）；
@@ -172,7 +188,7 @@ print(l1)                           # False升序：[3, 3, 8, 10, 13, 20, 55]
     ```
 
 
-### 插入：
+### 插入
 1. insort(array,item)
 2. insort_left(array,item)
 3. insort_right(array,item)

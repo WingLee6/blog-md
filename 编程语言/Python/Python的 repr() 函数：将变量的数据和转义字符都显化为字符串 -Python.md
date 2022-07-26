@@ -1,6 +1,21 @@
 # Python的 repr() 函数：将变量的数据和转义字符都显化为字符串 -Python
+
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Python的 repr() 函数：将变量的数据和转义字符都显化为字符串 -Python](#python的-repr-函数将变量的数据和转义字符都显化为字符串-python)
+  - [1. 字符串](#1-字符串)
+  - [2. 列表](#2-列表)
+  - [3. 字典](#3-字典)
+  - [4. 转义字符](#4-转义字符)
+
+<!-- /code_chunk_output -->
+
+
 repr() 函数：将 变量的数据和转义字符 都显化为 字符串 
-1. 字符串
+## 1. 字符串
     ```python
     text1: str = "xxx"
     print(text1)
@@ -16,7 +31,7 @@ repr() 函数：将 变量的数据和转义字符 都显化为 字符串
     '           # 将repr显化后的字符串第一个字符输出
     ```
 
-2. 列表
+## 2. 列表
     ```python
     text2: list = ['q', 'w']
     print(text2)        
@@ -32,7 +47,7 @@ repr() 函数：将 变量的数据和转义字符 都显化为 字符串
     [               # 输出字符串（"['q', 'w']"）的第一个字符
     ```
 
-3. 字典
+## 3. 字典
     ```python
     text3: dict = {'k': 'v'}
     print(text3)
@@ -48,7 +63,7 @@ repr() 函数：将 变量的数据和转义字符 都显化为 字符串
     **报错**         # 已经字符串化后的字典，没有key值，因此报错
     ···
 
-4. 转义字符
+## 4. 转义字符
     ```python
     text4: str = "xx\\x"
     print(text4)

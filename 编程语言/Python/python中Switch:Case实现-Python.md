@@ -2,8 +2,19 @@
 > 转载：https://www.cnblogs.com/gerrydeng/p/7191927.html  
 学习Python过程中，发现没有switch-case,过去写C习惯用Switch/Case语句，官方文档说通过if-elif实现。所以不妨自己来实现Switch/Case功能。
 
-### 方法一
-通过字典实现
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [python中Switch/Case实现 -Python](#python中switchcase实现-python)
+    - [方法一 通过字典实现](#方法一-通过字典实现)
+    - [方法二 通过匿名函数实现](#方法二-通过匿名函数实现)
+    - [方法三 通过定义类实现](#方法三-通过定义类实现)
+
+<!-- /code_chunk_output -->
+
+### 方法一 通过字典实现
 ```python
 def foo(var):
     return {
@@ -13,8 +24,8 @@ def foo(var):
     }.get(var,'error')    #'error'为默认返回值，可自设置
 ```
 
-### 方法二
-通过匿名函数实现
+### 方法二 通过匿名函数实现
+
 ```python
 def foo(var,x):
     return {
@@ -24,8 +35,8 @@ def foo(var,x):
     }[var](x)
 ```
 
-### 方法三
-通过定义类实现  
+### 方法三 通过定义类实现
+  
 参考Brian Beck通过类来实现Swich-case
 
 ```python

@@ -1,6 +1,31 @@
 # 软件安装：Mac的jupyter的安装与必备插件-Python+jupyter+mac
 
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [软件安装：Mac的jupyter的安装与必备插件-Python+jupyter+mac](#软件安装mac的jupyter的安装与必备插件-pythonjupytermac)
+  - [〇、jupyter软件安装](#〇-jupyter软件安装)
+  - [一、jupyter IDE的选择](#一-jupyter-ide的选择)
+  - [二、 相关插件的功能、安装和使用](#二-相关插件的功能-安装和使用)
+    - [（必备）Nbextensions安装插件管理器](#必备nbextensions安装插件管理器)
+    - [Hinterland 自动补全功能](#hinterland-自动补全功能)
+    - [autopep8 拼写与格式规范化检查](#autopep8-拼写与格式规范化检查)
+    - [Table of Contents(2) 自动生成目录](#table-of-contents2-自动生成目录)
+    - [Execute Time 显示cell运行时间](#execute-time-显示cell运行时间)
+    - [Nofity 运行结束提醒](#nofity-运行结束提醒)
+    - [Codefolding 代码自动折叠](#codefolding-代码自动折叠)
+    - [tpdm 运行进度条库](#tpdm-运行进度条库)
+    - [jupyter-resource-usage 内存使用查看](#jupyter-resource-usage-内存使用查看)
+    - [pyforest 自动导入模块至第一个cell](#pyforest-自动导入模块至第一个cell)
+  - [三、快捷键、魔术命令行](#三-快捷键-魔术命令行)
+  - [四、问题处理](#四-问题处理)
+    - [问题解决：打开【Nbextensions】选择卡后发现下面无内容](#问题解决打开nbextensions选择卡后发现下面无内容)
+  - [五、3. 修改jupyter配置文件](#五-3-修改jupyter配置文件)
+
+<!-- /code_chunk_output -->
+
 
 ## 〇、jupyter软件安装
 0. 前提：已经安装Python 3+  

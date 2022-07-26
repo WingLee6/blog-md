@@ -1,4 +1,18 @@
 # Python环境安装与设置-Python
+
+
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Python环境安装与设置-Python](#python环境安装与设置-python)
+  - [一、Python环境安装](#一-python环境安装)
+  - [二、pip3安装与使用](#二-pip3安装与使用)
+  - [三、第三方库介绍](#三-第三方库介绍)
+    - [tqdm Python进度条库](#tqdm-python进度条库)
+
+<!-- /code_chunk_output -->
+
 ## 一、Python环境安装
 见菜鸟教程
 
