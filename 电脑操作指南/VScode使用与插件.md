@@ -23,19 +23,12 @@
 <!-- /code_chunk_output -->
 
 
----
-markdown:
-  image_dir: /assets
-  path: output.md
-  ignore_from_front_matter: true
-  absolute_image_path: false
----
 
 ## 一、VScode使用
 ### 设置快捷键
-
+Code->首选项->键盘快捷方式
 ### 设置
-
+Code->首选项->设置
 ### 命令
 `cmd + shift + p`
 
@@ -43,11 +36,11 @@ markdown:
 
 ## 二、插件介绍
 ### Markdown Preview Enhanced（MPE）(生成目录、生成PDF、流程图) 
-> 名称: Markdown Preview Enhanced
-ID: shd101wyy.markdown-preview-enhanced
-说明: Markdown Preview Enhanced ported to vscode
-版本: 0.6.3
-发布者: Yiyi Wang
+> 名称: Markdown Preview Enhanced  
+ID: shd101wyy.markdown-preview-enhanced  
+说明: Markdown Preview Enhanced ported to vscode  
+版本: 0.6.3  
+发布者: Yiyi Wang  
 VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced
 
 > 官方中文文档: https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/
@@ -59,7 +52,7 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=shd10
     + 多个目录被创建
         + 需要先打开md预览，然后保存(`cmd + s`)当前md文档，才会看到更新目录。
     
-    **注**：如果你想要在你的 TOC 中排除一个标题，请在你的标题 后面 添加 {ignore=true} 即可。
+    **注**：如果你想要在你的 TOC 中排除一个标题，请在你的标题 后面 添加 `{ignore=true}` 即可。
 3. 导出PDF
     参考: https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/prince
 
@@ -104,12 +97,6 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=shd10
     
     > 更多数学符号表示：https://katex.org/docs/supported.html
 
-    ```latex {cmd=true}
-    \documentclass{standalone}
-    \begin{document}
-      Hello world!
-    \end{document}
-    ```
     
     
 
