@@ -42,7 +42,7 @@
 # 三、字符串的操作
 
 ### 对字符串进行统计且统计结果字典化 - `Counter`
-```python
+```python{cmd=true}
 from collections import Counter
 
 Var1 = "aaabbc"
@@ -56,7 +56,24 @@ print(Counter(Var2))
 Counter({'a': 3, 'b': 2, 'c': 1})
 Counter({'0': 3, '9': 2, '1': 1, '8': 1, '2': 1})
 ```
+#### Counter字典可以相加减，便于统计
+```python{cmd=true}
+from collections import Counter
 
+dict1 = Counter({'c': 1, 'a': 1, 't': 1})
+dict2 = Counter({'a': 2, 't': 1, 'c': 1, 'h': 1})
+print(dict1)
+print(dict2)
+print(dict1 - dict2)
+print(dict2 - dict1)
+```
+输出:
+```
+Counter({'a': 1, 'c': 1, 't': 1})
+Counter({'a': 2, 'h': 1, 'c': 1, 't': 1})
+Counter()
+Counter({'a': 1, 'h': 1})
+```
 
 
 

@@ -151,6 +151,19 @@ ID: LeetCode.vscode-leetcode
 发布者: 力扣 LeetCode
 VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=LeetCode.vscode-leetcode
 
+### AREPL for python(代码实时输出与评价)
+>名称: AREPL for python
+ID: almenon.arepl
+说明: real-time python scratchpad
+版本: 2.0.3
+发布者: Almenon
+VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=almenon.arepl
+
+1. 仅限Python；
+2. 点击上面狐狸头标志（类似markdown)；
+3. 若没有出现在右栏就保存一下代码；
+4. 效果如图：
+    ![](https://raw.githubusercontent.com/lukelee98/PicBed/main/Pic2022/AREPL%20for%20python.png)
 
 
 
