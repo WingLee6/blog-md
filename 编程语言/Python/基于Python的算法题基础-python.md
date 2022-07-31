@@ -430,7 +430,7 @@
 
 ## 四、 大合集
 ### 1. 排序相关
-#### 方法一. `text_list.sort()`与`sorted(text_list)`函数
+#### 方法一： `text_list.sort()`与`sorted(text_list)`函数
 1. `text_list.sort()`函数:
     + sort函数没有返回值；
     + 会改变原元素的值；
@@ -461,10 +461,10 @@
         l1.sort(reverse=False)
         print(l1)                           # False升序：[3, 3, 8, 10, 13, 20, 55]
         ```
-#### 方法二. 利用`sortedcontainers`模块实现
+#### 方法二： 利用`sortedcontainers`模块实现
 > 见本文【`sortedcontainers`模块】相关内容
 
-#### 方法三. 利用`bisect`模块实现
+#### 方法三： 利用`bisect`模块实现
 > 见本文【`bisect`模块】相关内容
 
 
