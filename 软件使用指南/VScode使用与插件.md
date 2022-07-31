@@ -68,6 +68,13 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=shd10
     Step 1: 点击；Code->首选项->设置；
     Step 2: 搜索`enableScriptExecution`，找到并勾选。
     ![](https://raw.githubusercontent.com/lukelee98/PicBed/main/Pic2022/CodeChunk.png)
+
+    > 问题解决：代码含有中文无法运行？
+    解决方法：如Python3，加上`#-- coding:UTF-8 --`
+    
+    示例：
+    ![](https://raw.githubusercontent.com/lukelee98/PicBed/main/Pic2022/chunk.png)
+    代码块右上角会显示操作键，点击运行会将运行解决显示在下面。
     
     + Markdown 之 Python3编译
         示例 1: Python3
@@ -86,6 +93,7 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=shd10
         需要先安装好 `pdf2svg` 以及 `LaTeX engine`
         + https://shd101wyy.github.io/markdown-preview-enhanced/#/zh-cn/extra?id=install-svg2pdf
 
+    
     
 5. LaTeX 数学
     + `$...$` 或者 `\(...\)` 中的数学表达式将会在行内显示
