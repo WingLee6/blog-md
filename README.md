@@ -20,4 +20,4 @@
 仓库Markdown文档中插入的图片大部分都在基于GitHub图云仓库中；  
 1. Github图云仓库地址: https://github.com/lukelee98/pic-bed.git   
 2. 上传文件工具为PicGo；  
-3. 更多详见[PicBed仓库](https://github.com/lukelee98/pic-bed.git)中`README.md`文件.  
+3. 更多详见[pic-bed仓库](https://github.com/lukelee98/pic-bed.git)中`README.md`文件.  
