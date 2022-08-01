@@ -1,24 +1,24 @@
 # VScode使用与插件.md
 
 
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
 <!-- code_chunk_output -->
 
-- [VScode使用与插件.md](#vscode使用与插件md)
-  - [一、VScode使用](#一-vscode使用)
-    - [设置快捷键](#设置快捷键)
-    - [设置](#设置)
-    - [命令](#命令)
-  - [二、插件介绍](#二-插件介绍)
-    - [Markdown Preview Enhanced（MPE）(生成目录、生成PDF、流程图)](#markdown-preview-enhancedmpe生成目录-生成pdf-流程图)
-    - [GitLens + Git Graph + Git History（Git相关）](#gitlens-git-graph-git-historygit相关)
-      - [1. GitLens （git文件和操作信息）](#1-gitlens-git文件和操作信息)
-      - [2. Git Graph （看到Git流程图）](#2-git-graph-看到git流程图)
-      - [3. Git History （查看Git历史）](#3-git-history-查看git历史)
-    - [Codelf(变量命名神器)](#codelf变量命名神器)
-    - [Tabnine (智能补全代码)](#tabnine-智能补全代码)
-    - [Leetcode (刷题插件)](#leetcode-刷题插件)
+- [一、VScode使用](#一-vscode使用)
+  - [设置快捷键](#设置快捷键)
+  - [设置](#设置)
+  - [命令](#命令)
+- [二、插件介绍](#二-插件介绍)
+  - [Markdown Preview Enhanced（MPE）(生成目录、生成PDF、流程图)](#markdown-preview-enhancedmpe生成目录-生成pdf-流程图)
+  - [GitLens + Git Graph + Git History（Git相关）](#gitlens-git-graph-git-historygit相关)
+    - [1. GitLens （git文件和操作信息）](#1-gitlens-git文件和操作信息)
+    - [2. Git Graph （看到Git流程图）](#2-git-graph-看到git流程图)
+    - [3. Git History （查看Git历史）](#3-git-history-查看git历史)
+  - [Codelf(变量命名神器)](#codelf变量命名神器)
+  - [Tabnine (智能补全代码)](#tabnine-智能补全代码)
+  - [Leetcode (刷题插件)](#leetcode-刷题插件)
+  - [AREPL for python(代码实时输出与评价)](#arepl-for-python代码实时输出与评价)
 
 <!-- /code_chunk_output -->
 
