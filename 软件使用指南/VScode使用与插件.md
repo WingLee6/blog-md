@@ -1,4 +1,4 @@
-# VScode使用与插件.md
+# VScode使用与插件
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
@@ -19,6 +19,7 @@
   - [Tabnine (智能补全代码)](#tabnine-智能补全代码)
   - [Leetcode (刷题插件)](#leetcode-刷题插件)
   - [AREPL for python(代码实时输出与评价)](#arepl-for-python代码实时输出与评价)
+  - [Code Runner 代码运行](#code-runner-代码运行)
 
 <!-- /code_chunk_output -->
 
@@ -173,5 +174,32 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=almen
 4. 效果如图：
     ![](https://raw.githubusercontent.com/lukelee98/PicBed/main/Pic2022/AREPL%20for%20python.png)
 
+### Code Runner 代码运行
+> 名称: Code Runner
+ID: formulahendry.code-runner
+说明: Run C, C++, Java, JS, PHP, Python, Perl, Ruby, Go, Lua, Groovy, PowerShell, CMD, BASH, F#, C#, VBScript, TypeScript, CoffeeScript, Scala, Swift, Julia, Crystal, OCaml, R, AppleScript, Elixir, VB.NET, Clojure, Haxe, Obj-C, Rust, Racket, Scheme, AutoHotkey, AutoIt, Kotlin, Dart, Pascal, Haskell, Nim, 
+版本: 0.11.8
+发布者: Jun Han
+VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=formulahendry.code-runner
 
+1. 问题解决：
+    + 问题描述：
+        若在运行Python3文件时，出现以下问题：  
+        ![](https://raw.githubusercontent.com/lukelee98/pic-bed/main/pic2022/codeRunningRunPython3.png)
+        + 报错：`SyntaxError: invalid syntax`， 即语法错误；
+        + `python -u "/Users/lukelee/GitWorkspace/code-for-lc/PythonLang/demo.py"` 用python2的指令运行代码文件
+    
+    + 问题解决：
+        > 当前环境为用`python`指令默认为 Python2环境，用`python3`为 Python3环境；
+
+        方法：更改Code Running运行命令设置
+        1. 打开VS Code中打开 扩展 -> Code Runner -> Manage(齿轮icon右键) -> 扩展设置;
+        2. 找到 【Code-Runner: Executor Map】 打开 `settings.json`文件;
+        3. 修改：  
+            找到`"python": "python -u",`一行，改为`"python": "python3 -u",`
+        4. 保存，退出，重新运行查看
+            ![](https://raw.githubusercontent.com/lukelee98/pic-bed/main/pic2022/codeRunningRunPython3Success.png)
+
+        
+        
 
