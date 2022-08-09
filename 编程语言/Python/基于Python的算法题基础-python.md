@@ -6,6 +6,7 @@
 
 - [基于Python的算法题基础 -python](#基于python的算法题基础-python)
   - [一、基础语法](#一-基础语法)
+    - [1. 对字典查找](#1-对字典查找)
   - [二、常用方法](#二-常用方法)
     - [1. `repr()` 将 变量的数据和转义字符 都显化为 字符串](#1-repr-将-变量的数据和转义字符-都显化为-字符串)
   - [三、常用模块](#三-常用模块)
@@ -24,9 +25,10 @@
       - [功能二： 插入](#功能二-插入)
   - [四、 大合集](#四-大合集)
     - [1. 排序相关](#1-排序相关)
-      - [方法一. `text_list.sort()`与`sorted(text_list)`函数](#方法一-text_listsort与sortedtext_list函数)
-      - [方法二. 利用`sortedcontainers`模块实现](#方法二-利用sortedcontainers模块实现)
-      - [方法三. 利用`bisect`模块实现](#方法三-利用bisect模块实现)
+      - [方法一:【对列表】`列表.sort()`与`sorted(列表)`函数](#方法一对列表列表sort与sorted列表函数)
+      - [方法二:【对列表、字典】利用`sortedcontainers`模块实现](#方法二对列表-字典利用sortedcontainers模块实现)
+      - [方法三: 利用`bisect`模块实现](#方法三-利用bisect模块实现)
+      - [方法四:【对字典】匿名函数实现](#方法四对字典匿名函数实现)
   - [附录：](#附录)
     - [A. 链表的Python实现](#a-链表的python实现)
     - [B. 二叉树的Python实现](#b-二叉树的python实现)
@@ -36,7 +38,34 @@
 
 
 ## 一、基础语法
+### 1. 对字典查找
+1. 按Key查找
+    ```python{cmd=true}
+    dic = {'John': 60, 'Alice': 95, 'Paul': 80, 'James': 75, 'Bob': 85}
+    print(dic['Alice'])
+    ```
 
+2. 按Value查找
+    ```python{cmd=true}
+    #-- coding:UTF-8 --
+    dic = {'John': 60, 'Alice': 95, 'Paul': 80, 'James': 75, 'Bob': 75}
+    # 问题：如何找出得75分的那个同学？
+
+    # 方法一：利用 keys() 、values()、index() 函数
+    # 若有多个 Value == 75，则返回最后一个
+    name = list(dic.keys())[list(dic.values()).index(75)]
+    print(name)   # 输出结果：Bob
+    
+    # 方法二：【适合有重复的Value】通过列表解析式
+    name = [key for key, value in dic.items() if value == 75]
+    print(name)   # 输出结果：['Bob', 'James']
+    
+
+    # 方法三：将原字典进行反转得新字典
+    # 若有多个 Value == 75，则返回不固定
+    a_inv = {value: key for key, value in dic.items()}
+    print(a_inv[75])   # 输出结果：James
+    ```
 ## 二、常用方法
 ### 1. `repr()` 将 变量的数据和转义字符 都显化为 字符串 
 1. 对于字符串
@@ -274,7 +303,7 @@
 ### 3. `sortedcontainers` 排序模块
 
 #### 功能一：`sortedcontainers.SortedList()`对列表元素排序
-1. `SortedList`基础操作
+1. `sortedcontainers.SortedList()`基础操作
     ```python{cmd=true}
     #-- coding:UTF-8 --
     from sortedcontainers import SortedList
@@ -333,7 +362,7 @@
 
 
 #### 功能二：`sortedcontainers.SortedDict()`对字典排序
-1. `sortedcontainers.SortedDict()`基础操作
+1. `sortedcontainers.SortedDict()`方法
     ```python
     from sortedcontainers import SortedDict
     
@@ -356,7 +385,7 @@
     
 
 #### 功能三：`sortedcontainers.SortedSet()`对集合排序
-1. `sortedcontainers.SortedSet()`基础操作
+1. `sortedcontainers.SortedSet()`方法
     ```python
     from sortedcontainers import SortedSet
 
@@ -430,8 +459,8 @@
 
 ## 四、 大合集
 ### 1. 排序相关
-#### 方法一： `text_list.sort()`与`sorted(text_list)`函数
-1. `text_list.sort()`函数:
+#### 方法一:【对列表】`列表.sort()`与`sorted(列表)`函数
+1. `列表.sort()`函数:
     + sort函数没有返回值；
     + 会改变原元素的值；
     + 示例：
@@ -446,7 +475,7 @@
         print(l1)                           # sorted()对l1不影响：[10, 3, 13, 3, 8, 20, 55]
         ```
         
-2. `sorted(text_list)`函数:
+2. `sorted(列表)`函数:
     + sorted函数有返回值；
     + 不会改变原元素的值；
     + 示例：
@@ -461,12 +490,33 @@
         l1.sort(reverse=False)
         print(l1)                           # False升序：[3, 3, 8, 10, 13, 20, 55]
         ```
-#### 方法二： 利用`sortedcontainers`模块实现
+#### 方法二:【对列表、字典】利用`sortedcontainers`模块实现
 > 见本文【`sortedcontainers`模块】相关内容
 
-#### 方法三： 利用`bisect`模块实现
+#### 方法三: 利用`bisect`模块实现
 > 见本文【`bisect`模块】相关内容
 
+#### 方法四:【对字典】匿名函数实现
+1. 按Key值排序
+    ```python{cmd=true}
+    #-- coding:UTF-8 --
+    dic = {333: 5, 222: 0, 111: 9, 444: 3}
+    # 按Key值 升序排序
+    print(sorted(dic.items(), key=lambda x: x[0], reverse=False))
+
+    # 按Key值 降序排序
+    print(sorted(dic.items(), key=lambda x: x[0], reverse=True))
+    ```
+2. 按Value值排序
+    ```python{cmd=true}
+    #-- coding:UTF-8 --
+    dic = {333: 5, 222: 0, 111: 9, 444: 3}
+    # 按Value值 升序排序
+    print(sorted(dic.items(), key=lambda x: x[1], reverse=False))
+
+    # 按Value值 降序排序
+    print(sorted(dic.items(), key=lambda x: x[1], reverse=True))
+    ```
 
 
 --------------

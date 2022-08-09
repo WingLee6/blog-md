@@ -108,7 +108,6 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=shd10
 
     
     
-
 ### GitLens + Git Graph + Git History（Git相关）
 #### 1. GitLens （git文件和操作信息）
 > 名称: GitLens — Git supercharged
@@ -118,6 +117,7 @@ ID: eamodio.gitlens
 发布者: GitKraken
 VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
 
+
 #### 2. Git Graph （看到Git流程图）
 > 名称: Git Graph
 ID: mhutchie.git-graph
@@ -125,6 +125,7 @@ ID: mhutchie.git-graph
 版本: 1.30.0
 发布者: mhutchie
 VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph
+
 
 #### 3. Git History （查看Git历史）
 >名称: Git History
@@ -142,6 +143,7 @@ ID: unbug.codelf
 版本: 11.7.0
 发布者: unbug
 VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=unbug.codelf
+
 
 ### Tabnine (智能补全代码)
 >名称: Tabnine AI Autocomplete for Javascript, Python, Typescript, PHP, Go, Java, Ruby & more
