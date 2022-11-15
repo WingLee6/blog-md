@@ -1,15 +1,10 @@
 
 
-#必须引用如下库
-from collections import Counter
+import itertools
+param1 = [1,2,3,4,5]
+param2 = ['a', 'b', 'c', 'd']
 
-#定义两个字符串变量
-Var1 = "aaabbc"
-Var2 = "19982000"
 
-#以字典的形式，输出每个字符串中出现的字符及其数量
-print(Counter(Var1))
-print(Counter(Var2))
 
 
 

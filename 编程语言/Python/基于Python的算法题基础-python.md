@@ -23,6 +23,8 @@
     - [4. `bisect` 对**有序**序列的插入和查找](#4-bisect-对有序序列的插入和查找)
       - [功能一： 查找](#功能一-查找)
       - [功能二： 插入](#功能二-插入)
+    - [1. `itertools`模块](#1-itertools模块)
+      - [功能一： `itertools.chain()` 将若干`list`/`tuple`/`iterable`链接在一起](#功能一-itertoolschain-将若干listtupleiterable链接在一起)
   - [四、 大合集](#四-大合集)
     - [1. 排序相关](#1-排序相关)
       - [方法一:【对列表】`列表.sort()`与`sorted(列表)`函数](#方法一对列表列表sort与sorted列表函数)
@@ -454,6 +456,18 @@
     ```
 
 
+### 1. `itertools`模块
+#### 功能一： `itertools.chain()` 将若干`list`/`tuple`/`iterable`链接在一起
+示例：
+```python{cmd=true}
+import itertools
+param1 = [1,2,3,4,5]
+param2 = ['a', 'b', 'c', 'd']
+param3 = ['hello', 'world']
+
+for element in itertools.chain(param1, param2, param3):
+    print(element)
+```
 
 
 
