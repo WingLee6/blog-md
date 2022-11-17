@@ -10,7 +10,8 @@
   - [2. 特殊结构](#2-特殊结构)
   - [3. 先调用再实现](#3-先调用再实现)
   - [4. sizeof()](#4-sizeof)
-  - [5. 常用变量名](#5-常用变量名)
+  - [5. `void func(int val, int* val, int &val) `](#5-void-funcint-val-int-val-int-val)
+  - [6. 常用变量名](#6-常用变量名)
 - [二、 数据类型](#二-数据类型)
   - [1. 字符串](#1-字符串)
   - [2. 指针](#2-指针)
@@ -116,7 +117,93 @@ void f(int a, char str) {
     }
     ```
 
-### 5. 常用变量名
+### 5. `void func(int val, int* val, int &val) `
+1. 简述：
+    对于整数值
+    + `int val` --> 传值，不改变原值
+    + `int* val` --> 传值地址，原值协同改变
+    对于数组
+    + `int val, int* val` --> 最终都会变为指针数组
+    对于`int &val`，这是Cpp的引用方法，Clang不适用。
+2. 示例：
+    ```c
+    #include <stdio.h>
+
+    void PrintList (int* s) {
+        for(int i=0; i<10; i++) {
+            printf("%d  ", s[i]);
+        }
+        printf("\n");
+    }
+
+    void intUse1(int a) {
+        a = 1;
+    }
+
+    void intUse2(int* a) {
+        *a = 6;
+    }
+
+    // 这是CPP的“引用”，不适用于Clang
+    // void intUse3(int &a) {
+    // 	a = 3;
+    // }
+
+    void listUse1(int arr[]) {
+        arr[1] = 1;
+    }
+
+    void listUse2(int* arr, int index) {
+        arr[index] = index;
+    }
+    
+    int main() {
+        int a = 0;
+        printf("a的地址 = %p  \n", &a);
+        printf("a的值 = %d  \n", a);
+        printf("---------int-------------\n");
+
+        intUse1(a);
+        printf("void intUse1(int a)  --> %d  \n", a);
+
+        intUse2(&a); // 将其地址传入
+        printf("void intUse2(int* a)  --> %d  \n", a);
+        
+        
+        printf("----------list------------\n");
+        int arr[10];
+        memset(arr, 0, sizeof(arr));
+        int* p_arr = arr;
+
+        listUse1(arr);      // 也可以传指针listUse1(p_arr); 如下面调用方式二：传指针数组
+        PrintList(arr);
+
+        // 调用方式一：直接传数组
+        listUse2(arr, 2);
+        PrintList(arr);
+        // 调用方式二：传指针数组
+        listUse2(p_arr, 3);
+        PrintList(arr); 
+        PrintList(p_arr);
+        
+        return 0;
+    }
+    ```
+    Output:
+    ```
+    a的地址 = 0x7ffeebab7458  
+    a的值 = 0  
+    ---------int-------------
+    void intUse1(int a)  --> 0  
+    void intUse2(int* a)  --> 6  
+    ----------list------------
+    0  1  0  0  0  0  0  0  0  0  
+    0  1  2  0  0  0  0  0  0  0  
+    0  1  2  3  0  0  0  0  0  0  
+    0  1  2  3  0  0  0  0  0  0  
+    ```
+
+### 6. 常用变量名
 | 变量 | 解释 | 变量 | 解释 |
 |-:| :- | -:| :- |
 | temp | 临时变量 | cur / curr / pos / index | 当前 |
