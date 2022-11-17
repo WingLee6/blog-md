@@ -218,6 +218,7 @@ void f(int a, char str) {
 | front | 队首 | rear | 队尾 |
 | Q / queue | 队列 | root | 树的根结点 |
 | val / ch | 一个值/字符 | arr | 数组 |
+| head | 链表头 | tail | 链表尾 |
 
 ## 二、 数据类型
 ### 1. 字符串
