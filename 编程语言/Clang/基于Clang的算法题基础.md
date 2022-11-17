@@ -391,8 +391,11 @@ int res = memcmp(arr1/*arr1/str1/*str1, arr2/*arr2/str2/*str2, size_len);
     char str1[4] = "abcd";
     char str2[4] = "abcd";
 
-    int res = memcmp(str1, str2, sizeof(str1));
-    printf("res = %d\n", res);
+    int res = memcmp(arr1, arr2, sizeof(arr1));
+    printf("res = %d\n", res);      // Output: res = -1
+
+    res = memcmp(str1, str2, sizeof(str1));
+    printf("res = %d\n", res);      // Output: res = 0
     ```
 #### 2. 拷贝/追加 -- memcpy(列表1, 列表2, 长度)
 ```
@@ -461,7 +464,6 @@ memcpy(&arr1[index]/&*arr1[index]/&str1[index]/&*str1[index], arr2/*arr2/str2/*s
         printf("\n");
 
         memcpy(arr1, arr2+1, sizeof(int));  // 从 arr[1]开始拷贝，只拷贝sizeof(int) = 4字节内容  -—> 即只拷贝 12
-        
         // 拷贝后：
         for (int i = 0; i < 10; i++) {
             printf("%d ", arr1[i]);     // Output: 12 2 3 4 0 0 0 0 0 0
