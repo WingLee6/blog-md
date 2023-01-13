@@ -1,4 +1,4 @@
-# 问题解决：T7 SSD分区后做时光机器，但Max磁盘工具无法识别 -Mac
+# 问题解决：T7 SSD分区后做时光机器，但MacOS磁盘工具无法识别 -mac+时间机器+ssd
 
 ## 一、问题描述：
 ![](https://raw.githubusercontent.com/lukelee98/PicBed/main/Pic2022/%E6%97%B6%E9%97%B4%E6%9C%BA%E5%99%A8%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB.jpg) 
