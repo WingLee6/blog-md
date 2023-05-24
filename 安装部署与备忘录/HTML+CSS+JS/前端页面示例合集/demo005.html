@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo006</title>
+    <link rel="stylesheet" href="demo006.css">
+
+    <style>
+        * {
+            color: greenyellow;
+        }
+
+        h1 { 
+            font-size: 20px;
+        }
+        
+        .oneclass {
+            color: darkorange;
+        }
+
+        p.threeclass {
+            color: darkviolet;
+        }
+
+        .colorclass {
+            color: red;
+        }
+
+        .sizeclass {
+            font-size: 60px;
+        }
+
+        #oneid {
+            color: hotpink;
+        }
+        
+        h2, .oneclass {
+            font-size: 70px;
+        }
+
+    </style>
+</head>
+<body>
+    <P>HELLO WORLD</P>
+
+    <h2>外部样式，样式内容见demo006.css文件</h2>
+
+    <h5 class="oneclass">类选择器测试</h5>
+    <h5 class="twoclass">类选择器测试</h5>
+
+    <p class="threeclass">指定 HTML 元素的 class生效， 这条生效</p>
+    <p class="XXXXclass">指定 HTML 元素的 class生效， 不生效</p>
+    <p>指定 HTML 元素的 class生效， 不生效</p>
+    <span class="threeclass">指定 HTML 元素的 class生效， 不生效</span>
+
+    
+    <p class="colorclass sizeclass">多个class颜色和大小设定</p>
+
+    <p id="oneid">测试id选择器</p>
+
+</body>
+</html>
