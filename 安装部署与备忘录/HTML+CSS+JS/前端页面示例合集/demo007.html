@@ -11,8 +11,59 @@
             height: 300px;
             width: 300px;
             background-color: red;
+            
+        }
+
+        .textalignclass {
+            text-align: right;
+        }
+
+        .textdecorationclass {
+            text-decoration: underline;
+        }
+
+        .texttransformclass {
+            text-transform: capitalize;
         }
         
+        .textindentclass {
+            text-indent: 50px;
+        }
+
+        table, td {
+            border: 1px solid red;
+        }
+
+
+        .collapsetable, .collapsetd {
+            border: 1px solid green;
+        }
+        
+        .collapsetable {
+            border-collapse: collapse;
+        }
+
+        table {
+            width: 500px;
+            height: 300px;
+        }
+        
+        td {
+            text-align: center;
+        }
+        
+        td {
+            height: 50px;
+            vertical-align: bottom;
+        }
+        
+
+        td {
+            padding: 20px;
+            color: aqua;
+            background-color: blanchedalmond;
+        }
+      
     </style>
 </head>
 <body>
@@ -20,6 +71,56 @@
     <div class="backgroundsetting">
 
     </div>
+    
+    <p class="textalignclass">文本属性测试 text-align</p>
+    <p class="textdecorationclass">文本属性测试 text-decoration</p>
+    <p class="texttransformclass">文本属性测试 text-transform hello world</p>
+    <p class="textindentclass">文本属性测试 text-indent</p>
+
+
+    <table>
+        <tr>
+            <td>文本</td>
+            <td>文本</td>
+            <td>文本</td>
+        </tr>
+        <tr>
+            <td>文本</td>
+            <td>文本</td>
+            <td>文本</td>
+        </tr>
+        <tr>
+            <td>文本</td>
+            <td>文本</td>
+            <td>文本</td>
+        </tr>
+    </table>
+
+
+    <table class="collapsetable">
+        <tr>
+            <td class="collapsetd">折叠</td>
+            <td class="collapsetd">折叠</td>
+        </tr>
+        <tr>
+            <td class="collapsetd">折叠</td>
+            <td class="collapsetd">折叠</td>
+        </tr>
+    </table>
+
+    
+    <table>
+        <tr>
+            <td>test padding</td>
+        </tr>
+        <tr>
+            <td>test padding</td>
+        </tr>
+        <tr>
+            <td>test padding</td>
+        </tr>
+    </table>
+
     
 </body>
 </html>

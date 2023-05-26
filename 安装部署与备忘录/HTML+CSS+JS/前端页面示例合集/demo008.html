@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo008</title>
+
+    <style>
+        .noboxmudel {
+            width: 100px;
+            height: 100px;
+            background-color: red;    
+        }
+        
+        .paddingbox {
+            width: 100px;
+            height: 100px;
+            background-color: green;    
+            padding: 50px;
+        }
+
+        .borderbox {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border: 10px solid black;
+        }
+
+        .marginbox {
+            width: 150px;
+            height: 150px;
+            background-color: blue;
+            margin: 0px;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="noboxmudel">
+        测试box model - 没有box
+    </div>
+
+    <div class="paddingbox">
+        测试box model - padding
+    </div>
+
+    <div class="borderbox">
+        测试box model - borderbox
+    </div>
+    
+    <div class="marginbox">
+        测试box model - marginbox
+    </div>
+
+
+    <style>
+        .father {
+            width:  500px;
+            height: 500px;
+            background-color: antiquewhite;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .son1, .son2, .son3 {
+            width: 100px;
+            height: 100px;
+        }
+        
+       .son1 {
+            background-color: aqua;
+       }
+       .son2 {
+            background-color: pink;
+       }
+       .son3 {
+            background-color: red;
+       }
+
+    </style>
+    
+    <div class="father">
+        <div class="son1">
+            儿子1
+        </div>
+        <div class="son2">
+            儿子2
+        </div>
+        <div class="son3">
+            儿子3
+        </div>
+    </div>
+</body>
+</html>

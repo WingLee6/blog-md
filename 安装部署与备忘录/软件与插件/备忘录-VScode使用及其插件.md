@@ -1,4 +1,4 @@
-# VScode使用与插件
+# VScode使用及其插件
 
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
@@ -8,6 +8,7 @@
 - [一、VScode使用](#一-vscode使用)
   - [设置快捷键](#设置快捷键)
   - [设置](#设置)
+    - [1. VScode如何根据不同文件类型设置诸如tab的长度](#1-vscode如何根据不同文件类型设置诸如tab的长度)
   - [命令](#命令)
 - [二、插件介绍](#二-插件介绍)
   - [Markdown Preview Enhanced（MPE）(生成目录、生成PDF、流程图)](#markdown-preview-enhancedmpe生成目录-生成pdf-流程图)
@@ -20,6 +21,8 @@
   - [Leetcode (刷题插件)](#leetcode-刷题插件)
   - [AREPL for python(代码实时输出与评价)](#arepl-for-python代码实时输出与评价)
   - [Code Runner 代码运行](#code-runner-代码运行)
+  - [error lens 提示错误](#error-lens-提示错误)
+  - [live server： 保持代码时刷新页面](#live-server-保持代码时刷新页面)
 
 <!-- /code_chunk_output -->
 
@@ -202,6 +205,12 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=formu
             找到`"python": "python -u",`一行，改为`"python": "python3 -u",`
         4. 保存，退出，重新运行查看
             ![](https://raw.githubusercontent.com/lukelee98/pic-bed/main/pic2022/codeRunningRunPython3Success.png)
+
+
+### error lens 提示错误
+
+
+### live server： 保持代码时刷新页面
 
         
         

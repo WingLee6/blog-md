@@ -6,6 +6,7 @@
 <!-- code_chunk_output -->
 
 - [〇、语法基础](#〇-语法基础)
+  - [0. 参考汇总](#0-参考汇总)
   - [1. CSS语法规则的构成](#1-css语法规则的构成)
     - [第一部分：选择器](#第一部分选择器)
     - [第二部分：声明](#第二部分声明)
@@ -16,22 +17,61 @@
     - [方式三： 外部样式（推荐）](#方式三-外部样式推荐)
 - [一、 选择器](#一--选择器)
   - [1. 全局选择器 `*`](#1-全局选择器-)
-  - [2. 元素选择器 `<>`](#2-元素选择器-)
+  - [2. 元素element选择器 `<>`](#2-元素element选择器-)
   - [3. 类class选择器 `.`](#3-类class选择器-)
   - [4. id 选择器 `#`](#4-id-选择器-)
   - [5. 合并选择器](#5-合并选择器)
-  - [样式的优先级： 行内样式 > id选择器 > 类选择器 > 元素选择器](#样式的优先级-行内样式--id选择器--类选择器--元素选择器)
+  - [6. 关系选择器](#6-关系选择器)
+    - [6.1 后代选择器](#61-后代选择器)
+    - [6.2 子代选择器](#62-子代选择器)
+    - [6.3 相邻兄弟选择器](#63-相邻兄弟选择器)
+    - [6.4 通用兄弟选择器](#64-通用兄弟选择器)
+  - [附1： 样式的优先级： 行内样式 > id选择器 > 类选择器 > 元素选择器](#附1-样式的优先级-行内样式--id选择器--类选择器--元素选择器)
+  - [附2： 选择器汇总](#附2-选择器汇总)
 - [二、 字体属性](#二--字体属性)
-  - [1. color](#1-color)
+  - [1. color 字体颜色](#1-color-字体颜色)
   - [2. font-size 字体大小](#2-font-size-字体大小)
   - [3. font-weight 文本粗细](#3-font-weight-文本粗细)
   - [4. font-style 字体样式](#4-font-style-字体样式)
   - [5. font-family 字体库](#5-font-family-字体库)
+- [三、 背景样式](#三--背景样式)
+  - [1. background-color 设置背景颜色](#1-background-color-设置背景颜色)
+  - [2. background-image 添加背景图片](#2-background-image-添加背景图片)
+  - [3. background-position 设置背景图片显示起始位置](#3-background-position-设置背景图片显示起始位置)
+  - [4. background-repeat 设置背景图片如何填充](#4-background-repeat-设置背景图片如何填充)
+  - [5. background-size 设置背景图片大小属性](#5-background-size-设置背景图片大小属性)
+- [四、 文本属性](#四--文本属性)
+  - [1. text-align 文本对齐方式](#1-text-align-文本对齐方式)
+  - [2. text-decoration 文本下划线、删除线等](#2-text-decoration-文本下划线-删除线等)
+  - [3. text-transform 控制文本大小写](#3-text-transform-控制文本大小写)
+  - [4. text-indent 文本首行缩进](#4-text-indent-文本首行缩进)
+- [五、 表格属性](#五--表格属性)
+  - [1. border  表格边框设置](#1-border--表格边框设置)
+  - [2. border-collapse 折叠边框使其折叠为单边框](#2-border-collapse-折叠边框使其折叠为单边框)
+  - [3. width 和 height     表格的宽度和高度](#3-width-和-height-----表格的宽度和高度)
+  - [4. text-align 和 vertical-align  表格内文本对齐](#4-text-align-和-vertical-align--表格内文本对齐)
+    - [text-align   水平对齐](#text-align---水平对齐)
+    - [vertical-align   竖直对齐](#vertical-align---竖直对齐)
+  - [5. padding   填充空间](#5-padding---填充空间)
+  - [6. color 和 background   表格内 字体颜色 和 背景颜色](#6-color-和-background---表格内-字体颜色-和-背景颜色)
+- [六、 CSS盒子模型（Box Model）](#六--css盒子模型box-model)
+  - [外边距 margin - 边框外的内容](#外边距-margin---边框外的内容)
+  - [边框 border - 围绕padding和content](#边框-border---围绕padding和content)
+  - [内边距 padding - 内容周围的部分，内容到边框之间的空隙](#内边距-padding---内容周围的部分内容到边框之间的空隙)
+  - [实际内容 content - 内容本身。文字或图像](#实际内容-content---内容本身文字或图像)
+- [七 弹性盒子模型](#七-弹性盒子模型)
+  - [[父级属性] `display: flex;` 开启弹性盒子](#父级属性-display-flex-开启弹性盒子)
+  - [[父级属性] `flex-direction` 改变 弹性子元素 在 父容器 的排版](#父级属性-flex-direction-改变-弹性子元素-在-父容器-的排版)
 
 <!-- /code_chunk_output -->
 
 
 ## 〇、语法基础
+### 0. 参考汇总
+1. 菜鸟教程：
+    + https://www.runoob.com/css/css-tutorial.html
+    + https://www.runoob.com/cssref/css-reference.html#flexbox
+    
 ### 1. CSS语法规则的构成
 示例：见demo004
 ```css
@@ -142,7 +182,7 @@ CSS注释以 `/*` 开始, 以 `*/` 结束
     **选择器为星号（*）**
 2. 特点： 任何元素都匹配，优先级低，一般只用于初始化
 
-### 2. 元素选择器 `<>`
+### 2. 元素element选择器 `<>`
 1. 示例：
     ```CSS
     h1 { 
@@ -236,7 +276,38 @@ CSS注释以 `/*` 开始, 以 `*/` 结束
     + 提取公共样式，减少重复
 
 
-### 样式的优先级： 行内样式 > id选择器 > 类选择器 > 元素选择器
+
+### 6. 关系选择器
+见下面总结表格
+#### 6.1 后代选择器
+#### 6.2 子代选择器
+#### 6.3 相邻兄弟选择器
+#### 6.4 通用兄弟选择器
+
+
+### 附1： 样式的优先级： 行内样式 > id选择器 > 类选择器 > 元素选择器
+
+### 附2： 选择器汇总
+> 参考： https://www.runoob.com/cssref/css-selectors.html
+
+| 名称 | 选择器格式 | 示例 | 示例说明 |
+| - | - | - | - |
+| 全局选择器 | * | * | 选择所有元素	|
+| 元素element选择器 | element | p | 选择所有`<p>`元素 |
+| 类class选择器 | .class	| .intro | 选择所有class="intro"的元素 |
+| id选择器 | #id | #firstname | 选择所有id="firstname"的元素 |
+| 合并选择器 | element1,element2 | div,p | 选择所有`<div>`元素和`<p>`元素 |
+| 后代选择器 | element1 element2 | div p | 选择`<div>`元素**内的所有**`<p>`元素 |
+| 子代选择器 | element1>element2 | div>p | 选择所有**父级**是 `<div>` 元素的 `<p>` 元素 |
+| 相邻兄弟选择器 | element1+element2 | div+p | 选择所有**紧跟**在 `<div>` 元素之后的第一个 `<p>` 元素 |
+| 通用兄弟选择器 | element1~element2 | p~ul | 选择`<p>`元素**之后的每一个**`<ul>`元素 |
+
+
+
+
+
+
+
 
 
 ## 二、 字体属性
@@ -319,15 +390,23 @@ CSS注释以 `/*` 开始, 以 `*/` 结束
     + 不同的背景图像和图像用逗号隔开，所有的图片中显示在最顶端的为第一张。
 
 
-### 3. background-position 设置背景图片显示位置
+### 3. background-position 设置背景图片显示起始位置
 1. 示例：
     ```css
-    p {
-        
+    div {
+        height: 300px;
+        width: 300px;
+        background-image: url(img_flwr.gif), url(paper.gif); 
+        background-position: left top;
     }
     ```
-2. 注意：
-    + 
+    可选项：
+    + `0% 0%`   （默认值） 
+    + `x% y%`   第一个为垂直，第二个为水平 
+        - 若只设置一个，其余默认 `50%`
+    + `xpos ypos`   单位是像素 如`10% 10%`
+    + `left center` 位置两两组合
+        - 位置包括 `left` | `right` | `top` | `center` | `bottom` 
 
 
 ### 4. background-repeat 设置背景图片如何填充
@@ -358,10 +437,515 @@ CSS注释以 `/*` 开始, 以 `*/` 结束
     }
     ```
     可选项：
-    + 像素值 如`80px 60px`
-    + 百分比 如`100% 100%`
-2. 注意：
-    + 
+    + 像素值length 如`80px 60px`  
+        - 第一个宽度，第二个高度  （如果只设置一个，第二个Auto）
+    + 百分比percentage 如`100% 100%`
+        - 第一个宽度，第二个高度  （如果只设置一个，第二个Auto）
+    + `cover` 保持图片横纵比， 将图片缩放至充满容器（多出部分裁剪）
+    + `contain`  保持图片横纵比， 将图片缩放至尽可能充满容器（容器会没有被占满）
+    
+
+
+## 四、 文本属性
+
+###  1. text-align 文本对齐方式
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    <p class="textalignclass">文本属性测试 text-align</p>
+    ```
+    为其设置css样式如下：
+    ```css
+    .textalignclass {
+        text-align: right;
+    }
+    ```
+    可选项：
+    + `lift`(默认) | `center` | `right`
+
+
+### 2. text-decoration 文本下划线、删除线等
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    <p class="textdecorationclass">文本属性测试 text-decoration</p>
+    ```
+    为其设置css样式如下：
+    ```css
+    .textdecorationclass {
+        text-decoration: underline;
+    }
+    ```
+    可选项：
+    + `underline`   下划线
+    + `center`      上划线
+    + `right`       删除线
+
+### 3. text-transform 控制文本大小写
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    <p class="texttransformclass">文本属性测试 text-transform hello world</p>
+    ```
+    为其设置css样式如下：
+    ```css
+    .texttransformclass {
+        text-transform: capitalize;
+    }
+    ```
+    可选项：
+    + `captializa`      每个单词首字母大写
+    + `uppercase`       全部大写
+    + `lowercase`       全部小写
+
+
+
+### 4. text-indent 文本首行缩进
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    <p class="textindentclass">文本属性测试 text-indent</p>
+    ```
+    为其设置css样式如下：
+    ```css
+    .textindentclass {
+        text-indent: 50px;
+    }
+    ```
+    可选项：
+    + 像素值 如`5px`
+        - 允许负值   
+
+
+
+## 五、 表格属性
+
+###  1. border  表格边框设置
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    <table>
+        <tr>
+            <tb>文本</tb>
+        </tr>
+        <tr>
+            <tb>文本</tb>
+        </tr>
+    </table>
+    ```
+    为其设置css样式如下：
+    ```css
+    table {
+        border: 1px solid red;
+    }
+    ```
+    + 上述代码后会出现表格的外框是红色. 若要每个内框也为红色，则将代码改为：
+        ```css
+        table, td {
+            border: 1px solid red;
+        } 
+        ```
+
+    可选项（顺序为 `宽度 边线类型 颜色`）：
+    1. 宽度-可选项
+        - 像素宽度
+    2. 边线类型-可选项
+        - solid 直线
+    3. 颜色-可选项
+        - 略
+    
+
+
+###  2. border-collapse 折叠边框使其折叠为单边框 
+1. 示例（见demo007.html）
+    
+    有Html标签：
+    ```html
+    <table class="collapsetable">
+        <tr>
+            <td class="collapsetd">折叠</td>
+            <td class="collapsetd">折叠</td>
+        </tr>
+        <tr>
+            <td class="collapsetd">折叠</td>
+            <td class="collapsetd">折叠</td>
+        </tr>
+    </table>
+    ```
+    
+    **折叠前**css样式（有两个红色边框）：
+    ```css
+    .collapsetable, .collapsetd {
+        border: 1px solid green;
+    }
+    ```
+    
+    **折叠后**css样式（合并为一个单边框）：
+    ```css
+    .collapsetable, .collapsetd {
+        border: 1px solid green;
+    }
+    
+    .collapsetable {
+        border-collapse: collapse;
+    }
+    ```
+    即，单独对`<table>`标签增加一个`border-collapse`样式
+
+### 3. width 和 height     表格的宽度和高度
+1. 示例（见demo007.html）
+    
+    有Html标签：
+    ```html
+    <table class="collapsetable">
+        <tr>
+            <td class="collapsetd">文本</td>
+            <td class="collapsetd">文本</td>
+        </tr>
+        <tr>
+            <td class="collapsetd">文本</td>
+            <td class="collapsetd">文本</td>
+        </tr>
+    </table>
+    ```
+    css样式：
+    ```css
+    table {
+        width: 500px;
+        height: 300px;
+    }
+    ```
+    
+### 4. text-align 和 vertical-align  表格内文本对齐
+#### text-align   水平对齐
+1. 示例（见demo007.html）
+    
+    有Html标签：
+    ```html
+    略
+    ```
+    css样式：
+    ```css
+    td {
+        text-align: center;
+    }
+    ```
+
+#### vertical-align   竖直对齐
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    略
+    ```
+    css样式：
+    ```css
+    td {
+        height: 50px;
+        vertical-align: bottom;
+    }
+    ```
+    > `height: 50px;` 只是防止表格没有高度，看不出对齐效果 
+
+
+### 5. padding   填充空间
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    略
+    ```
+    css样式：
+    ```css
+    td {
+        padding: 20px;
+    }
+    ```
+    表格中每个文本的上下左右都被填充了20px空白空间 
+
+### 6. color 和 background   表格内 字体颜色 和 背景颜色
+1. 示例（见demo007.html）
+    有Html标签：
+    ```html
+    略
+    ```
+    css样式：
+    ```css
+    td {
+        color: aqua;
+        background-color: blanchedalmond;
+    }
+    ```
+
+
+## 六、 CSS盒子模型（Box Model）
+![CSS盒子模型（Box Model）](https://github.com/lukelee98/pic-bed/blob/main/Pic2023/CSS%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8BBoxModel.png?raw=true)
+
+所有的HTML元素都可以看作一个盒子。盒子模型包括：
++ 外边距 margin - 边框外的内容
++ 边框 border - 围绕padding和content
++ 内边距 padding - 内容周围的部分，内容到边框之间的空隙
++ 实际内容 content - 内容本身。文字或图像
+
+### 外边距 margin - 边框外的内容
+1. 示例见（demo008.html）
+    ```html
+    <div class="marginbox">
+        测试box model - marginbox
+    </div>
+    ```
+    CSS样式：
+    ```css
+    .marginbox {
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        margin: 0px;
+    }
+    ```
+    `margin`可选项: 
+    + 长度： （如`margin: 50px;`）像素, pt, em,等
+    + `x%`： 使用百分比值定义一个填充
+
+    `margin`参数的格式：
+    1. 简写属性：
+        + 单值：如`margin:25px;`
+            - 所有的填充都是25px
+        + 双值： 如`v:25px 50px;`
+            - 上下填充为25px
+            - 左右填充为50px
+        + 三值： 如`margin:25px 50px 75px;`
+            - 上填充为25px
+            - 左右填充为50px
+            - 下填充为75px  
+        + 四值（逆时针）： 如`margin:25px 50px 75px 100px;`
+            + 上填充为25px
+            + 右填充为50px
+            + 下填充为75px
+            + 左填充为100px
+    2. 逐一指定：
+        ```css
+        margin-top:25px;
+        margin-bottom:25px;
+        margin-right:50px;
+        margin-left:50px;
+        ```
+
+
+### 边框 border - 围绕padding和content
+1. 示例见（demo008.html）
+    ```html
+    <div class="borderbox">
+        测试box model - borderbox
+    </div>
+    ```
+    CSS样式：
+    ```css
+    .borderbox {
+        width: 100px;
+        height: 100px;
+        background-color: pink;
+        border: 10px solid black;
+    }
+    ```
+    `border`可选项简明属性：
+    + 如`border:5px solid red;` 分别为 边框宽度、类型 和颜色
+    > 边框单独设置,见https://www.runoob.com/css/css-border.html
+
+### 内边距 padding - 内容周围的部分，内容到边框之间的空隙
+1. 示例见（demo008.html）
+    ```html
+    <div class="paddingbox">
+        测试box model - 加上padding
+    </div>
+    ```
+    CSS样式：
+    ```css
+    .paddingbox {
+        width: 100px;
+        height: 100px;
+        background-color: green;    
+        padding: 50px;
+    }
+    ```
+    `padding`可选项: 
+    + 长度： （如`padding: 50px;`）像素, pt, em,等
+    + `x%`： 使用百分比值定义一个填充
+    `padding`参数的格式：
+    1. 简写属性：
+        + 单值：如`padding:25px;`
+            - 所有的填充都是25px
+        + 双值： 如`padding:25px 50px;`
+            - 上下填充为25px
+            - 左右填充为50px
+        + 三值： 如`padding:25px 50px 75px;`
+            - 上填充为25px
+            - 左右填充为50px
+            - 下填充为75px  
+        + 四值（逆时针）： 如`padding:25px 50px 75px 100px;`
+            + 上填充为25px
+            + 右填充为50px
+            + 下填充为75px
+            + 左填充为100px
+    2. 逐一指定：
+        ```css
+        padding-top:25px;
+        padding-bottom:25px;
+        padding-right:50px;
+        padding-left:50px;
+        ```
+
+### 实际内容 content - 内容本身。文字或图像
+1. 示例见（demo008.html）
+    ```html
+    <div class="contentbox">
+        测试box model - 只有content
+    </div>
+    ```
+    CSS样式：
+    ```css
+    .contentbox {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    ```
+
+
+## 七 弹性盒子模型
+- 通过设置`display = flex`将其定义为弹性容器
+- 弹性容器内包含 一个或多个弹性子容器
+
+示例
+若存在父元素(如 `class="father"`) 和 其下多个子元素(如`class="sonX"`)
+代码如下(见demo008.html)
+```html
+<style>
+    .father {
+        width:  500px;
+        height: 500px;
+        background-color: antiquewhite;
+    }
+    
+    .son1, .son2, .son3 {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .son1 {
+        background-color: aqua;
+    }
+    .son2 {
+        background-color: pink;
+    }
+    .son3 {
+        background-color: red;
+    }
+
+</style>
+
+<div class="father">
+    <div class="son1">
+        儿子1
+    </div>
+    <div class="son2">
+        儿子2
+    </div>
+    <div class="son3">
+        儿子3
+    </div>
+</div>
+```
+
+### [父级属性] `display: flex;` 开启弹性盒子 
+1. 示例
+    ```html
+    <style>
+        .father {
+            width:  500px;
+            height: 500px;
+            background-color: antiquewhite;
+            display: flex;
+        }
+        
+        .son1, .son2, .son3 {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .son1 {
+            background-color: aqua;
+        }
+        .son2 {
+            background-color: pink;
+        }
+        .son3 {
+            background-color: red;
+        }
+
+    </style>
+
+    <div class="father">
+        <!-- 元素同例 -->
+    </div>
+    ```
+    
+    给父级元素增加样式`display: flex;`,效果为
+    + 开启 弹性盒子
+    + 其下三个子元素改为横向排列(若要更改见属性`flex-direction`)
+
+###  [父级属性] `flex-direction` 改变 弹性子元素 在 父容器 的排版
+0. **前置属性**: 需要父元素已设置`display: flex;`属性
+1. 示例
+    ```html
+    <style>
+        .father {
+            width:  500px;
+            height: 500px;
+            background-color: antiquewhite;
+            display: flex;
+            
+        }
+        
+        .son1, .son2, .son3 {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .son1 {
+            background-color: aqua;
+        }
+        .son2 {
+            background-color: pink;
+        }
+        .son3 {
+            background-color: red;
+        }
+
+    </style>
+
+    <div class="father">
+        <!-- 元素同例 -->
+    </div>
+    ```
+    
+    给父级元素增加样式`flex-direction: column;`,效果为
+    + 其下三个子元素改为横向排列
+    
+    keu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
