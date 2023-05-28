@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo011</title>
+</head>
+<body>
+    <style>
+        .fixedbox1 {
+            /* 固定定位 */
+            width: 100px;
+            height: 100px;
+            background-color:chartreuse;
+            position: fixed;
+            top: 50px;
+            left: 50;
+            z-index: 100;
+        }
+
+        .fixedbox2 {
+            /* 固定定位 */
+            width: 100px;
+            height: 100px;
+            background-color:coral;
+            position: fixed;
+            top: 70px;
+            left: 70px;
+            z-index: 40;
+        }
+    </style>
+
+    <div class="fixedbox1">图层1</div>
+    <div class="fixedbox2">图层2</div>
+
+</body>
+</html>

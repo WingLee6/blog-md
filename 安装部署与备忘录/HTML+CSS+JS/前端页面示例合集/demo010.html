@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo010</title>
+</head>
+
+<body>
+    <style>
+        .noposition {
+            width: 500px;
+            height: 500px;
+            background-color: yellow;
+            position: relative; /* 无用 */
+        }
+
+        .nopositionfather {
+            width: 500px;
+            height: 800px;
+            background-color: beige;
+            position: relative; /* 绝对定位附属设置 */
+        }
+
+        .absolutebox1 {
+            /* 绝对定位 */
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .fixedbox2 {
+            /* 固定定位 */
+            width: 100px;
+            height: 100px;
+            background-color:chartreuse;
+            position: fixed;
+            top: 100px;
+            left: 100px;
+        }
+
+        .relativebox3 {
+            /* 相对定位 */
+            width: 100px;
+            height: 100px;
+            background-color:coral;
+            position: relative;
+            top: 50px;
+            left: 50px;
+        }
+    </style>
+    <div class="noposition"></div>
+    <div class="nopositionfather">
+        <div class="absolutebox1">absolutebox1</div>
+        <div class="fixedbox2">fixedbox2 相对浏览器定位</div>
+        <div class="relativebox3">relativebox3</div>
+    </div>
+
+    
+</body>
+</html>
