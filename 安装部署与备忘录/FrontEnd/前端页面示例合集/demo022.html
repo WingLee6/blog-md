@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo022</title>
+</head>
+<body>
+    <script>
+        var myCarList = new Array();
+        myCarList[0]="Saab";
+        myCarList[1]="Volvo";
+        myCarList[2]="BMW";
+        console.log(myCarList.length);
+        
+
+
+        // 给数组对象增加新的方法
+        Array.prototype.myUcase = function() {
+            for (i=0; i<this.length; i++) {
+                this[i] = this[i].toUpperCase();
+            }
+        }
+
+        var fruitsList = ["Banana", "Orange", "Apple", "Mango"];
+        fruitsList.myUcase();
+        console.log(fruitsList);    // ['BANANA', 'ORANGE', 'APPLE', 'MANGO']
+        
+
+        var demoObj = new Object();
+        // var demoObj = {};
+        demoObj.name = "Luke";
+        demoObj.age = 11;
+        demoObj.SayHello = function(yourName) {
+            console.log("Hello, " + yourName + ". I am " + this.name);
+        };
+
+        console.log(demoObj);           // {name: 'Luke', age: 11, SayHello: ƒ}
+        console.log(demoObj.name);      // Luke
+        console.log(demoObj["name"]);   // Luke
+        demoObj.SayHello("Tom");        // Hello, Tom. I am Luke
+
+
+
+        var demoObj2 = {
+            name: 'Lily',
+            age: 30,
+            SayHello : function(yourName) {
+                console.log("Hello, " + yourName + ". I am " + this.name);
+            },
+            SayBye() {
+                console.log("goodbye");
+            }
+        }
+        console.log(demoObj2);              // {name: 'Lily', age: 11}
+        console.log(demoObj2.name);         // Lily
+        console.log(demoObj2.SayHello("John"));     // Hello, John. I am Lily
+        console.log(demoObj2.SayBye());     // Hello, John. I am Lily
+        
+        var obj = {a:1, b:2, c:3};
+
+        for (var prop in obj) {
+            console.log("obj." + prop + " = " + obj[prop]);
+        }
+
+        const object1 = {
+            a: 'somestring',
+            b: 42,
+            c: false
+        };
+
+        console.log(Object.keys(object1));
+
+
+        
+        const personPrototype = {
+            greet() {
+                console.log("hello!");
+            },
+        };
+
+        const student = Object.create(personPrototype);
+        student.greet(); // hello!
+
+    </script>
+
+    
+    
+    
+</body>
+</html>

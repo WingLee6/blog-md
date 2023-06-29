@@ -21,8 +21,11 @@
   - [Leetcode (刷题插件)](#leetcode-刷题插件)
   - [AREPL for python(代码实时输出与评价)](#arepl-for-python代码实时输出与评价)
   - [Code Runner 代码运行](#code-runner-代码运行)
-  - [error lens 提示错误](#error-lens-提示错误)
-  - [live server： 保持代码时刷新页面](#live-server-保持代码时刷新页面)
+  - [[前端]error lens 提示错误](#前端error-lens-提示错误)
+  - [[前端]live server： 保持代码时刷新页面](#前端live-server-保持代码时刷新页面)
+  - [[前端]Path Intellisense : 可以自动完成文件名。](#前端path-intellisense--可以自动完成文件名)
+  - [[前端]Prettier - Code formatter ：Prettier is an opinionated code formatter.](#前端prettier---code-formatter-prettier-is-an-opinionated-code-formatter)
+  - [[前端]Rainbow Brackets : 为圆括号、方括号和斜括号提供彩虹色。](#前端rainbow-brackets--为圆括号-方括号和斜括号提供彩虹色)
 
 <!-- /code_chunk_output -->
 
@@ -207,11 +210,14 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=formu
             ![](https://raw.githubusercontent.com/lukelee98/pic-bed/main/pic2022/codeRunningRunPython3Success.png)
 
 
-### error lens 提示错误
+### [前端]error lens 提示错误
 
 
-### live server： 保持代码时刷新页面
+### [前端]live server： 保持代码时刷新页面
 
         
-        
+### [前端]Path Intellisense : 可以自动完成文件名。
 
+### [前端]Prettier - Code formatter ：Prettier is an opinionated code formatter.
+
+### [前端]Rainbow Brackets : 为圆括号、方括号和斜括号提供彩虹色。

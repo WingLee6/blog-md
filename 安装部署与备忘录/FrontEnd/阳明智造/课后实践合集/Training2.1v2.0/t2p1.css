@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.functional-zone {
+    display: flex;
+    width: 100%;
+}
+
+.header-zone, .article-zone {
+    width: 100%;
+}
+
+aside {
+    height: 800px;
+    width: 100px;   
+    background-color: azure;
+}
+
+.button {
+    width: 70px;
+    border: none;
+    padding: 15px;
+    margin: 3px 15px;
+}
+
+header {
+    height: 100px;
+    width: 100%;
+    background-color: rgb(215, 227, 212);
+}
+
+#current-state {
+    font-size: 23px;
+    font-weight: bold;
+    /* color: green; */
+    color: hsl(141, 71%, 48%);
+}
+
+article {
+    height: 700px;
+    width: 100%;
+    background-color: #F1F1F1;
+}
+
+article>h1 {
+    text-align: center;
+    padding: 300px;
+}
+
+
+footer {
+    height:  100px;
+    width: 100%;
+    background-color: rgb(121, 149, 124);
+}

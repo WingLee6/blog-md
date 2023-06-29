@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Training</title>
+
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="./css/style.css" />
+        <script type="text/javascript" src="./js/RobotManager.js"></script>
+        <script type="text/javascript" src="./js/Robot.js"></script>
+        <script type="text/javascript" src="./js/LineRobot.js"></script>
+        <script type="text/javascript" src="./js/CircleRobot.js"></script>
+        <script type="text/javascript" src="./js/TextLibrary.js"></script>
+    </head>
+    <body onload="ShowRobotBtn()">
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end bg-white" id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom bg-light" style="margin-bottom: 0px;">
+                    <h3>测量机器人</h3>
+                </div>
+                
+                <!-- 按钮区 -->
+                <div class="list-group" style="margin-bottom: 0px; border-radius: 0;">
+                    <div class="add-robot-btn-div-class">
+                        <!-- 增加机器人选择按钮 -->
+                    </div>
+
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class" data-bs-toggle="modal" data-bs-target="#robot-manager-modal" onclick="StartRobotManager()">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">机器人管理</h4>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">    
+                <!-- 结果显示栏 -->
+                <div class="card" style="border-radius: 0;">
+                    <div class="card-header h4">
+                        测量结果
+                    </div>
+                    <div class="card-body">
+                        <p id="answer-p-id" class="card-text">无结果</p>
+                        <a href="#" class="btn btn-primary" onclick="CancelMeasurement()">取消测量</a>
+                    </div>
+                </div>
+
+                <!-- 提示内容栏 -->
+                <div id="state-div-id" class="alert alert-primary state-div-class" role="alert" style="margin-bottom: 0px; border-radius: 0;">
+                    请在左边选择您要测量的项目.
+                </div>
+
+                <!-- 点击区域栏 -->
+                <div class="container-fluid click" id="click-area" style="background-color: #dddddd; height: 800px;">
+                    <!-- 点击区域 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 机器人管理模态 -->
+        <div class="modal fade" id="robot-manager-modal">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+
+                    <!-- 模态框头部 -->
+                    <div class="modal-header">
+                        <h4 class="modal-title text-body">机器人管理</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- 模态框内容 -->
+                    <div class="modal-body text-body">
+                        <h5>我的机器人</h5>
+                        <div class="list-group all-robot-info">
+                            <!-- 显示所有机器人信息 -->
+                        </div>
+                        <hr>
+                        <h5>查询</h5>
+                        <div class="input-group col-md-3">
+                            <input type="text" class="form-control col-3" id="search-robot-text" placeholder="机器人名称(如LineRobot, CircleRobot)" / >
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-secondary btn-search" onclick="SearchRobot()">查找</button>
+                            </span>
+                        </div>
+                        <div class="search-robot-info">
+                            <!-- 若搜索到机器人,再此显示机器人信息 -->
+                        </div>
+
+                        <hr>
+                        <h5>添加机器人</h5>
+                        <div class="input-group">
+                            <input type="text" class="form-control col-2" id="add-robot-display-name" placeholder="机器人名称(中文)" / >
+                            <input type="text" class="form-control col-2" id="add-robot-type" placeholder="机器人类型(英文, 大驼峰)" / >
+                            <input type="text" class="form-control col-2" id="add-robot-stock" placeholder="库存" / >
+                            <input type="text" class="form-control col-6" id="add-robot-btn-html" placeholder="输入按钮HTML代码文本" / >
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline-secondary btn-search" onclick="AddRobot()">添加</button>
+                            </span>
+                        </div>
+                        <div class="add-robot-info">
+                            <!-- 添加机器人后再此显示库存信息 -->
+                        </div>
+                    </div>
+
+                    <!-- 模态框底部 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            // 初始化
+            var LR;
+            var CR;
+            var RM = new RobotManager();
+
+            // #region 页面按钮实现部分
+            // 侧边栏-点击测量距离按键 或 点击测量角度案件
+            function StartLineRobot() {
+                console.log("Start LineRobot");
+                // 记录当前激活按钮
+                g_btn_state = "#line-robot-btn-id";
+                // 取消目前记录, 以便重新开始
+                CancelMeasurement();
+                // 清除目前按钮激活效果
+                RemoveActiveStyle();
+                // 使当前按钮激活
+                $(g_btn_state).attr("class", "list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class active"); 
+                // 状态栏更新
+                ChangeTextById("state-div-id", LINE_ROBOT_START);
+                ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+                LR = new LineRobot();
+                CR = undefined;
+            }
+            
+            // 侧边栏-点击测量距离按键
+            function StartCircleRobot() {        
+                console.log("Start CircleRobot");
+                // 记录当前激活按钮
+                g_btn_state = "#circle-robot-btn-id";
+                // 取消目前记录, 以便重新开始
+                CancelMeasurement();
+                // 清除目前按钮激活效果
+                RemoveActiveStyle();
+                // 使当前按钮激活
+                $(g_btn_state).attr("class", "list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class active"); 
+                // 状态栏更新
+                ChangeTextById("state-div-id", CIRCLE_ROBOT_START);
+                ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+                CR = new CircleRobot();
+                LR = undefined;
+            }
+        
+            
+            // 侧边栏-取消测量按钮
+            function CancelMeasurement() {
+                // 清除目前按钮激活效果
+                RemoveActiveStyle();
+                LR = new LineRobot();
+                CR = new CircleRobot();
+                if (LR.Cancel() >= 0 || CR.Cancel() >= 0) {
+                    ChangeTextById("state-div-id", SELECT_ROBOT);
+                    ChangeAttributeByClass("state-div-class", "class", "alert alert-danger state-div-class");
+                    ChangeTextById("answer-p-id", NO_RESULT);
+                    
+                    LR = undefined;
+                    CR = undefined;
+                    console.log("取消成功");
+                    return;
+                }
+
+                console.log("取消失败");
+            }
+
+            // 侧边栏-呼叫机器人管理-呼叫机器人管理员操作
+            function StartRobotManager() {
+                console.log("Start RobotManager");
+                // 清空内容
+                $(".all-robot-info").empty();
+                $(".search-robot-info").empty();
+                $(".add-robot-info").empty();
+                
+                var robotObj = RM.QueryRobotType();
+
+                // 根据机器人库存生成列表
+                for (var prop in robotObj) {
+                    ShowRobotInfo("all-robot-info", robotObj[prop], "当前库存");
+                };
+            };
+
+            // 模态框-按钮-查找-执行搜索机器人操作
+            function SearchRobot() {
+                console.log("Start SearchRobot");
+                $(".search-robot-info").empty();
+
+                var text = document.querySelector('#search-robot-text');
+                var robotType = text.value;
+
+                var ret = RM.QueryRobotByType(robotType);
+                if (ret) {
+                    ShowRobotInfo("search-robot-info", ret[robotType], "当前库存");
+                } else {
+                    alert("未发现该机器人, 请添加");
+                }
+            }
+
+            // 模态框-按钮-添加-执行添加机器人操作
+            // 检索是否有该类机器人, 若有执行RegisterRobot方法; 若还没有此类机器人, 执行MakeRobot方法
+            function AddRobot() {
+                console.log("Start AddRobot");
+                $(".add-robot-info").empty();
+
+                var addRobotDisplayName = document.querySelector('#add-robot-display-name');
+                var addRobotDisplayNameText = addRobotDisplayName.value;                
+                var addRobotType = document.querySelector('#add-robot-type');
+                var addRobotTypeText = addRobotType.value;                
+                var addRobotStock = document.querySelector('#add-robot-stock');
+                var addRobotStockText = addRobotStock.value;
+                var addRobotBtn = document.querySelector('#add-robot-btn-html');
+                var addRobotBtnText = addRobotBtn.value;
+                
+                // 检索是否有该类机器人
+                var ret = RM.QueryRobotByType(addRobotTypeText);
+                if (ret) {
+                    // 有该类机器人, 若有执行RegisterRobot方法, 使库存+1
+                    ShowRobotInfo("add-robot-info", RM.RegisterRobot(addRobotTypeText)[addRobotTypeText], "新增后库存");
+                } else {
+                    // 若没有该机器人, 制作该机器人
+                    ShowRobotInfo("add-robot-info", RM.MakeRobot(addRobotTypeText, addRobotDisplayNameText, addRobotStockText, addRobotBtnText)[addRobotTypeText], "新机器人库存");
+                }
+            }
+
+            // 模态框-单选框-选择机器人
+            function CheckRobot(checkBoxId, text) {
+                console.log("Start CheckRobot 选中机器人" + text + ", 选中或取消: " + document.getElementById(checkBoxId).checked);
+                var IsChecked = document.getElementById(checkBoxId).checked;        // 选中或取消
+                
+                // 更改机器人在线数据
+                RM.CheckOnLineRobot(text, IsChecked);
+                
+                // 侧边栏-机器人按钮状态改变
+                ShowRobotBtn();
+            }
+            
+            // #endregion
+        
+            // #region 辅助功能实现
+            // 判断esc键
+            document.addEventListener("keyup", function (e) {
+                if (e.keyCode == 27) {
+                    CancelMeasurement();
+                    console.log("esc取消");
+                }
+            });
+
+            // 点击测量区域
+            var clickArea = document.getElementById("click-area");
+            clickArea.addEventListener("click", function (e) {
+                console.log("Start clickArea x:", e.offsetX, ", y:" + e.offsetY);
+                if (LR) {
+                    RunLineRobot(e.clientX, e.clientY);
+                } else if (CR) {
+                    RunCircleRobot(e.clientX, e.clientY);
+                } else {
+                    ChangeTextById("state-div-id", SELECT_ROBOT);
+                }
+            });
+
+            // 辅助功能 - 清除侧边栏激活效果    
+            function RemoveActiveStyle() {
+                ChangeAttributeByClass("robot-btn-class", "class", "list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class");
+            }
+
+            // 文本更改 - 改变文本内容 by id
+            // baseId 根据id寻元素
+            // text 文本内容
+            function ChangeTextById(baseId, text) {
+                document.getElementById(baseId).innerHTML = text;
+            }
+
+            // 属性更改 - 改变元素属性 by class
+            // baseClass 根据class寻元素
+            // attributeName 属性名
+            // text 属性内容
+            function ChangeAttributeByClass(baseClass, attributeName, text) {
+                $("." + baseClass).attr(attributeName, text);
+            }
+
+            // 元素更改 - 机器人信息显示
+            // divClass 在哪个标签下渲染
+            // robotInfoObj 某类机器人信息
+            // stockInfo 库存情况 分为"库存" 或 "新增后库存"
+            function ShowRobotInfo(divClass, robotInfoObj, stockInfo) {
+                var htmlCode = new String;
+                var idText = divClass + '-' + robotInfoObj.type;
+                
+                // 机器人信息显示
+                if (robotInfoObj.stock <= 0) {
+                    // 无库存 样式
+                    htmlCode = '<label class="list-group-item d-flex gap-3 bg-light">';
+                    htmlCode += '<input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" disabled id="'+ idText + '"onclick="CheckRobot(\'' + idText + '\', \'' + robotInfoObj.type + '\')">';
+                } else if (robotInfoObj.onLine) {
+                    // 选中该机器人 样式
+                    htmlCode = '<label class="list-group-item d-flex gap-3">';
+                    htmlCode += '<input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" checked id="'+ idText + '"onclick="CheckRobot(\'' + idText + '\', \'' + robotInfoObj.type + '\')">';
+                } else {
+                    // 默认样式
+                    htmlCode = '<label class="list-group-item d-flex gap-3">';
+                    htmlCode += '<input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" id="'+ idText + '"onclick="CheckRobot(\'' + idText + '\', \'' + robotInfoObj.type + '\')">';
+                }
+                
+                htmlCode += '<span class="pt-1 form-checked-content">';
+                htmlCode += '<strong>' + robotInfoObj.displayName + '</strong>';
+                htmlCode += '<small class="d-block text-muted">' + stockInfo + ': ' + robotInfoObj.stock;
+                htmlCode += '</small>';
+                htmlCode += '</span>';
+                htmlCode += '</label>';
+                $("." + divClass).append(htmlCode);
+                
+            }
+
+            // 元素更改 - 根据选中情况在首页侧边栏增加机器人控制按钮
+            function ShowRobotBtn() {
+                // 清空
+                $(".add-robot-btn-div-class").empty();
+
+                for (var prop in RM.robotObj) {
+                    if (RM.robotObj[prop].onLine) {
+                        $(".add-robot-btn-div-class").append(RM.robotObj[prop].btnHtmlText);
+                    }
+                };
+            }
+
+            // 增加元素 - 根据html文本增加元素 by class
+            // baseClass 在哪个标签(该标签class=baseClass)下渲染
+            // htmlText 某类机器人信息
+            function AddElementByClass(baseClass, htmlText) {
+                $("." + baseClass).append(htmlText);
+                
+            }
+            // #endregion
+            
+            // #region 测量计算实现部分
+            // 运行距离测量和角度测量对象
+            function RunLineRobot(x, y) {
+                // 若已经计算结束但仍点击, 则重新记录新一组坐标
+                if (g_state == 3) {
+                    StartLineRobot(g_btn_state);
+                }
+                // 设置P 或 Q
+                ChangeTextById("state-div-id", LR.SetPoint(x, y));
+                ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+                // 判断当前数据是否满足计算要求, 满足则计算结果
+                if (LR.IsAvailable(2)) {
+                    ChangeTextById("answer-p-id", LR.GetState());
+                    ChangeAttributeByClass("state-div-class", "class", "alert alert-success state-div-class");
+                }
+            }
+
+            // 运行三点测圆半径实例
+            function RunCircleRobot(x, y) {
+                // 若已经计算结束但仍点击, 则重新记录新一组坐标
+                if (g_state == 4) {
+                    StartCircleRobot(g_btn_state);
+                }
+                // 设置P点
+                ChangeTextById("state-div-id", CR.SetPoint(x, y));
+                ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+                // 判断当前数据是否满足计算要求, 满足则计算结果
+                if (CR.IsAvailable(3)) {
+                    ChangeTextById("answer-p-id", CR.GetState());
+                    ChangeAttributeByClass("state-div-class", "class", "alert alert-success state-div-class");
+                }
+            }
+            // #endregion
+            
+
+        </script>
+
+    </body>
+</html>

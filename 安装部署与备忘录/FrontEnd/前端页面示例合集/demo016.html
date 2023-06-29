@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo016</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        var car = new Object();
+        car.name = "Fiat";
+        car.model = 500;
+        car.color = "white";
+        console.log(car.name);
+        console.log(car["color"]);
+
+        car.ReColor = function() {
+            return "The color of the car is " + this.color;
+        }
+        
+        console.log(car.ReColor())
+        
+
+        console.log("this在对象中");
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            ReFirstName: function() {
+                console.log(this);
+                console.log(this.firstName);
+                console.log(this.lastName);
+        
+                return "My first name is " + this.firstName;
+            }
+        }
+        
+        console.log(person.ReFirstName())
+        console.log("this在对象中 end");
+        
+        console.log("this单独使用");
+        var x = this;
+        console.log(x);
+        console.log("this单独使用 end");
+
+
+        console.log("this函数中使用");
+        function thisInFunc() {
+            return this;
+        }
+        console.log(thisInFunc());
+        console.log("this函数中使用 end");
+
+
+        console.log("this call");
+        var testCall1 = {
+            reCallText: function() {
+                return this.text1 + " " + this.text2;
+            }
+        }
+        var testCall2 = {
+            text1:"John",
+            text2: "Doe",
+        }
+        console.log(testCall1.reCallText.call(testCall2));
+        console.log("this cell end");
+        
+        
+        console.log("JSON to JS");
+        var textJSON = '{ "sites" : [' +
+        '{ "name":"Runoob" , "url":"www.runoob.com" },' +
+        '{ "name":"Google" , "url":"www.google.com" },' +
+        '{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+        
+        objJS = JSON.parse(textJSON);
+
+        console.log(objJS.sites[0]);
+        console.log(objJS.sites[1]["name"]);
+
+        console.log("JSON to JS end");
+        
+
+        
+    
+        
+    </script>
+
+    <button onclick="myFunction()">点我</button>
+
+    
+
+</body>
+</html>

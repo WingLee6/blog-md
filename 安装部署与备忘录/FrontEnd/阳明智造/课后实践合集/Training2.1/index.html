@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training 2.1 </title>
+
+    <link rel="stylesheet" href="./t2p1.css">
+    <script type="text/javascript" src="./LineRobot.js"></script>
+    <script type="text/javascript" src="./TextLibrary.js"></script>
+
+    <script>
+        var LR = new LineRobot();
+        
+        // 取消测量按钮
+        function cancelMeasurement() {
+            if (LR.Cancel() >= 0) {
+                console.log("取消成功");
+                return;
+            }
+            console.log("取消失败");
+        }
+
+        document.addEventListener("keyup", function(e) {
+            // 判断esc键
+            if (e.keyCode == 27) {
+                cancelMeasurement();
+                console.log("esc取消");
+            }
+
+        })
+
+        document.addEventListener("click", function(e) {
+            //  非法区域判断
+            if (e.clientX < 100 || e.clientY < 100 || e.clientY > 800) {
+                console.log("错误:非法点区域");
+                document.getElementById("current-state").innerHTML=errClickZone;
+                document.getElementById("current-state").style.color=errColor;
+                return;
+            }
+            
+            // 若已经计算结束但仍点击, 则重新记录新一组坐标
+            if (g_state == 3) {
+                cancelMeasurement();
+                document.getElementById("current-state").innerHTML=currentStateTextNext;
+                
+            }
+            
+            // 设置P 或 Q
+            LR.SetPoint(e.clientX, e.clientY);
+            
+            // 判断当前数据是否满足计算要求, 满足则计算结果
+            if (LR.IsAvailable()) {
+                var distancePQandAnglePQ = LR.GetState();
+                document.getElementById("distancePQ").innerHTML=distancePQandAnglePQ;
+            }
+            
+        })
+    </script>
+</head>
+<body>
+    <div class="functional-zone">
+        <aside> 
+            <h1>两点距离角度测量</h1><br />
+            <button class="button cancel-measurement" onclick="cancelMeasurement()">取消测量</button>
+            <button class="button line">线</button>
+            <button class="button circle">圆</button>
+
+        </aside>
+
+        <div class="header-zone article-zone">
+            <header> 
+                <em id="current-state">请在下方灰色测量区域点击</em>
+                <form action="">
+                    P点坐标:
+                    X-<input type="number" id="pTargetX" value="0">
+                    Y-<input type="number" id="pTargetY" value="0"><br />
+                    Q点坐标: 
+                    X-<input type="number" id="qTargetX" value="0">
+                    Y-<input type="number" id="qTargetY" value="0"><br />
+                    P与Q距离和角度: <span id="distancePQ">______</span>.
+                    
+                </form>
+                
+            </header>
+
+            <article>
+                <h1>测量区域</h1>
+            </article>  
+        </div>
+    
+    </div>
+
+    <footer> 预留区域:暂不使用。</footer>
+    
+</body>
+</html>

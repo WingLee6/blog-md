@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <title>demo019</title>
+</head>
+<body>
+
+    <div class="container" style="background-color: aqua;">
+        <h1>container</h1>
+        <p>当屏幕宽度设置为800px, 可以看到这个容器(max-width=720px)有旁白</p>
+    </div>
+    
+    <div class="container-fluid" style="background-color: red;">
+        <h1>container-fluid</h1>
+        <p>当屏幕宽度设置为800px, 可以看到这个容器(max-width=100%)无旁白</p>
+    </div>
+
+    <div class="container pt-5" style="background-color: gray;">
+        <h1>container pt-5 </h1>
+        <p>当屏幕宽度设置为800px, 可以看到这个容器(max-width=100%)无旁白</p>
+    </div>
+
+
+    <!-- 一种窗口 -->
+    <div class="row">
+        <div class="col-md-3" style="background-color: gray;">1</div>
+        <div class="col-md-3" style="background-color: red;">2</div>
+        <div class="col-md-6" style="background-color: wheat;">3</div>
+    </div>
+
+    <!-- 多种窗口 -->
+    <div class="row">
+        <div class="col-sm-3 col-md-6" style="background-color: blue;">1</div>
+        <div class="col-sm-9 col-md-6" style="background-color: wheat;">2</div>
+    </div>
+
+    <h1>普通标题</h1>
+    <p class="h1">h1 Bootstrap 标题</p>
+    <h1 class="display-1">Display 1</h1>
+
+    <h1>h1 标题 <small>小标题small(小且颜色浅)</small></h1>
+    <p class="h1 small">小标题small(小且颜色浅)</p>
+
+    <h1>h1 标题 <mark>高亮标题mark(黄色高亮)</mark></h1>
+    <p class="h1 mark">高亮标题mark(黄色高亮)</p>    
+    
+    <h1>h1 标题 <abbr title="测试虚线">底部虚线</abbr></h1>
+    
+    <h1>h1 标题 <code>代码块</code></h1>
+
+    <h1>h1 标题 <kbd>快捷键</kbd></h1>
+
+</body>
+</html>

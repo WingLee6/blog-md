@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <title>demo023</title>
+</head>
+<body>
+
+    <div class="list-group">
+        <label class="list-group-item d-flex gap-3">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" checked style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Finish sales report</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+              1:00–2:00pm
+            </small>
+          </span>
+        </label>
+        <label class="list-group-item d-flex gap-3">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Weekly All Hands</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#calendar-event"/></svg>
+              2:00–2:30pm
+            </small>
+          </span>
+        </label>
+        <label class="list-group-item d-flex gap-3">
+          <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <strong>Out of office</strong>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#alarm"/></svg>
+              Tomorrow
+            </small>
+          </span>
+        </label>
+        <label class="list-group-item d-flex gap-3 bg-light">
+          <input class="form-check-input form-check-input-placeholder bg-light flex-shrink-0" disabled type="checkbox" value="" style="font-size: 1.375em;">
+          <span class="pt-1 form-checked-content">
+            <span contenteditable="true" class="w-100">Add new task...</span>
+            <small class="d-block text-muted">
+              <svg class="bi me-1" width="1em" height="1em"><use xlink:href="#list-check"/></svg>
+              Choose list...
+            </small>
+          </span>
+        </label>
+      </div>
+
+    
+
+
+    <div class="container mt-3">
+        <h3>模态框实例</h3>
+        <p>点击按钮打开模态框</p>
+        
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+            呼叫机器人管理
+        </button>
+      </div>
+      
+      <!-- 模态框 -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+        
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                <h4 class="modal-title text-dark">机器人管理</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+        
+                <!-- 模态框内容 -->
+                <div class="modal-body">
+                    <h5>当前机器人</h5>
+                    <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+                    <hr>
+                    <h5>查询</h5>
+                    <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+                </div>
+        
+                <!-- 模态框底部 -->
+                <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // // 例如创建一个存储数据的Store对象
+        // // 在类上挂载静态属性来区分实例是否创建
+        // class Store {
+        //     constructor(props) {}
+        //     Store.instance = null; // 在类上挂载静态属性instance来判断是否已经创建了实例
+        //     Store.getInstance = function(props) {
+        //         if(!this.instance) {
+        //             this.instance = new Store(props);
+        //         }
+        //         return this.instance;
+        //     }
+        // }
+        // var store1 = Store.getInstance(props1);
+        // var store2 = Store.getInstance(props2);
+        // store1 === store2; // true
+        // // 同样可以通过闭包变量来区分实例是否创建
+        // class Store {
+        //     constructor(props) {}
+        //     Store.getInstance = (function() {
+        //     // 声明一个闭包变量，用来判断实例是否已经创建
+        //         var instance = null;
+        //         return function(props) {
+        //             if(!instance) {
+        //                 instance = new Store(props);
+        //             }
+        //             return instance;
+        //         }
+        //     })()
+        // }
+
+        function changefixe(frm, str){
+            if(str=="0"){
+                document.getElementById("uid").style.display="block";//显示
+                document.getElementById("uid").disabled="true";//残废disabled
+            } else {
+                document.getElementById("uid").style.display="none";//隐藏
+                document.getElementById("uid").disabled="";//去除disabled
+            }
+        };
+
+        
+        
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Training</title>
+
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/5.1.1/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="./t2p1.css" />
+        <script type="text/javascript" src="./Robot.js"></script>
+        <script type="text/javascript" src="./LineRobot.js"></script>
+        <script type="text/javascript" src="./CircleRobot.js"></script>
+        <script type="text/javascript" src="./TextLibrary.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="row">
+                    <div class="col-md-2 otherSettings col-sm-1 col-xs-1 col-lg-2 col-4">
+                        <button id="distance-robot-btn" type="button" class="btn btn-primary prim other mea" onclick="startLineRobot('#distance-robot-span')">
+                            <span id="distance-robot-span"></span>
+                            测量距离
+                        </button>
+
+                        <button id="angle-robot-btn" type="button" class="btn btn-primary prim other mea" onclick="startLineRobot('#angle-robot-span')">
+                            <span id="angle-robot-span"></span>
+                            测量角度
+                        </button>
+
+                        <button id="circle-robot-btn" type="button" class="btn btn-primary prim mear" ng-click="GetRadius()" onclick="startCircleRobot('#circle-robot-span')">
+                            <span id="circle-robot-span"></span>
+                            测量圆的半径
+                        </button>
+
+                        <button type="button" class="btn btn-primary prim" disabled>
+                            切换类型
+                        </button>
+                        
+                        <button type="button" class="btn btn-primary prim but" onclick="cancelMeasurement()">
+                            取消
+                        </button>
+
+                    </div>
+                    <div class="col-md-10 col-sm-11 col-xs-11 col-lg-10 col-8">
+                        <div class="row">
+                            <div class="navigate">
+                                <div id="state-div" class="state">当前状态：未使用</div>
+                                <div id="answer-div" class="answer">测量结果：无</div>
+                            </div>
+                            <div class="click" id="clickArea"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <footer>
+                <div class="row buttom">xxx</div>
+            </footer>
+        </div>
+
+        <script>
+            // 初始化
+            var LR;
+            var CR;
+
+
+            // 点击测量距离按键 或 点击测量角度案件
+            function startLineRobot(my_btn_id) {
+                console.log("startLineRobot");
+                btn_state = my_btn_id;
+                cancelMeasurement();
+                $(my_btn_id).attr("class", "spinner-grow spinner-grow-sm");
+                
+                LR = new LineRobot();
+                CR = undefined;
+            }
+            
+            // 点击测量距离按键
+            function startCircleRobot(my_btn_id) {        
+                console.log("startCircleRobot");
+                btn_state = my_btn_id;
+                cancelMeasurement();
+                $(my_btn_id).attr("class", "spinner-grow spinner-grow-sm");
+
+                CR = new CircleRobot();
+                LR = undefined;
+            }
+        
+            
+            // 取消测量按钮
+            function cancelMeasurement() {
+                removeSpinnerGrow();
+                LR = new LineRobot();
+                CR = new CircleRobot();
+                if (LR.Cancel() >= 0 || CR.Cancel() >= 0) {
+                    document.getElementById("state-div").innerHTML = "重新开始记点";
+                    document.getElementById("answer-div").innerHTML = "测量结果：无";
+                    document.getElementById("state-div").style.color = currentStateTextColor;
+                    LR = undefined;
+                    CR = undefined;
+                    console.log("取消成功");
+                    return;
+                }
+
+                console.log("取消失败");
+            }
+
+            document.addEventListener("keyup", function (e) {
+                // 判断esc键
+                if (e.keyCode == 27) {
+                    cancelMeasurement();
+                    console.log("esc取消");
+                }
+            });
+
+            // 点击测量区域
+            var clickArea = document.getElementById("clickArea");
+            clickArea.addEventListener("click", function (e) {
+                console.log("clickArea", e.offsetX, e.offsetY);
+                if (LR) {
+                    console.log("hava LR");
+                    runLineRobot(e.clientX, e.clientY);
+                    
+                } else if (CR) {
+                    console.log("hava CR");
+                    runCircleRobot(e.clientX, e.clientY);
+                } else {
+                    document.getElementById("state-div").innerHTML = "请在左边选择您要测量的项目";
+                }
+
+
+            });
+
+            
+            // 清除其他案件选定效果
+            function removeSpinnerGrow(my_btn_id) {
+                var btn_id_list = ["#distance-robot-span", "#angle-robot-span", "#circle-robot-span"];
+                for(id in btn_id_list) {
+                    if (my_btn_id != btn_id_list[id]) {
+                        $(btn_id_list[id]).removeAttr("class");
+                    }
+                }
+            }
+            
+            // 运行距离测量和角度测量对象
+            function runLineRobot(x, y) {
+                // 若已经计算结束但仍点击, 则重新记录新一组坐标
+                if (g_state == 3) {
+                    // cancelMeasurement();
+                    startLineRobot(btn_state);
+                    document.getElementById("state-div").innerHTML = currentStateTextNext;
+                }
+                // 设置P 或 Q
+                LR.SetPoint(x, y);
+                if (g_state == 1) {
+                    changeText("state-div", "当前状态: 已记录P点", currentStateTextColor);
+                }
+
+                if (g_state == 2) {
+                    changeText("state-div", "当前状态: 已记录P点和Q点", currentStateTextColor);
+                }
+
+                // 判断当前数据是否满足计算要求, 满足则计算结果
+                if (LR.IsAvailable(2)) {
+                    changeText("answer-div", "测量结果：" + LR.GetState(), currentStateTextColor);
+                }
+            }
+
+
+
+            // 运行三点测圆半径实例
+            function runCircleRobot(x, y) {
+                // 若已经计算结束但仍点击, 则重新记录新一组坐标
+                if (g_state == 4) {
+                    startCircleRobot(btn_state);
+                    document.getElementById("state-div").innerHTML = currentStateTextNext;
+                }
+                // 设置P点
+                CR.SetPoint(x, y);
+                if (g_state == 1 || g_state == 2 || g_state == 3){   
+                    changeText("state-div", "当前状态: 已记录P"+ g_state + "点", currentStateTextColor)
+                }
+
+                // 判断当前数据是否满足计算要求, 满足则计算结果
+                if (CR.IsAvailable(3)) {
+                    changeText("answer-div", "测量结果：" + CR.GetState(), currentStateTextColor);
+                }
+            }
+            
+            
+            // 文本更改
+            // baseId 根据id寻元素
+            // text 文本内容
+            // state 状态 green 表示正常文本绿色, 否则为报错状态
+            function changeText(baseId, text, state) {
+                document.getElementById(baseId).innerHTML = text;
+                document.getElementById(baseId).style.color = currentStateTextColor;
+            }
+            
+
+        </script>
+    </body>
+</html>
