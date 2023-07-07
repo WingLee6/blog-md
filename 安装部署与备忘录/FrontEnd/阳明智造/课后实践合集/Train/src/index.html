@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Train</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+  <app-root></app-root>
+
+  <script>
+
+
+    // #region 页面按钮实现部分
+    // 侧边栏-点击测量距离按键 或 点击测量角度案件
+    function StartLineRobot() {
+        console.log("Start LineRobot");
+        // 记录当前激活按钮
+        g_btn_state = "#line-robot-btn-id";
+        // 取消目前记录, 以便重新开始
+        CancelMeasurement();
+        // 清除目前按钮激活效果
+        RemoveActiveStyle();
+        // 使当前按钮激活
+        $(g_btn_state).attr("class", "list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class active"); 
+        // 状态栏更新
+        ChangeTextById("state-div-id", LINE_ROBOT_START);
+        ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+        LR = new LineRobot();
+        CR = undefined;
+    }
+    
+    // 侧边栏-点击测量距离按键
+    function StartCircleRobot() {        
+        console.log("Start CircleRobot");
+        // 记录当前激活按钮
+        g_btn_state = "#circle-robot-btn-id";
+        // 取消目前记录, 以便重新开始
+        CancelMeasurement();
+        // 清除目前按钮激活效果
+        RemoveActiveStyle();
+        // 使当前按钮激活
+        $(g_btn_state).attr("class", "list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class active"); 
+        // 状态栏更新
+        ChangeTextById("state-div-id", CIRCLE_ROBOT_START);
+        ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+        CR = new CircleRobot();
+        LR = undefined;
+    }
+
+    
+    // 侧边栏-取消测量按钮
+    function CancelMeasurement() {
+        // 清除目前按钮激活效果
+        RemoveActiveStyle();
+        LR = new LineRobot();
+        CR = new CircleRobot();
+        if (LR.Cancel() >= 0 || CR.Cancel() >= 0) {
+            ChangeTextById("state-div-id", SELECT_ROBOT);
+            ChangeAttributeByClass("state-div-class", "class", "alert alert-danger state-div-class");
+            ChangeTextById("answer-p-id", NO_RESULT);
+            
+            LR = undefined;
+            CR = undefined;
+            console.log("取消成功");
+            return;
+        }
+
+        console.log("取消失败");
+    }
+    // #endregion
+
+    // #region 辅助功能实现
+    // 判断esc键
+    document.addEventListener("keyup", function (e) {
+        if (e.keyCode == 27) {
+            CancelMeasurement();
+            console.log("esc取消");
+        }
+    });
+
+    // 点击测量区域
+    var clickArea = document.getElementById("click-area");
+    clickArea.addEventListener("click", function (e) {
+        console.log("Start clickArea x:", e.offsetX, ", y:" + e.offsetY);
+        if (LR) {
+            RunLineRobot(e.clientX, e.clientY);
+        } else if (CR) {
+            RunCircleRobot(e.clientX, e.clientY);
+        } else {
+            ChangeTextById("state-div-id", SELECT_ROBOT);
+        }
+    });
+
+    // 辅助功能 - 清除侧边栏激活效果    
+    function RemoveActiveStyle() {
+        ChangeAttributeByClass("robot-btn-class", "class", "list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class");
+    }
+
+    // 文本更改 - 改变文本内容 by id
+    // baseId 根据id寻元素
+    // text 文本内容
+    function ChangeTextById(baseId, text) {
+        document.getElementById(baseId).innerHTML = text;
+    }
+
+    // 属性更改 - 改变元素属性 by class
+    // baseClass 根据class寻元素
+    // attributeName 属性名
+    // text 属性内容
+    function ChangeAttributeByClass(baseClass, attributeName, text) {
+        $("." + baseClass).attr(attributeName, text);
+    }
+
+    // 增加元素 - 根据html文本增加元素 by class
+    // baseClass 在哪个标签(该标签class=baseClass)下渲染
+    // htmlText 某类机器人信息
+    function AddElementByClass(baseClass, htmlText) {
+        $("." + baseClass).append(htmlText);
+        
+    }
+    // #endregion
+    
+    // #region 测量计算实现部分
+    // 运行距离测量和角度测量对象
+    function RunLineRobot(x, y) {
+        // 若已经计算结束但仍点击, 则重新记录新一组坐标
+        if (g_state == 3) {
+            StartLineRobot(g_btn_state);
+        }
+        // 设置P 或 Q
+        ChangeTextById("state-div-id", LR.SetPoint(x, y));
+        ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+        // 判断当前数据是否满足计算要求, 满足则计算结果
+        if (LR.IsAvailable(2)) {
+            ChangeTextById("answer-p-id", LR.GetState());
+            ChangeAttributeByClass("state-div-class", "class", "alert alert-success state-div-class");
+        }
+    }
+
+    // 运行三点测圆半径实例
+    function RunCircleRobot(x, y) {
+        // 若已经计算结束但仍点击, 则重新记录新一组坐标
+        if (g_state == 4) {
+            StartCircleRobot(g_btn_state);
+        }
+        // 设置P点
+        ChangeTextById("state-div-id", CR.SetPoint(x, y));
+        ChangeAttributeByClass("state-div-class", "class", "alert alert-primary state-div-class");
+
+        // 判断当前数据是否满足计算要求, 满足则计算结果
+        if (CR.IsAvailable(3)) {
+            ChangeTextById("answer-p-id", CR.GetState());
+            ChangeAttributeByClass("state-div-class", "class", "alert alert-success state-div-class");
+        }
+    }
+    // #endregion
+    
+
+</script>
+
+</body>
+</html>

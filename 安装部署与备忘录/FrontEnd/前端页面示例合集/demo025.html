@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo025</title>
+</head>
+<body onload="OpenWord();">
+
+    <img id="image" src="smiley.gif">
+    <p id="p1-id" style="font-size: 100px;">文本1</p>
+    <p id="p2-id" style="font-size: 100px;">文本2</p>
+
+    <div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:#D94A38;width:120px;height:20px;padding:40px;">
+        Mouse Move Test
+    </div>
+    <div onmousedown="mDown(this)" onmouseup="mUp(this)" onclick="mClick(this)" style="background-color:red;width:120px;height:20px;padding:40px;">
+        Mouse Click Test
+    </div>
+
+    输入你的名字: <input type="text" id="fname" onchange="ChangeWord()">
+    <p>当你离开输入框后，函数将被触发，将小写字母转为大写字母。</p>
+
+
+    <script>
+    document.getElementById("image").src="landscape.jpg";
+    document.getElementById("p1-id").style="color: red;";
+    document.getElementById("p2-id").style.color = "blue";
+    
+    function OpenWord() {
+        alert("OpenWord");
+    };
+
+    // 鼠标移动到元素上
+    function mOver(obj){
+	    obj.innerHTML="Mouse Over"
+    }
+    // 鼠标移出元素
+    function mOut(obj){
+        obj.innerHTML="Mouse Out"
+    }
+    // 鼠标点击不放
+    function mDown(obj){
+        obj.innerHTML="Mouse Down"
+    }
+    // 鼠标点击后释放鼠标 
+    function mUp(obj){
+        obj.innerHTML="Mouse Up"
+    }
+    // 鼠标点击事件(点击+释放)
+    function mClick(obj){
+        obj.style.backgroundColor="green"
+    }
+    
+
+    function ChangeWord(){
+        alert("ChangeWord");
+    }
+
+    </script>
+        
+</body>
+</html>

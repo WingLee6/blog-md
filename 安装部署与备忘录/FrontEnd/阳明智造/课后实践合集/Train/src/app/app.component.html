@@ -1,0 +1,109 @@
+
+<!-- <body (onload)="ShowRobotBtn()"> -->
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+        <div class="sidebar-heading border-bottom bg-light" style="margin-bottom: 0px;">
+            <h3>测量机器人</h3>
+        </div>
+        
+        <!-- 按钮区 -->
+        <div class="list-group" style="margin-bottom: 0px; border-radius: 0;">
+            <div class="add-robot-btn-div-class">
+                <!-- 增加机器人选择按钮 -->
+            </div>
+
+            <a class="list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class" data-bs-toggle="modal" data-bs-target="#robot-manager-modal" (click)="StartRobotManager()">
+                <div class="d-flex w-100 justify-content-between">
+                    <h4 class="mb-1">机器人管理</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Page content wrapper-->
+    <div id="page-content-wrapper">    
+        <!-- 结果显示栏 -->
+        <div class="card" style="border-radius: 0;">
+            <div class="card-header h4">
+                测量结果
+            </div>
+            <div class="card-body">
+                <p id="answer-p-id" class="card-text">无结果</p>
+                <a href="#" class="btn btn-primary" onclick="CancelMeasurement()">取消测量</a>
+            </div>
+        </div>
+
+        <!-- 提示内容栏 -->
+        <div id="state-div-id" class="alert alert-primary state-div-class" role="alert" style="margin-bottom: 0px; border-radius: 0;">
+            请在左边选择您要测量的项目.
+        </div>
+
+        <!-- 点击区域栏 -->
+        <div class="container-fluid click" id="click-area" style="background-color: #dddddd; height: 800px;">
+            <!-- 点击区域 -->
+        </div>
+    </div>
+</div>
+
+<!-- 机器人管理模态 -->
+<div class="modal fade" id="robot-manager-modal">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <!-- 模态框头部 -->
+            <div class="modal-header">
+                <h4 class="modal-title text-body">机器人管理</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- 模态框内容 -->
+            <div class="modal-body text-body">
+                <h5>我的机器人</h5>
+                <div class="list-group all-robot-info">
+                    <!-- 显示所有机器人信息 -->
+                    <div *ngFor="let singleRobotInfoObj of sendFrontRobotInfoAllArr">
+                        <app-robot-info divClass={{singleRobotInfoObj.divClass}} robotType={{singleRobotInfoObj.robotType}} robotDisplayName={{singleRobotInfoObj.robotDisplayName}} [robotStock]=singleRobotInfoObj.robotStock [robotOnLine]=singleRobotInfoObj.robotOnLine placeholderContent={{singleRobotInfoObj.placeholderContent}}></app-robot-info>
+                    </div>
+                </div>
+
+                <hr>
+                <h5>查询</h5>
+                <div class="input-group col-md-3" style="margin-bottom: 3px;">
+                    <input type="text" class="form-control" id="search-robot-input-id" placeholder="机器人名称(如LineRobot, CircleRobot)" (keyup)="OnSearchRobotInput($event)">
+                    <button type="submit" class="btn btn-outline-secondary btn-search" (click)="SearchRobot()">查找</button>
+                </div>
+                <div class="list-group search-robot-info">
+                  <!-- 若搜索到机器人,再此显示机器人信息 -->
+                  <app-robot-info *ngIf="IsShowRobotInfoBySearch" divClass={{sendFrontRobotInfoBySearchObj.divClass}} robotType={{sendFrontRobotInfoBySearchObj.robotType}} robotDisplayName={{sendFrontRobotInfoBySearchObj.robotDisplayName}} [robotStock]=sendFrontRobotInfoBySearchObj.robotStock [robotOnLine]=sendFrontRobotInfoBySearchObj.robotOnLine placeholderContent={{sendFrontRobotInfoBySearchObj.placeholderContent}}></app-robot-info>
+                  <!-- <app-robot-info *ngIf="true" divClass="XXX" robotType="LineRobot" robotDisplayName="线性机器人" [robotStock]=55 [robotOnLine]=1 placeholderContent="当前库存"></app-robot-info> -->
+                </div>
+
+                <hr>
+                <h5>添加机器人</h5>
+                <div class="input-group">
+                    <input type="text" class="form-control col-2" id="add-robot-display-name" placeholder="机器人名称(中文)" (keyup)="OnAddRobotInputDisplayName($event)">
+                    <input type="text" class="form-control col-2" id="add-robot-type" placeholder="机器人类型(英文, 大驼峰)" (keyup)="OnAddRobotInputType($event)">
+                    <input type="text" class="form-control col-2" id="add-robot-stock" placeholder="库存" (keyup)="OnAddRobotInputStock($event)">
+                    <input type="text" class="form-control col-6" id="add-robot-btn-html" placeholder="输入按钮HTML代码文本" (keyup)="OnAddRobotInputBtnHtml($event)">
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary btn-search" (click)="AddRobot()">添加</button>
+                    </span>
+                </div>
+                <div class="add-robot-info">
+                    <!-- 添加机器人后再此显示库存信息 -->
+                    <app-robot-info *ngIf="IsShowRobotInfoBySearch" divClass={{sendFrontRobotInfoBySearchObj.divClass}} robotType={{sendFrontRobotInfoBySearchObj.robotType}} robotDisplayName={{sendFrontRobotInfoBySearchObj.robotDisplayName}} [robotStock]=sendFrontRobotInfoBySearchObj.robotStock [robotOnLine]=sendFrontRobotInfoBySearchObj.robotOnLine placeholderContent={{sendFrontRobotInfoBySearchObj.placeholderContent}}></app-robot-info>
+                    <!-- <app-robot-info *ngIf="true" divClass="XXX" robotType="LineRobot" robotDisplayName="线性机器人" [robotStock]=55 [robotOnLine]=1 placeholderContent="当前库存"></app-robot-info> -->
+
+                </div>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+

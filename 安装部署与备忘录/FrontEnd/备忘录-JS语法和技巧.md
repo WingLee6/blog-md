@@ -45,16 +45,15 @@
   - [3.5  while 循环](#35--while-循环)
 - [四. 函数 / 方法 / 类](#四-函数--方法--类)
   - [4.1 函数](#41-函数)
-- [五. 事件](#五-事件)
-  - [5.1 事件的定义](#51-事件的定义)
-  - [5.2 事件的格式](#52-事件的格式)
-  - [5.3 事件的分类 - HTML DOM事件](#53-事件的分类---html-dom事件)
-    - [5.3.1 鼠标事件- `onclick`](#531-鼠标事件--onclick)
-- [六. HTML DOM](#六-html-dom)
-  - [3.1 `document.write()` 可用于直接向 HTML 输出流写内容](#31-documentwrite-可用于直接向-html-输出流写内容)
-  - [3.2 `document.getElementById(id).innerHTML=新的 HTML` 改变 HTML 内容](#32-documentgetelementbyididinnerhtml新的-html-改变-html-内容)
-  - [3.3 `document.getElementById(id).attribute=新属性值` 改变 HTML 属性](#33-documentgetelementbyididattribute新属性值-改变-html-属性)
-  - [3.4 `document.getElementById(id).style.property=新样式` 改变 HTML 样式](#34-documentgetelementbyididstyleproperty新样式-改变-html-样式)
+- [五. DOM事件触发执行](#五-dom事件触发执行)
+  - [5.1 鼠标事件 - `onmouseover=""` 或 `onmouseout=""` 或 `onmousedown=""` 或 `onmouseup=""` 或  `onclick=""`](#51-鼠标事件---onmouseover-或-onmouseout-或-onmousedown-或-onmouseup-或--onclick)
+  - [5.2 页面加载或离开页面 - `onload=""` 和 `onunload=""`](#52-页面加载或离开页面---onload-和-onunload)
+  - [5.3 输入字段改变触发事件 - `onchange=""`](#53-输入字段改变触发事件---onchange)
+  - [5.4 事件监听 - `.addEventListener()` 或 `.removeEventListener()`](#54-事件监听---addeventlistener-或-removeeventlistener)
+- [六. HTML DOM 实现](#六-html-dom-实现)
+  - [6.1 查找 - `.getElementById()` 和 `.getElementsByTagName()` 和 `.getElementsByClassName()`](#61-查找---getelementbyid-和-getelementsbytagname-和-getelementsbyclassname)
+  - [6.2 改变HTML - `.write()` 和 `.innerHTML=""` 和 `.属性=""` 和 `.属性.具体属性=""`](#62-改变html---write-和-innerhtml-和-属性-和-属性具体属性)
+  - [6.3 增加节点 - `.createElement()` 和 `.createTextNode()` 和 `.appendChild()`](#63-增加节点---createelement-和-createtextnode-和-appendchild)
 - [七. JSON](#七-json)
   - [7.1 JSON 的定义](#71-json-的定义)
   - [7.2 JSON 模板](#72-json-模板)
@@ -68,6 +67,7 @@
   - [附1. JS声明提升](#附1-js声明提升)
     - [定义:](#定义)
   - [附2. `this`关键字](#附2-this关键字)
+- [string转对象](#string转对象)
 
 <!-- /code_chunk_output -->
 
@@ -554,77 +554,201 @@ const x = (x, y) => x * y;
     ```
 
 
-## 五. 事件
-### 5.1 事件的定义
+## 五. DOM事件触发执行
 在事件触发时 JavaScript 可以执行一些代码。
-### 5.2 事件的格式
-模板:
-```javascript
-<some-HTML-element some-event="JavaScript 代码">
-```
-如: 
-```javascript
-<button onclick="getElementById('demo').innerHTML=Date()">现在的时间是?</button>
-```
-### 5.3 事件的分类 - HTML DOM事件
->  参考: https://www.runoob.com/jsref/dom-obj-event.html
 
-DOM： 指明使用的 DOM 属性级别。
-#### 5.3.1 鼠标事件- `onclick`
-示例:
-```javascript
+### 5.1 鼠标事件 - `onmouseover=""` 或 `onmouseout=""` 或 `onmousedown=""` 或 `onmouseup=""` 或  `onclick=""` 
++ `onmouseover=""` 鼠标移动到元素上
++ `onmouseout=""` 鼠标移出元素
++ `onmousedown=""` 鼠标点击不放
++ `onmouseup=""` 鼠标点击后释放鼠标
++ `onclick=""` 鼠标点击事件(点击`onmousedown`+释放`onmouseup`)
+
+```html
+<div onmouseover="mOver(this)" onmouseout="mOut(this)" style="background-color:#D94A38;width:120px;height:20px;padding:40px;">
+    Mouse Move Test
+</div>
+<div onmousedown="mDown(this)" onmouseup="mUp(this)" onclick="mClick(this)" style="background-color:red;width:120px;height:20px;padding:40px;">
+    Mouse Click Test
+</div>
+
 <script>
-    function myFunction(){
-        console.log("myFunction");
+    // 鼠标移动到元素上
+    function mOver(obj){
+	    obj.innerHTML="Mouse Over"
+    }
+    // 鼠标移出元素
+    function mOut(obj){
+        obj.innerHTML="Mouse Out"
+    }
+    // 鼠标点击不放
+    function mDown(obj){
+        obj.innerHTML="Mouse Down"
+    }
+    // 鼠标点击后释放鼠标 
+    function mUp(obj){
+        obj.innerHTML="Mouse Up"
+    }
+    // 鼠标点击事件(点击+释放)
+    function mClick(obj){
+        obj.style.backgroundColor="green"
     }
 </script>
-
-<button onclick="myFunction()">点我</button>
 ```
 
+### 5.2 页面加载或离开页面 - `onload=""` 和 `onunload=""`
+```JavaScript
+<body onload="OpenWord();">
+    <script>
+    function OpenWord() {
+        alert("OpenWord");
+    };
+    </script>
+</body>
+```
 
-## 六. HTML DOM
-### 3.1 `document.write()` 可用于直接向 HTML 输出流写内容
-示例:
-```javascript
+### 5.3 输入字段改变触发事件 - `onchange=""`
+```JavaScript
+输入你的名字: <input type="text" id="fname" onchange="ChangeWord()">
+<p>当你离开输入框后，函数将被触发</p>
+
 <script>
-document.write(Date());
+function ChangeWord(){
+    alert("ChangeWord");
+}
 </script>
 ```
 
-### 3.2 `document.getElementById(id).innerHTML=新的 HTML` 改变 HTML 内容
-示例:
-```javascript
-<p id="p1">Hello World!</p>
+### 5.4 事件监听 - `.addEventListener()` 或 `.removeEventListener()`
+1. 语法
+    ```javascript
+    element.addEventListener(event, function, useCapture);
+    ```
+    + 第一个参数`event`是事件的类型 
+        - 如 `click` 或 `mousedown`
+        - 不要使用 `on` 前缀。 例如，使用 `click` ,而不是使用 `onclick`
+    + 第二个参数`function`是事件触发后调用的函数。
+    + 第三个参数`useCapture`是个布尔值用于描述事件是冒泡还是捕获。该参数是可选的。
 
-<script>
-document.getElementById("p1").innerHTML="新文本!";
-</script>
+2. 注意:
+    + 可以向一个元素添加多个事件句柄
+    + 可以向同个元素添加多个同类型的事件句柄，如：两个 "click" 事件
+    + 可以向任何 DOM 对象添加事件监听，不仅仅是 HTML 元素。如： window 对象。
+    + 可以使用 removeEventListener() 方法来移除事件的监听
+    + 事件冒泡或事件捕获？事件传递有两种方式：冒泡与捕获。
+        - 事件传递定义了元素事件触发的顺序。 如果你将 `<p>` 元素插入到 `<div>` 元素中，用户点击 `<p>` 元素, 哪个元素的 `click` 事件先被触发呢? 如:
+            ```html
+            <div id="div-id">
+                <p id="p-id">文本示例</p>
+            </div>
+            ```
+        - 在 **冒泡** 中，内部元素的事件会先被触发，然后再触发外部元素，即： `<p>` 元素的点击事件先触发，然后会触发 `<div>` 元素的点击事件。
+            示例: 
+            ```JavaScript
+            document.getElementById("p-id").addEventListener("click", function() {
+                alert("你点击了 P 元素!");
+            }, false);
+            document.getElementById("div-id").addEventListener("click", function() {
+                alert(" 你点击了 DIV 元素 !");
+            }, false);
+            ```
+            点击前端文本示例时, 会先运行 `alert("你点击了 P 元素!");`, 后运行`alert(" 你点击了 DIV 元素 !");`
 
-```
+        - 在 **捕获** 中，外部元素的事件会先被触发，然后才会触发内部元素的事件，即： <div> 元素的点击事件先触发 ，然后再触发 <p> 元素的点击事件。
+            示例: 
+            ```JavaScript
+            document.getElementById("p-id").addEventListener("click", function() {
+                alert("你点击了 P 元素!");
+            }, true);
+            document.getElementById("div-id").addEventListener("click", function() {
+                alert(" 你点击了 DIV 元素 !");
+            }, true);
+            ```
+            点击前端文本示例时, 会先运行 `alert("你点击了 DIV 元素!");`, 后运行`alert(" 你点击了 P 元素 !");`
+            
+        - `addEventListener()` 方法可以指定 `useCapture` 参数来设置传递类型：
+
+3. 示例
+    > 见https://www.runoob.com/js/js-htmldom-eventlistener.html
 
 
-### 3.3 `document.getElementById(id).attribute=新属性值` 改变 HTML 属性
-示例:
-```javascript
-<img id="image" src="smiley.gif">
 
-<script>
-document.getElementById("image").src="landscape.jpg";
-</script>
-```
 
-### 3.4 `document.getElementById(id).style.property=新样式` 改变 HTML 样式
-示例:
-```javascript
-<p id="p1">Hello World!</p>
-<p id="p2">Hello World!</p>
-<script>
-document.getElementById("p2").style.color="blue";
-document.getElementById("p2").style.fontFamily="Arial";
-document.getElementById("p2").style.fontSize="larger";
-</script>
-```
+## 六. HTML DOM 实现
+通过 HTML DOM，对 HTML 文档的所有元素进行操作。
+### 6.1 查找 - `.getElementById()` 和 `.getElementsByTagName()` 和 `.getElementsByClassName()`
+1. 根据id查找  
+    ```javascript
+    // 本例查找 id="intro" 元素：
+    var x=document.getElementById("intro");
+    ```
+2. 根据元素标签查找
+    ```javascript
+    // 本例查找 id="main" 的元素，然后查找 id="main" 元素中的所有 <p> 元素：
+    var x=document.getElementById("main");
+    var y=x.getElementsByTagName("p");
+    ```
+3. 根据类class查找
+    ```javascript
+    // 本例通过 getElementsByClassName 函数来查找 class="intro" 的元素：
+    var x=document.getElementsByClassName("intro");
+    ```
+    
+### 6.2 改变HTML - `.write()` 和 `.innerHTML=""` 和 `.属性=""` 和 `.属性.具体属性=""`
+1. 直接写入内容
+    ```javascript
+    document.write(Date());
+    ```
+
+2. 改变元素**内容**
+    遵循: 先查找该元素再更改
+    ```html
+    <p id="p1">Hello World!</p>
+
+    <script>
+    // 本例先根据id查找到该元素,再修改<p>元素的内容：
+    document.getElementById("p1").innerHTML="新文本!";
+    </script>
+    ```
+3. 改变元素**属性**(覆盖)
+    + 遵循: 先查找该元素再更改;
+    + 根据要更改的属性更改方法
+    ```html
+    <img id="image" src="smiley.gif">
+    <p id="title-p-id" style="font-size: 100px;">文本</p>
+
+    <script>
+    // 示例1: 更改src属性
+    document.getElementById("image").src="landscape.jpg";
+    // 示例2: 更改style属性 (覆盖掉原有style="font-size: 100px;"属性)
+    document.getElementById("title-p-id").style="color: red;";
+    </script>
+    ```
+4. 改变元素**属性**(追加)
+    + 遵循: 先查找该元素再更改;
+    + 根据要更改的属性更改方法
+    ```html
+    <p id="p1-id" style="font-size: 100px;">文本1</p>
+    <p id="p2-id" style="font-size: 100px;">文本2</p>
+
+    <script>
+    // 会覆盖掉原有style="font-size: 100px;"属性
+    document.getElementById("p1-id").style="color: red;";
+    
+    // 在style="font-size: 100px;"属性之后
+    // 1. 追加 blue 样式
+    document.getElementById("p2-id").style.color = "blue";
+    // 2. 追加 字体 样式
+    document.getElementById("p2-id").style.fontFamily="Arial";
+    </script>
+    ```
+
+### 6.3 增加节点 - `.createElement()` 和 `.createTextNode()` 和 `.appendChild()`
+1. 创建元素 - `.createElement()`
+
+    
+
+
 
 ## 七. JSON
 ### 7.1 JSON 的定义
@@ -763,3 +887,7 @@ document.write("<pre>" + str_pretty2 + "</pre>" ); // pre 用于格式化输出
     console.log(testCall1.reCallText.call(testCall2));      // John Doe
     ```
 
+
+
+## string转对象
+https://juejin.cn/post/6914218105300320263

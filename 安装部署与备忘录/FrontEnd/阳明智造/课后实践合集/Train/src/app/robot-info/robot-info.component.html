@@ -1,0 +1,25 @@
+<label *ngIf="robotStock <= 0"  class="list-group-item d-flex gap-3 bg-light">
+    <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" disabled id="{{idText}}" (click)="CheckRobot($event)">
+    <!-- <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" disabled id="{{idText}}" (click)="CheckRobot('{{idText}}', '{{robotType}}')"> -->
+    <span class="pt-1 form-checked-content">
+        <strong>{{robotDisplayName}}</strong>
+        <small class="d-block text-muted"> {{placeholderContent}}: {{robotStock}} 台</small>
+    </span>
+</label>
+
+<label *ngIf="robotStock > 0"  class="list-group-item d-flex gap-3">
+    <input *ngIf="robotOnLine; else ISCHECKED" class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" id="{{idText}}" (click)="CheckRobot($event)">
+    <ng-template #ISCHECKED ng-app="">
+        <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" checked id="{{idText}}">
+    </ng-template>
+
+    <span class="pt-1 form-checked-content">
+        <strong>{{robotDisplayName}}</strong>
+        <small class="d-block text-muted"> {{placeholderContent}}: {{robotStock}} 台</small>
+    </span>
+
+</label>
+
+
+<!-- <input type="checkbox" [formControl]="rememberLoginControl" (click)="CheckRobot($event)">
+{{rememberLoginControl}} -->
