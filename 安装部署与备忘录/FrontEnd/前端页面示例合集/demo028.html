@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo028</title>
+</head>
+<body>
+    <h3>该实例演示了 onmousemove, onmouseenter 和 onmouseover 的不同。</h3>
+    <p> onmousemove 事件在鼠标移动到 div 元素上时触发。</p>
+    <p> mouseenter 事件中有在鼠标指针进入 div 元素时触发。 </p>
+    <p> onmouseover 事件在鼠标指针进入 div 元素时触发,在子元素上也会触发(p 和 span)。</p>
+    <div onmousemove="myMoveFunction()">
+        <p id="demo">我将演示 onmousemove!</p>
+    </div>
+    
+    <div onmouseenter="myEnterFunction()">
+        <p id="demo2">我将演示 onmouseenter!</p>
+    </div>
+    
+    <div onmouseover="myOverFunction()">
+        <p id="demo3">我将演示 onmouseover!</p>
+    </div>
+    <script>
+    x = 0;
+    y = 0;
+    z = 0;
+    function myMoveFunction() {
+        document.getElementById("demo").innerHTML = z+=1;
+    }
+    function myEnterFunction() {
+        document.getElementById("demo2").innerHTML = x+=1;
+    }
+    function myOverFunction() {
+        document.getElementById("demo3").innerHTML = y+=1;
+    }
+    </script>
+    
+</body>
+</html>

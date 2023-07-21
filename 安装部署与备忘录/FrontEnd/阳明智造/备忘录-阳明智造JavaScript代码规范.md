@@ -39,7 +39,7 @@
 
 ## 一. 命名
 > 以下示例的变量都定为 DemoName / demo-name / demoName 等
-### 1.1 一般变量 - 整型 / 浮点数 / 字符串
+### 1.1 一般变量 - 整型 / 浮点数 / 字符串 / 布尔值
 1. 规则:
     + 小驼峰
     + 变量类型简称+命名(整型的变量DemoName = `nDemoName`)
@@ -59,6 +59,10 @@
     + 字符串(string)  
         ```javascript
         var strDemoName;
+        ```  
+    + 布尔值(boolean)
+        ```javascript
+        var isClicked;
         ```  
 
 ### 1.2 对象类型变量 - Buffer / 对象 / 数组

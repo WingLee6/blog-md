@@ -3,14 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>demo026`</title>
-    <script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <title>demo026</title>
+    <script src="https:cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script> 
 </head>
 <body>
-    <div ng-app="">
+    <!-- <div ng-app="">
         <p>名字 : <input type="text" ng-model="name"></p>
-        <h1>Hello {{name}}</h1>
+        <p>Hello {{name}}</p>
         <p ng-bind="name"></p>
+    </div> -->
+
+    <div ng-app="testDirective"> 
+        <runoob-directive></runoob-directive>
+
+        <script>
+        var app = angular.module("testDirective", []);
+        app.directive("runoobDirective", function() {
+            return {
+                template : "<h1>自定义指令!</h1>"
+            };
+        });
+        </script>
     </div>
+
+    <!-- 阴影 -->
+    <label class="list-group-item d-flex gap-3 bg-light">
+        <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" disabled id="'+ idText + '"onclick="CheckRobot(\'' + idText + '\', \'' + robotInfoObj.type + '\')">
+
+        <span class="pt-1 form-checked-content">
+            <strong>displayName</strong>
+            <small class="d-block text-muted">stockInfo: robotInfoObj.stock 台</small>
+        </span>
+    </label>
+
+    <!-- 选中 -->
+    <label class="list-group-item d-flex gap-3">
+        <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" checked id="'+ idText + '"onclick="CheckRobot(\'' + idText + '\', \'' + robotInfoObj.type + '\')">
+    
+        <span class="pt-1 form-checked-content">
+            <strong>displayName</strong>
+            <small class="d-block text-muted">stockInfo: robotInfoObj.stock 台</small>
+        </span>
+    </label>
+    
+    <!-- 默认 -->
+    <label class="list-group-item d-flex gap-3">
+        <input class="form-check-input flex-shrink-0" type="checkbox" value="" style="font-size: 1.375em;" id="'+ idText + '"onclick="CheckRobot(\'' + idText + '\', \'' + robotInfoObj.type + '\')">
+    
+        <span class="pt-1 form-checked-content">
+            <strong>displayName</strong>
+            <small class="d-block text-muted">stockInfo: robotInfoObj.stock 台</small>
+        </span>
+    </label>
+
+
+    <a class="list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class" id="line-robot-btn-id" onclick="StartLineRobot()">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">线性机器人</h4>
+        </div>
+        <p class="mb-1">要求: </p>
+        <ul>
+            <li>两点P & Q</li>
+        </ul>
+        <p class="mb-1">功能: </p>
+        <ul>
+            <li>测量两点距离; </li>
+            <li>测量两点角度</li>
+        </ul>
+    </a>
+
+    <a class="list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class" id="line-robot-btn-id" onclick="StartLineRobot()">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">测量两点距</h4>
+        </div>
+    </a>
+
+    <a class="list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class" id="line-robot-btn-id" onclick="StartLineRobot()">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">测量两点角</h4>
+        </div>
+    </a>
+
+    <a class="list-group-item list-group-item-action list-group-item-light p-3 robot-btn-class" id="line-robot-btn-id" onclick="StartLineRobot()">
+        <div class="d-flex w-100 justify-content-between">
+            <h4 class="mb-1">测量三点圆半径</h4>
+        </div>
+    </a>
+
+
+
+    <div id="testFile"></div>
+    <script>
+        var _temp ='<div >这是一个测试内容111<a href="javascript:void(0)" ng-click="toWebViewTest(\'http://www.xxxx.cn/zcfb/zcfbtz/201711/W020171124574654576213.pdf\')" >文本链接</a><div>'
+        var _myDom =  $compile(_temp)($scope);//编译成一个对象
+        var parent = angular.element(document.getElementById('testFile'));//获取要设置内容的节点
+        parent[0].append(_myDom[0]);//追加子节点
+    </script>
+
 </body>
 </html>

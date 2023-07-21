@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo032</title>
+    <!-- <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script> 
+    
+</head>
+<body>
+
+    <!-- <style>
+        .btn-danger {
+            color: red;
+        }
+        .btn-success {
+            color: green;
+        }
+    </style>
+
+    <div class="well">
+        <input type="checkbox" ng-model="danger"> Good luck to u?
+        <input type="checkbox" ng-model="wrong"> u are wrong?
+        <br />
+        <span ng-class="{ 'btn-danger': danger, 'btn-success': wrong }" style="font-size: x-large;">
+        xpy0928 from cnblogs
+        </span>
+    </div> -->
+    
+
+    <div ng-controller="myCtrl">
+        我是父作用域：<input type="text" ng-model="name"><br>
+        <my-name user-name="name" say-name="sayName"></my-name>
+    </div>
+</body>
+
+<script>
+angular.module('myApp', [])
+    .controller('myCtrl', function ($scope) {
+        $scope.name = "听风是风";
+    })
+    .component('myName', {
+        transclude: true,
+        template: '我是组件：<input ng-model="vm.userName">',
+        controllerAs: 'vm',
+        bindings:{
+            userName:'=',
+        }
+    })
+</script>
+</html>

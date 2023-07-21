@@ -778,10 +778,13 @@ function ChangeWord(){
 如: 
 ```json
 // 用一个字符串表示JSON
-var textJSON = '{ "sites" : [' +
-'{ "name":"Runoob" , "url":"www.runoob.com" },' +
-'{ "name":"Google" , "url":"www.google.com" },' +
-'{ "name":"Taobao" , "url":"www.taobao.com" } ]}';
+var textJSON = '{ 
+    "sites" : [' +
+        '{ "name":"Runoob" , "url":"www.runoob.com" },' +
+        '{ "name":"Google" , "url":"www.google.com" },' +
+        '{ "name":"Taobao" , "url":"www.taobao.com" } 
+        ]
+    }';
 
 objJS = JSON.parse(textJSON);
 

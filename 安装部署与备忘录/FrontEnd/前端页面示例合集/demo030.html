@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo030</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        $(document).ready(function(){
+          $("#element-btn-id-1").click(function(){
+            // 获取 无内容
+            alert("元素html为: " + $("#test-input-id").html());
+            // 设置 无效果
+            $("#test-input-id").html("<b>Hello world!</b>");
+          });
+        
+          $("#val-btn-id-1").click(function(){
+            // 获取 luke
+            alert("值为: " + $("#test-input-id").val());
+           // 设置 输入框内容更改为Hello
+           $("#test-input-id").val("Hello");
+          });
+            
+          $("#text-btn-id-1").click(function(){
+            // 获取 无内容
+            alert("文本为: " + $("#test-input-id").text());
+            // 设置 无效果
+            $("#test-input-id").text("addtext");
+          });
+        
+            
+          $("#element-btn-id-2").click(function(){
+            // 获取 无内容
+            alert("元素html为: " + $("#test-p-id").html());
+            // 设置 代码内容改为 change html
+            $("#test-p-id").html("<b>change html</b>");
+          });
+        
+          $("#val-btn-id-2").click(function(){
+            // 获取 无内容
+            alert("值为: " + $("#test-p-id").val());
+            // 设置 无效果
+            $("#test-p-id").val("value");
+          });
+            
+          $("#text-btn-id-2").click(function(){
+            // 获取 无内容
+            alert("文本为: " + $("#test-p-id").text());
+            // 设置 文本内容改为 new text
+            $("#test-p-id").text("new text");
+          });
+        
+        });
+    </script>
+    
+    <p>姓名<input type="text" id="test-input-id" value="luke"><b>文本</b>内容</p>
+    <button id="element-btn-id-1">显示元素1</button>
+    <button id="val-btn-id-1">显示值1</button>
+    <button id="text-btn-id-1">显示文本1</button>
+    
+    <p id="test-p-id" value="测试">实例<b>文本</b></p>
+    <button id="element-btn-id-2">显示元素2</button>
+    <button id="val-btn-id-2">显示值2</button>
+    <button id="text-btn-id-2">显示文本2</button>
+</body>
+</html>
