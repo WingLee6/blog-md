@@ -15,9 +15,9 @@ CircleRobot.prototype.SetPoint = function (x, y) {
 
 // 判断三点是否都已录入
 // 返回: 已录入返回ture, 反之返回false
-CircleRobot.prototype.IsAvailable = function (availableNum) {
-    console.log("START CircleRobot.IsAvailable - availableNum=" + availableNum)
-    if (this.pos.length == availableNum) {
+CircleRobot.prototype.IsAvailable = function (nAvailableNum) {
+    console.log("START CircleRobot.IsAvailable - nAvailableNum=" + nAvailableNum)
+    if (this.pos.length == nAvailableNum) {
         return true;
     }
     return false;
@@ -33,8 +33,9 @@ CircleRobot.prototype.GetState = function () {
     var strEquation3 = this.pos[2][0] ** 2 + this.pos[2][1] ** 2 + '+' + this.pos[2][0] + '*a+' + this.pos[2][1] + '*b+c=0'
     
     try {
-        var solution = nerdamer.solveEquations([strEquation1, strEquation2, strEquation3])
-        var ret = 0.5 * Math.sqrt(solution[0][1] ** 2 +  solution[1][1] ** 2 -  4 * solution[2][1])
+        // 解方程
+        var solutionList = nerdamer.solveEquations([strEquation1, strEquation2, strEquation3])
+        var ret = 0.5 * Math.sqrt(solutionList[0][1] ** 2 +  solutionList[1][1] ** 2 -  4 * solutionList[2][1])
         return '圆的半径 r=' + ret.toFixed(3) + 'px'
     } catch(err) {
         return '圆不存在'

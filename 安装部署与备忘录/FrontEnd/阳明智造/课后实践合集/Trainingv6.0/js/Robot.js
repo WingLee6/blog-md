@@ -4,8 +4,8 @@ Robot.prototype.init = function(){
 
 };
 
-Robot.prototype.IsAvailable = function (availableNum) {
-    console.log("START Robot.IsAvailable - availableNum=" + availableNum)
+Robot.prototype.IsAvailable = function (nAvailableNum) {
+    console.log("START Robot.IsAvailable - nAvailableNum=" + nAvailableNum)
     
     return false
 };
