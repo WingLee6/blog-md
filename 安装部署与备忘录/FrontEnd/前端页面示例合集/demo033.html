@@ -4,8 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>demo033</title>
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script> 
 </head>
-<body>
+<body ng-app="myApp" keypress-events>
+
+    <my-directive></my-directive>
     
+
+    
+
+    
+
+
+
 </body>
+
+<script>
+    var myApp = angular.module("myApp", []);
+    myApp.directive('myDirective', [function() {
+        return {
+            link: function(scope, el, attrs) {
+                scope.keyPressed = 'no press :(';
+                // For listening to a keypress event with a specific code
+                scope.$on('keypress:27', function(onEvent, keypressEvent) {
+                    scope.keyPressed = 'Enter';
+                });
+                // For listening to all keypress events
+                
+                scope.$on('keypress', function(onEvent, keypressEvent) {
+                    console.log("ddd")
+                    if (keypress.which === 120) {
+                        scope.keyPressed = 'x';
+                    }
+                    else {
+                        scope.keyPressed = 'Keycode: ' + keypressEvent.which;
+                    }
+                });
+            },
+            template: '<h1>大的{{keyPressed}}</h1>'
+        };
+    }]);
+
+    myApp.directive('keypressEvents', ['$document','$rootScope',function($document, $rootScope) {
+        return {
+            restrict: 'A',
+            link: function() {
+                $document.bind('keypress', function(e) {
+                    console.log('Got keypress:', e.which);
+                    // $rootScope.$broadcast('keypress', e);
+                    // $rootScope.$broadcast('keypress:' + e.which, e);
+                });
+            }
+        };
+    }]);
+    </script>
 </html>

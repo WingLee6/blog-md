@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Training 2.1</title>
+
+        <link rel="stylesheet" href="./bootstrap.min-5.3.0.css" />
+        <link rel="stylesheet" href="./t2p1.css" />
+        <script type="text/javascript" src="./LineRobot.js"></script>
+        <script type="text/javascript" src="./TextLibrary.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="row">
+                    <div class="col-md-2 otherSettings col-sm-1 col-xs-1 col-lg-2 col-4">
+                        <button type="button" class="btn btn-primary prim other mea">测量距离</button>
+                        <button type="button" class="btn btn-primary prim other mea">测量角度</button>
+
+                        <button id="radius" type="button" class="btn btn-primary prim mear" ng-click="GetRadius()">
+                            测量圆的半径
+                        </button>
+
+                        <button type="button" class="btn btn-primary prim">切换类型</button>
+                        <button type="button" class="btn btn-primary prim but">退出系统</button>
+                    </div>
+                    <div class="col-md-10 col-sm-11 col-xs-11 col-lg-10 col-8">
+                        <div class="row">
+                            <div class="navigate">
+                                <div class="state">当前状态：未使用</div>
+                                <div class="answer">测量结果：无</div>
+                            </div>
+                            <div class="click" id="clickArea"></div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <footer>
+                <div class="row buttom">xxx</div>
+            </footer>
+        </div>
+
+        <script>
+            var LR = new LineRobot();
+
+            // 取消测量按钮
+            function cancelMeasurement() {
+                if (LR.Cancel() >= 0) {
+                    document.getElementById("pTargetX").value = pTarget[0];
+                    document.getElementById("pTargetY").value = pTarget[1];
+                    document.getElementById("qTargetX").value = qTarget[0];
+                    document.getElementById("qTargetY").value = qTarget[1];
+
+                    document.getElementById("current-state").innerHTML = currentStateTextOutput;
+                    document.getElementById("current-state").style.color = currentStateTextColor;
+
+                    console.log("取消成功");
+                    return;
+                }
+                console.log("取消失败");
+            }
+
+            document.addEventListener("keyup", function (e) {
+                // 判断esc键
+                if (e.keyCode == 27) {
+                    cancelMeasurement();
+                    console.log("esc取消");
+                }
+            });
+            var clickArea = document.getElementById("clickArea");
+            clickArea.addEventListener("click", function (e) {
+                console.log(e.offsetX, e.offsetY);
+
+                // // 若已经计算结束但仍点击, 则重新记录新一组坐标
+                // if (g_state == 3) {
+                //     cancelMeasurement();
+                //     document.getElementById("current-state").innerHTML = currentStateTextNext;
+                // }
+
+                // // 设置P 或 Q
+                // LR.SetPoint(e.clientX, e.clientY);
+                // if (g_state == 1) {
+                //     document.getElementById("pTargetX").value = pTarget[0];
+                //     document.getElementById("pTargetY").value = pTarget[1];
+                //     document.getElementById("current-state").innerHTML = currentStateTextClickQ;
+                //     document.getElementById("current-state").style.color = currentStateTextColor;
+                // }
+
+                // if (g_state == 2) {
+                //     console.log("LineRobot.SetPoint获取Q坐标" + qTarget);
+                //     document.getElementById("qTargetX").value = qTarget[0];
+                //     document.getElementById("qTargetY").value = qTarget[1];
+                //     document.getElementById("current-state").innerHTML = currentStateTextOutput;
+                //     document.getElementById("current-state").style.color = currentStateTextColor;
+                // }
+
+                // // 判断当前数据是否满足计算要求, 满足则计算结果
+                // if (LR.IsAvailable()) {
+                //     var distancePQandAnglePQ = LR.GetState();
+                //     document.getElementById("distancePQ").innerHTML = distancePQandAnglePQ;
+                // }
+            });
+        </script>
+    </body>
+</html>

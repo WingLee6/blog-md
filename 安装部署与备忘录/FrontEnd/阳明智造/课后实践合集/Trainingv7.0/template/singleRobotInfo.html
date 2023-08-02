@@ -1,0 +1,22 @@
+<!-- <label class="list-group-item d-flex gap-3 ${strDisabledStyle}">
+    <input class="form-check-input flex-shrink-0" type="checkbox" style="font-size: 1.375em" ${strIsDisabled} ng-checked="${isChecked}" ng-model="${strDistinctionMeasureFunBtn}" ng-click="_RecordOnLine('${strDistinctionMeasureFunBtn}')">
+    <span class="pt-1 form-checked-content">
+        <strong>${robotInfoObj.displayName}</strong>
+        <small class="d-block text-muted">库存: ${robotInfoObj.stock} 台</small>
+    </span>
+</label> -->
+<h1>测试</h1>
+<h1>{{testValue}}</h1>
+<button ng-click="console.log('hemml'); FuncClickInTestComponent()">CLICK - FuncClickInTestComponent - {{vm.isHidedDistanceBtnAndAngleBtn}}</button>
+
+<!-- <input type="checkbox" ng-model="vm.isHidedDistanceBtnAndAngleBtn"> -->
+
+<div class="list-group" ng-repeat="robotInfo in robotInfoObj" >
+    <label class="list-group-item d-flex gap-3 {{robotInfo.disabledStyle}}">
+        <input class="form-check-input" type="checkbox" style="font-size: 1.375em" ng-disabled={{robotInfo.isDisabled}} ng-model="vm.isHidedDistanceBtnAndAngleBtn"ng-click="FuncClick()">
+        <span class="pt-1 form-checked-content">
+            <strong>{{robotInfo.displayName}}</strong>
+            <small class="d-block text-muted">库存: {{robotInfo.stock}} 台</small>
+        </span>
+    </label>
+</div>
