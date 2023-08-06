@@ -1,0 +1,75 @@
+<div class="modal fade" id="robot-manager-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title text-body">机器人管理</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!-- 模态框内容 -->
+            <div class="modal-body text-body">
+                <h5>查询</h5>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="addon-wrapping">机器人类型</span>
+                    <input type="text" class="form-control" aria-label="RobotType" aria-describedby="addon-wrapping" ng-model="vm.strInputRobotTypeForSearch">
+                    
+                    <span class="input-group-btn">
+                        <button class="btn btn-outline-secondary btn-search" ng-click="vm.SearchRobotByType()">查找</button>
+                    </span>
+                </div>
+                
+                <div class="list-group search-robot-info-class" style="margin-top: 10px;">
+                    <div ng-repeat="robotInfo in vm.robotInfoForSearchList">
+                        
+                        <label class="list-group-item d-flex gap-3 {{ robotInfo.stock | disabledStyleFilter}}">
+                            <input class="form-check-input flex-shrink-0" type="checkbox" style="font-size: 1.375em" ng-disabled='robotInfo.stock | isDisabledFilter' ng-model=robotInfo.isHidedAndCheckedMeasureBtn ng-click='this.global.RecordOnLine(robotInfo.type)'>
+                            
+                            <span class="pt-1 form-checked-content">
+                                <strong>{{robotInfo.displayName}}</strong>
+                                <small class="d-block text-muted">库存: {{robotInfo.stock}} 台</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <hr>
+                <h5>添加机器人</h5>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="addon-wrapping">机器人类型</span>
+                    <input type="text" class="form-control" aria-label="RobotType" aria-describedby="addon-wrapping" ng-model="vm.strInputRobotTypeForAdd">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="addon-wrapping">机器人数量</span>
+                    <input type="text" class="form-control" aria-label="RobotStock" aria-describedby="addon-wrapping" ng-model="vm.strInputRobotStockForAdd">
+                </div>
+               
+                
+                <span class="input-group-btn mb-3">
+                    <button class="btn btn-outline-secondary d-grid gap-2 col-6 mx-auto btn-search" ng-click="vm.AddRobotByTypeAndStock()">添加(注册)</button>
+                </span>
+                
+                <div class="list-group add-robot-info-class" style="margin-top: 10px;">
+                    <!-- 添加机器人后再此显示库存信息 -->
+                    <div ng-repeat="robotInfo in vm.robotInfoForAddList">
+                        
+                        <label class="list-group-item d-flex gap-3 {{ robotInfo.stock | disabledStyleFilter}}">
+                            <input class="form-check-input flex-shrink-0" type="checkbox" style="font-size: 1.375em" ng-disabled='robotInfo.stock | isDisabledFilter' ng-model=robotInfo.isHidedAndCheckedMeasureBtn ng-click='vm.global.RecordOnLine(robotInfo.type)'>
+                            
+                            <span class="pt-1 form-checked-content">
+                                <strong>{{robotInfo.displayName}}</strong>
+                                <small class="d-block text-muted">库存: {{robotInfo.stock}} 台</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模态框底部 -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+
+    </div>
+</div>

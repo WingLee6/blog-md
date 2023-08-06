@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo034</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script> 
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+        <h1>方式一: {{ }}</h1>
+        <h2>普通元素-适用</h2>
+        算式直接出结果:<p>{{10 + 19}}</p>
+        字符（字符串）:<p>{{strName}}</p>
+        字符（字符串）绑定多个变量:<p>{{strName}}{{nAge}}</p>
+        字符（字符串）拼接:<p>{{strName + nAge}}</p>
+        数字:<p>{{nAge}}</p>
+        布尔值:<p>{{isChecked}}</p>
+        数组:<p>{{cityList}}</p>
+        数组元素:<p>{{cityList[0]}}</p>
+        对象:<p>{{foodObj}}</p>
+        对象内容1: <p>{{foodObj.aVal}}</p>
+        对象内容2: <p>{{foodObj['bVal']}}</p>
+
+        <h2>表单元素-适用</h2>
+        <h3>input元素</h3>
+        <input type="text" value={{strName}}><br>
+        <p>你的输入是{{strName}}</p>
+
+
+        <h1>方式二: ng-bind=''</h1>
+        <h2>普通元素-适用</h2>
+        算式直接出结果:<p ng-bind="6 + 3"></p>
+        字符（字符串）:<p ng-bind="strName"> </p>
+        字符（字符串）无引号:<p ng-bind=strName> </p>
+        字符（字符串）- 只能绑定单个变量，显示最后一个:<p ng-bind="strName; nAge"> </p>
+        字符（字符串）拼接:<p ng-bind="strName + nAge"> </p>
+        数字:<p ng-bind="nAge"></p>
+        布尔值:<p ng-bind="isChecked"></p>
+        数组:<p ng-bind="cityList"></p>
+        数组元素:<p ng-bind="cityList[0]"></p>
+        对象:<p ng-bind="foodObj"></p>
+        对象内容1: <p ng-bind="foodObj.aVal"></p>
+        对象内容2: <p ng-bind="foodObj['bVal']"></p>
+
+
+        <h1>方式三: ng-model=''</h1>
+        <h2>普通元素-不适用</h2>
+        字符（字符串）:<p ng-model="strName"></p>
+
+        <h2>表单元素-适用</h2>
+        <h3>1. input元素</h3>
+        <input type="text" ng-model="strName"><br>
+        <p>你的输入是{{strName}}</p>
+        
+        <h3>2. select元素(下拉列表)</h3>
+        <select ng-model="selectedSite" ng-options="x.site for x in sitesList">
+        </select>
+        
+        <p>你选择的是: {{selectedSite.site}}</p>
+        <p>网址为: {{selectedSite.url}}</p>
+        <p>注: 可有ng-options(推荐)和ng-repeat两个方法实现, 对比见https://www.runoob.com/angularjs/angularjs-select.html</p>
+        
+        <h3>3. textarea元素定义多行输入字段(文本域)</h3>
+        <textarea name="message" rows="10" cols="30" ng-model=strName>
+        </textarea><br>
+        <p>你的输入是{{strName}}</p>
+
+
+        <h1>引号问题</h1>
+        <div ng-init="str1='hello'; str2='world'">
+        大括号无引号/拼接: <p>{{str1 + str2}}</p>
+        大括号有引号/拼接: <p>"{{str1 + str2}}"</p>
+
+        ng-bind无引号: <p ng-bind=str1></p>
+        ng-bind有引号: <p ng-bind="str1"></p>
+        <!-- ng-bind无引号/拼接: - 报错<p ng-bind=str1+ str2></p> -->
+        ng-bind有引号/拼接: <p ng-bind="str1 + str2"></p>
+
+        ng-model无引号: <input type="text" ng-model=str1><br>
+        ng-model有引号: <input type="text" ng-model="str1"><br>
+        <!-- ng-model无引号/拼接: - 报错<input type="text" ng-model=str1 + str2><br> -->
+        <!-- ng-model有引号/拼接: - 报错<input type="text" ng-model="str1 + str2"><br> -->
+     
+        </div>
+    </div>
+    
+    <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.strName = "John Doe";
+        $scope.nAge = 11
+        $scope.isChecked = true
+        $scope.cityList = ['Paris', 'Shanghai']
+        $scope.foodObj = {
+            aVal: 'aaa',
+            bVal: 'bbb'
+        }
+        $scope.sitesList = [
+            {site : "Google", url : "http://www.google.com"},
+            {site : "Runoob", url : "http://www.runoob.com"},
+            {site : "Taobao", url : "http://www.taobao.com"}
+        ]
+        
+    });
+    </script>
+    
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!-- 状态栏-->
+<div id="page-content-wrapper">    
+    <!-- 结果显示栏 -->
+    <div class="card" style="border-radius: 0">
+        <div class="card-header h4">
+            测量结果
+        </div>
+        <div class="card-body">
+            <p id="answer-p-id" class="card-text" ng-bind="vm.global.strAnswerText"></p>
+            <a href="#" class="btn btn-primary"  ng-click="vm.global.CancelMeasurement(0)">取消测量</a>
+        </div>
+    </div>
+
+    <!-- 提示内容栏 -->
+    <div id="state-div-id" class="alert {{vm.global.strStateStyle}}" role="alert" style="margin-bottom: 0px; border-radius: 0" ng-bind="vm.global.strStateText"></div>
+
+    <!-- 点击区域栏 -->
+    <div class="container-fluid click" style="background-color: #dddddd; height: 800px" ng-click="vm.RecordClickPoint($event)">
+        <!-- 点击区域 -->
+    </div>
+</div>

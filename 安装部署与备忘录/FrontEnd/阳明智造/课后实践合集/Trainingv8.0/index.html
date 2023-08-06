@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Training</title>
+
+        <link href="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script> 
+
+        <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/nerdamer.core.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Algebra.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Calculus.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/nerdamer@latest/Solve.js"></script>
+        
+        <link rel="stylesheet" href="./css/style.css" />
+        <script type="text/javascript" src="./js/app.js"></script>
+        <script type="text/javascript" src="./js/RobotManager.js"></script>
+        <script type="text/javascript" src="./js/Robot.js"></script>
+        <script type="text/javascript" src="./js/LineRobot.js"></script>
+        <script type="text/javascript" src="./js/CircleRobot.js"></script>
+        <script type="text/javascript" src="./js/TextLibrary.js"></script>
+        <script type="text/javascript" src="./js/RobotStore.js"></script>
+    </head>
+    
+    <body ng-app="globalApp">
+        <!-- <body ng-app="globalApp" ng-controller="globalCtrl"> -->
+        <global-component>
+
+            <div class="d-flex" id="wrapper">
+            
+                <!-- sidebar--> 
+                <div class="col-2">
+                    <sidebar-component></sidebar-component>
+                </div>    
+                
+                <!-- article -->
+                <div class="col-10">
+                    <article-component></article-component>
+                </div>
+            </div>
+
+
+            <!-- 切换机器人模态 -->
+            <robot-switch-modal-component></robot-switch-modal-component>
+
+            <!-- 机器人管理模态 -->
+            <robot-manager-modal-component></robot-manager-modal-component>
+        
+        </global-component>
+
+    </body>
+</html>

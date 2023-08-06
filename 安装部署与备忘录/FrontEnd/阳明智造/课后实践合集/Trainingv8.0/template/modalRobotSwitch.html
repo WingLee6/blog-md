@@ -1,0 +1,34 @@
+<div class="modal fade" id="robot-switch-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title text-body">切换机器人</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+
+            <div class="modal-body text-body">
+                <!-- 显示所有机器人信息 -->
+                <div class="list-group" >
+                    <div ng-repeat="robotInfo in vm.robotsInfoList">
+                        
+                        <label class="list-group-item d-flex gap-3 {{ robotInfo.stock | disabledStyleFilter}}">
+                            <input class="form-check-input flex-shrink-0" type="checkbox" style="font-size: 1.375em" ng-disabled="robotInfo.stock | isDisabledFilter" ng-model=robotInfo.isHidedAndCheckedMeasureBtn ng-click='vm.gloabal.RecordOnLine(robotInfo.type)'>
+                            
+                            <span class="pt-1 form-checked-content">
+                                <strong>{{robotInfo.displayName}}</strong>
+                                <small class="d-block text-muted">库存: {{robotInfo.stock}} 台</small>
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">关闭</button>
+            </div>
+        </div>
+
+    </div>
+</div>
