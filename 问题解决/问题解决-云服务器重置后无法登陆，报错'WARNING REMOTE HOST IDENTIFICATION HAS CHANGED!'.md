@@ -5,3 +5,6 @@
 vi /Users/gordo_li/.ssh/known_hosts
 ```
 删除该服务器IP所在一行
+
+
+
