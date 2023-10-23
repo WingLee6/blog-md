@@ -214,6 +214,7 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=formu
 
 
 ### [前端]live server： 保持代码时刷新页面
+> 推荐安装
 
         
 ### [前端]Path Intellisense : 可以自动完成文件名。
