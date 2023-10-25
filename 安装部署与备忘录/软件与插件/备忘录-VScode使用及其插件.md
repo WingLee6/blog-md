@@ -215,6 +215,9 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=formu
 
 ### [前端]live server： 保持代码时刷新页面
 > 推荐安装
+1. 功能
+    1. 打开网页快： 在html文件鼠标右键会新增【Open with Live Server】选项，点击会跳转到默认浏览器打开网页
+    2. 自动刷新前端更改内容
 
         
 ### [前端]Path Intellisense : 可以自动完成文件名。
@@ -222,3 +225,4 @@ VS Marketplace 链接: https://marketplace.visualstudio.com/items?itemName=formu
 ### [前端]Prettier - Code formatter ：Prettier is an opinionated code formatter.
 
 ### [前端]Rainbow Brackets : 为圆括号、方括号和斜括号提供彩虹色。
+> 推荐
