@@ -82,8 +82,24 @@ Zotero -> 工具 -> 插件 -> 右上小齿轮图标 -> Install Add-on From File 
 1. 作用
     在文献目录中可以在`#标签`一栏中显示具体内容
     
-        
 
+### zotfile
+> 暂不推荐
+
+1. 作用：
+    zotero中文件存储比较杂，每个PDF文件都在不同的文件夹里，这款软件可以把所有的PDF提取出来。
+
+2. 下载地址：
+    http://zotfile.com/
+        
+        
+## 其他插件
+### zotero connector 
+1. chrome插件, 可以之间将网页的文献保存到zotero软件中
+
+### easySchotor
+1. chrome插件, 可以在浏览器之间显示文献的评价(包括影响因子\分区等)
+2. 应该是通过爬虫时间, 存在一定风险
 
 ## 问题汇总
 ### 1. 不明所以的目录-在目录栏出现`Addon Item`目录
