@@ -68,6 +68,147 @@ Zotero -> 工具 -> 插件 -> 右上小齿轮图标 -> Install Add-on From File 
         
         已用好模板: 
         + https://github.com/windingwind/zotero-better-notes/discussions/729
+        + 中文模板
+            ```html
+            <html style="background-color=#333333;">
+            </hr>
+            <table border="1">
+            <h1 style="color:  #E65100; background-color:  #FFF8E1;">(${topItem.getField("date")}) ${topItem.getField("title")}</h1>
+            <tr>
+            <td><b>期刊: <b style="color:#FF0000">${topItem.getField('publicationTitle')}</b></b>（发表日期: <b>${topItem.getField("date")}</b>）<br><b>作者:</b> ${topItem.getCreators().map((v)=>v.firstName+" "+v.lastName).join("; ")}</td>
+            </tr>
+            <tr>
+            <td><b>摘要: </b><i>${topItem.getField('abstractNote')}</i></td>
+            </tr>
+            <tr>
+            <td><b>期刊分区: </b>
+            <!-- 引用了zotero style插件的标签，请提前安装，否则找不到分区 -->
+            ${(() => {let space = " ㅤㅤ ㅤㅤ"
+                            return Array.prototype.map.call(Zotero.ZoteroStyle.data.ztoolkit.ItemTree.globalCache.renderCellHooks.PublicationTags(
+                0,
+                Zotero.ZoteroStyle.data.ztoolkit.ItemTree.fieldHooks.globalCache.getFieldHooks.PublicationTags(
+                "", true, true,
+                topItem, undefined)
+                ).childNodes,
+                e => {
+                e.innerText = space + space + e.innerText + space + space;
+                return e.outerHTML
+                }).join(space)
+                })()
+                }
+            </td>
+            </tr>
+            <tr>
+            <td><b>原文PDF链接: </b>
+            <!-- 前提是有pdf附件，否则也找不到 -->
+            <a href=zotero://open-pdf/0_${Zotero.Items.get(topItem.getAttachments()).filter((i) => i.isPDFAttachment())[0].key}>${Zotero.Items.get(topItem.getAttachments()).filter((i)=> i.isPDFAttachment())[0].getFilename()} 
+                </a>
+            </td>
+            </tr>
+            <tr>
+            <td><b>笔记创建日期: </b>${new Date().toLocaleString()}</td>
+            </tr>
+            </table>
+            <!-- Tips不想要可以自行删掉 -->
+            <h2>💡创新点</h2>
+            <blockquote>Tips: 本文提出了什么<u>新的科学问题</u>，提出了什么<u>新的研究思路</u>，或提出了什么<u>新的研究工具</u>？
+            </blockquote>
+            <p></p>
+            <h2>📚前言及文献综述</h2>
+            <blockquote>Tips: 本研究的<u>必要性、紧迫性、可行性</u>是什么？作者是如何论述的？<br>作者引用了哪些该领域的<u>开创性文献</u>？</blockquote>
+            <p></p>
+            <h2>🧩数据</h2>
+            <p></p>
+            <h2>🔬做了什么？</h2>
+            <p></p>
+            <h2>📌重要内容摘录</h2>
+            <p></p>
+            <h2>📜结论</h2>
+            <p></p>
+            <h2>🤔思考</h2>
+            <blockquote>Tips: 本文有什么<u>优缺点</u>？你是否对某些内容产生了<u>疑问</u>？<br>你是否认为某些研究方式可以改进，<u>如何改进</u>？</blockquote>
+            <p></p>
+            </html>
+            ```
+        + 英文文献笔记模板
+            ```html
+            <html>
+            </hr>
+            <table border="1">
+
+            <!-- 这里提取了翻译标题，也要安装Zotero PDF Translate插件，否则只会显示英文标题 -->
+            <h1 style="color:  #E65100; background-color:  #FFF8E1;">(${topItem.getField("date")}) ${topItem.getField("title")}（${topItem.getField("titleTranslation")}）</h1>
+
+            <tr>
+            <td><b>期刊: <b style="color:#FF0000">${topItem.getField('publicationTitle')}</b></b>（发表日期: <b>${topItem.getField("date")}</b>）<br><b>作者:</b> ${topItem.getCreators().map((v)=>v.firstName+" "+v.lastName).join("; ")}</td>
+            </tr>
+
+            <tr>
+            <td><b>摘要翻译: </b>
+            <!-- 要提前安装Zotero PDF Translate插件，否则摘要翻译找不到 -->
+            <i>${topItem.getField('abstractTranslation')}</i></td>
+            </tr>
+
+            <tr>
+            <td><b>期刊分区: </b>
+            <!-- 引用了zotero style插件的标签，需要安装此插件，否则分区找不到-->
+            ${(() => {let space = " ㅤㅤ ㅤㅤ"
+                            return Array.prototype.map.call(Zotero.ZoteroStyle.data.ztoolkit.ItemTree.globalCache.renderCellHooks.PublicationTags(
+                0,
+                Zotero.ZoteroStyle.data.ztoolkit.ItemTree.fieldHooks.globalCache.getFieldHooks.PublicationTags(
+                "", true, true,
+                topItem, undefined)
+                ).childNodes,
+                e => {
+                e.innerText = space + space + e.innerText + space + space;
+                return e.outerHTML
+                }).join(space)
+                })()
+                }
+            </td>
+            </tr>
+
+            <tr>
+            <td><b>原文PDF链接: </b>
+            <!-- 前提是有pdf附件，否则也找不到 -->
+            <a href=zotero://open-pdf/0_${Zotero.Items.get(topItem.getAttachments()).filter((i) => i.isPDFAttachment())[0].key}>${Zotero.Items.get(topItem.getAttachments()).filter((i)=> i.isPDFAttachment())[0].getFilename()} 
+                </a>
+            </td>
+            </tr>
+
+            <tr>
+            <td><b>笔记创建日期: </b>${new Date().toLocaleString()}</td>
+            </tr>
+
+            </table>
+            <!-- Tips不想要可以自行删掉 -->
+            <h2>💡创新点</h2>
+            <blockquote>Tips: 本文提出了什么<u>新的科学问题</u>，提出了什么<u>新的研究思路</u>，或提出了什么<u>新的研究工具</u>？
+            </blockquote>
+            <p></p>
+
+            <h2>📚前言及文献综述</h2>
+            <blockquote>Tips: 本研究的<u>必要性、紧迫性、可行性</u>是什么？作者是如何论述的？<br>作者引用了哪些该领域的<u>开创性文献</u>？</blockquote>
+            <p></p>
+
+            <h2>🧩数据/工具箱</h2>
+            <p></p>
+
+            <h2>🔬做了什么？</h2>
+            <p></p>
+
+            <h2>📌重要内容摘录</h2>
+            <p></p>
+
+            <h2>📜结论</h2>
+            <p></p>
+
+            <h2>🤔思考</h2>
+            <blockquote>Tips: 本文有什么<u>优缺点</u>？你是否对某些内容产生了<u>疑问</u>？<br>你是否认为某些研究方式可以改进，<u>如何改进</u>？</blockquote>
+            <p></p>
+
+            </html>
+            ```
 
 
  
@@ -84,14 +225,68 @@ Zotero -> 工具 -> 插件 -> 右上小齿轮图标 -> Install Add-on From File 
         https://github.com/MuiseDestiny/zotero-style/releases/tag/2.6.7
 
 3. 使用
-    需要在文献目录的表头鼠标右键,添加`进度`列
+    + 需要在文献目录的表头鼠标右键,添加`进度`列
+    
+    在标题栏(如下图黑框)右键, 可以添加不同的列  
+    ![](./img/zotero标题栏.png)
+    
+    有几个推荐的列, 及设置:
+    1. 评级
+        + 根据上述操作,添加"评级"列
+        + 在鼠标放在标题栏的"评级"列, 鼠标右键, 选择"列设置"
+        + 在弹出的选项卡中
+            - `mark`为评级后标志
+                推荐: `★`
+            - `option` 为未选的标记
+                推荐: `☆`
+            - `color` 为颜色
+                推荐: `#FFBF00`
+            - `size`
+                推荐: 四分之一
+            - `padding`
+                推荐: 最小
+    2. 期刊标签
+        + 设置期刊查询key
+            - 在链接https://www.easyscholar.cc/console/user/open, 登陆注册, 找到我的"开放接口", 再找到"密钥SecretKey", 复制这个key
+            - 打开zotero, 首选项->高级->"高级设置"编辑器->弹框点击"I accept the risk"->搜索"easy"找到如下图的选项,点击->在弹框里输入刚才的key, ok退出
+            ![](./img/zotero输入easykey.png)
+
+        + 根据上述操作,添加"期刊标签"列
+        + 在鼠标放在标题栏的"期刊标签"列, 鼠标右键, 选择"列设置"
+            - `Fields` 输入标签类型
+                - 可以参考[Fields参考](https://github.com/MuiseDestiny/zotero-style)
+                - 建议`sci, sciUp, sciif,pku,ccf, sciwarn`
+            - `Map` 将一些冗长的标签通过正则表达式匹配后简化
+                - 同样可以参考[Fields参考](https://github.com/MuiseDestiny/zotero-style)
+                - 建议
+                    ```
+                    SCIIF=IF, SCI升级版=SCI, /医学(\d+)区/=医$1,  /生物学(\d+)区/=生$1,  /农林科学(\d+)区/=农$1,  /环境科学与生态学(\d+)区/=环$1,  /化学(\d+)区/=化$1,  /工程技术(\d+)区/=工$1,  /数学(\d+)区/=数$1,  /物理与天体物理(\d+)区/=物$1,  /地球科学(\d+)区/=地$1,  /材料科学(\d+)区/=材$1,  /计算机科学(\d+)区/=计$1,  /经济学(\d+)区/=经$1,  /法学(\d+)区/=法$1,  /管理学(\d+)区/=管$1,  /心理学(\d+)区/=心$1,  /人文科学(\d+)区/=人$1,  /教育学(\d+)区/=教$1,  /综合性期刊(\d+)区/=综$1, 北大中文核心=北核, SCIWARN=🚫, EI检索=EI, 
+                    ```
+            - `rank colors`
+                推荐: `#ffe2dd, #e8deee, #dbeddb, #fadec9, #e9e8e7`
+            - `default color`
+                推荐: `#86dad1`
+    
 
 
 ### zotero-tag
 > 推荐
 1. 作用
     在文献目录中可以在`#标签`一栏中显示具体内容
-    
+
+2. 使用
+    1. 打开"首选项"->zotero tag, 设置想要的快捷键
+        - 推荐, 如下图  
+            ![zotero tag](./img/zotero%20tag.png)
+    2. 标签颜色设置  
+        如图,  
+        ![zotero tag标签颜色](./img/zotero%20tag标签颜色.png)
+        + 在界面的左下角, 找到相应标签, 右键, 找到改颜色的选项;
+            - 推荐颜色:
+                - 是否阅读->红色
+                - 文献大类->绿色
+                - 方向细分->紫色
+            
 
 ### zotfile
 > 暂不推荐

@@ -57,6 +57,15 @@
     git lfs untrack "*.py"
     ```
     `"*.py"`为py后缀的所有文件
+    
+    执行完上面命令后, 可以用
+    ```bash
+    git lfs ls-files
+    ```
+    查询是否解除的文件是否还在.
+    
+    若还存在则说明没奏效, 可以尝试直接在`项目名\.gitattributes`文件里修改.
+    也要push后奏效
 
 4. 查看LFS存储的所有文件后缀名
     ```bash
