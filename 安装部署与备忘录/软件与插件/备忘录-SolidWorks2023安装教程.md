@@ -42,3 +42,9 @@
         ![SolidWorks序列号设置](./img/SolidWorks序列号设置.png)
         黄框内容的几个不要勾选
         > 如果再次打开这个安装程序, 再选这个序列号为空,无法复原. 解决办法是重新按视频开头注入注册表, `server_install.bat`安装, 或先`server_remove.bat`再安装后即可再显示序列号.
+
+
+
+## 二. 问题解决
+1. 打开软件遇到'无法获得下列许可SOLIDWORKSStandard'问题解决 
+    见文件`问题解决\问题解决-SolidWorks打开软件遇到'无法获得下列许可SOLIDWORKSStandard'问题解决 .md`
