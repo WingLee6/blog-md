@@ -1,6 +1,10 @@
 # 备忘录-Markdown公式
 
-> 1. 记录公式和符号的语法; 2. 参考博客[史上最全Markdown公式、符号总结！！！](https://blog.csdn.net/weixin_42782150/article/details/104878759)
+> 1. 记录公式和符号的语法
+
+参考博客: 
+1. [史上最全Markdown公式、符号总结！！！](https://blog.csdn.net/weixin_42782150/article/details/104878759)
+2. [Latex常见符号对照表](http://t.csdnimg.cn/s2I1Y)
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
 
@@ -29,8 +33,8 @@
   - [2.1 上下标](#21-上下标)
   - [2.2 括号](#22-括号)
   - [2.3 三角函数](#23-三角函数)
-  - [2.x 算式符号](#2x-算式符号)
-  - [2.y 符号](#2y-符号)
+  - [2.4 算式符号](#24-算式符号)
+  - [2.5 运算和逻辑符号](#25-运算和逻辑符号)
   - [四. 进阶表达](#四-进阶表达)
 
 <!-- /code_chunk_output -->
@@ -113,6 +117,16 @@
         &= \frac{s}{t} \tag{123}
     \end{align}
     $$ 
+    源码:
+    ```
+    $$
+    \begin{align}
+        v 
+        &= \frac{s}{t} \notag \\
+        &= \frac{s}{t} \tag{123}
+    \end{align}
+    $$ 
+    ```
 
 
 ### 1.3 空格
@@ -570,7 +584,22 @@ $$
 | 下标 | $a_i$, $a_{pre}$ | `$a_i$`, `$a_{pre}$` | 上标单个字符不用加`{}` |
 | 上标 | $a^i$,  $a^{pre}$ | `$a^i$`,  `$a^{pre}$` | 同上 | 
 | 取反 / 上横线 | $\bar{a}$ | `$\bar{a}$` | - |
-| - | $\acute{a}$ | `$\acute{a}$` | - | 
+| 尖音符 | $\acute{a}$ | `$\acute{a}$` | - | 
+| - | $\breve{a}$ | `$\breve{a}$` | | 
+| - | $\check{a}$ | `$\check{a}$` | | 
+| - | $\dot{a}$ | `$\dot{a}$` | | 
+| - | $\ddot{a}$ | `$\ddot{a}$` | | 
+| - | $\dddot{a}$ | `$\dddot{a}$` | | 
+| - | $\ddddot{a}$ | `$\ddddot{a}$` | | 
+| - | $\grave{a}$ | `$\grave{a}$` | | 
+| - | $\hat{a}$ | `$\hat{a}$` | | 
+| - | $\widehat{a}$ | `$\widehat{a}$` | | 
+| - | $\mathring{a}$ | `$\mathring{a}$` | | 
+| - | $\tilde{a}$ | `$\tilde{a}$` | | 
+| - | $\widetilde{a}$ | `$\widetilde{a}$` | | 
+| - | $\vec{a}$ | `$\vec{a}$` | | 
+| - | $$ | `$$` | | 
+
 
 ### 2.2 括号
 | 名称 | 数学算式 | Markdown公式 | 备注 | 
@@ -600,7 +629,7 @@ $$
 
 
 
-### 2.x 算式符号
+### 2.4 算式符号
 | 名称 | 数学算式 | Markdown公式 | 备注 | 
 | - | - | - | :- |
 | 分数 / 分式 | $\frac{a}{b}$ | `$\frac{a}{b}$` | |
@@ -626,7 +655,7 @@ $$
 | 偏导 | $\partial$ | `$\partial$` | |
 
 
-### 2.y 符号
+### 2.5 运算和逻辑符号
 | 名称 | 数学算式 | Markdown公式 | 备注 | 
 | - | - | - | :- |
 | 正负号 / 加减 | $\pm$ | `$\pm$` | |
