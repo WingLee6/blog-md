@@ -4,13 +4,61 @@
 
 <!-- code_chunk_output -->
 
-- [软件安装：关于Anaconda使用指南 -Python+Anaconda](#软件安装关于anaconda使用指南-pythonanaconda)
+- [软件安装：关于Anaconda使用指南 -Python+Anaconda](#软件安装关于anaconda使用指南--pythonanaconda)
+  - [一. 安装](#一-安装)
+    - [1.1 Linux安装](#11-linux安装)
   - [Anaconda的环境管理](#anaconda的环境管理)
   - [Anaconda的包管理](#anaconda的包管理)
   - [设置清华镜像](#设置清华镜像)
   - [Mac 中 PyCharm 配置 Anaconda环境](#mac-中-pycharm-配置-anaconda环境)
 
 <!-- /code_chunk_output -->
+
+
+## 一. 安装
+### 1.1 Linux安装
+1. 下载
+    去[官网](https://www.anaconda.com/download/success)找到下载地址(如图)
+    ![](./img-Anaconda/anconda3下载.png)
+    联接到linux服务器, 用`wget`下载
+    ```sh
+    wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+    ```
+2. 执行
+    ```sh
+    bash Anaconda3-5.3.1-Linux-x86_64.sh
+    ```
+    进行Anaconda的安装
+3. 进入安装程序，提示输入“`ENTER`”继续：
+    ```sh
+    Please, press ENTER  to continue
+    >>> ENTER
+    ```
+4. 输入yes确认接受许可协议
+    ```sh
+    Do you accept the license terms? [yes|no]
+    [no] >>> yes
+    ```
+5. 确认Anaconda的安装位置, 可改可不改
+    ```sh
+    Anaconda3 will now be installed into this location:
+    /root/anaconda3
+        - Press ENTER to confirm the location
+        - Press CTRL-C to abort the installation
+        - Or specify a different location below
+    [/root/anaconda3] >>> /opt/anaconda3
+    ```
+    > 其实安装位置可以在执行安装脚本的时候直接指定，像上面要指定安装到/opt/anaconda3目录下，可以这样修改执行内容：，这样这一步就可以直接回车了
+    `bash bash Anaconda3-5.3.1-Linux-x86_64.sh -p /opt/anaconda3`
+
+6. 安装完成后，出现询问是否在用户的`.bashrc`文件中初始化Anaconda3的相关内容。
+    ```sh
+    Do you wish the installer to initialize Anaconda3 by running conda init? [yes|no]
+    [no] >>> yes
+    ```
+
+7. 执行下：`source ~/.bashrc`，之后就可以正常使用了。
+
 
 ## Anaconda的环境管理
 1. 创建  
