@@ -18,10 +18,6 @@
   - [tpdm 运行进度条库](#tpdm-运行进度条库)
   - [jupyter-resource-usage 内存使用查看](#jupyter-resource-usage-内存使用查看)
   - [pyforest 自动导入模块至第一个cell](#pyforest-自动导入模块至第一个cell)
-- [三、快捷键、魔术命令行](#三-快捷键-魔术命令行)
-- [四、问题处理](#四-问题处理)
-  - [问题解决：打开【Nbextensions】选择卡后发现下面无内容](#问题解决打开nbextensions选择卡后发现下面无内容)
-- [五、修改jupyter配置文件](#五-修改jupyter配置文件)
 
 <!-- /code_chunk_output -->
 
@@ -36,21 +32,23 @@
     >>> 
     ```
 1. jupyter软件安装
-    + 使用Python3的`pip3`命令行安装
-        ```shell
-        $ pip3 install jupyter
-        ······省略
-        （安装成功）
-        ```
-    + 也可以检查一下
-        ```shell
-        $ pip3 list           
-        Package              Version
-        -------------------- -----------
-        ······省略
-        jupyter              1.0.0
-        ······省略
-        ```
+    1. pip3安装
+        + 使用Python3的`pip3`命令行安装
+            ```shell
+            $ pip3 install jupyter
+            ······省略
+            （安装成功）
+            ```
+        + 也可以检查一下
+            ```shell
+            $ pip3 list           
+            Package              Version
+            -------------------- -----------
+            ······省略
+            jupyter              1.0.0
+            ······省略
+            ```
+    2. 
 2. 启动Jupyter Notebook
     命令行启动
     ```shell
