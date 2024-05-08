@@ -136,15 +136,15 @@
     ```
 
 ## 设置清华镜像
-    ```
-    # 添加Anaconda的TUNA镜像
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-    # TUNA的help中镜像地址加有引号，需要去掉
+```
+# 添加Anaconda的TUNA镜像
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+# TUNA的help中镜像地址加有引号，需要去掉
 
-    # 设置搜索时显示通道地址
-    conda config --set show_channel_urls yes
-    ```
+# 设置搜索时显示通道地址
+conda config --set show_channel_urls yes
+```
 
 ## Mac 中 PyCharm 配置 Anaconda环境
 1. 点击左上角PyCharm，进入偏好设置(Preferences)中，Mac 中的快捷键是command + ,
