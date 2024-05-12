@@ -1,7 +1,42 @@
 # 备忘录-Zotero文献管理软件
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [〇. 中文社区](#〇-中文社区)
+- [一. 软件概述](#一-软件概述)
+- [二. 软件设置](#二-软件设置)
+- [二. 插件推荐](#二-插件推荐)
+  - [Jasminum - 茉莉花](#jasminum---茉莉花)
+  - [zotero-pdf-preview](#zotero-pdf-preview)
+  - [zotero-better-notes](#zotero-better-notes)
+  - [zotero-style](#zotero-style)
+  - [zotero-tag](#zotero-tag)
+  - [zotfile](#zotfile)
+  - [gpt](#gpt)
+- [其他插件](#其他插件)
+  - [zotero connector](#zotero-connector)
+  - [easySchotor](#easyschotor)
+- [问题汇总](#问题汇总)
+  - [1. 不明所以的目录-在目录栏出现`Addon Item`目录](#1-不明所以的目录-在目录栏出现addon-item目录)
+
+<!-- /code_chunk_output -->
+
+## 〇. 中文社区
+1. 社区网站
+    https://zotero-chinese.com/
+
+2. 参考文献相关
+    1. 参考文献使用方法: https://zotero-chinese.com/user-guide/citation-styles.html
+    2. 推荐格式: 
+        + 基于2015格式改, 顺序编码, 双语, 姓名取消大写, 无 URL DOI, 引注有页码, [链接](https://github.com/redleafnew/Chinese-STD-GB-T-7714-related-csl/blob/main/023gb-t-7714-2015-numeric-bilingual-no-uppercase-no-url-doi-with-locator.csl)
+
+
+
 ## 一. 软件概述
 1. 管理文献
+
 
 ## 二. 软件设置
 1. Zotero文件夹
