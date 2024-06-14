@@ -64,17 +64,36 @@
 1. 创建  
     Conda的环境管理功能允许我们同时安装若干不同版本的Python，并能自由切换。  
     ```
-    # 创建一个名为python34的环境，指定Python版本是3.4（不用管是3.4.x，conda会为我们自动寻找3.4.x中的最新版本）
     conda create --name python34 python=3.4
-    ```  
+    ```
+    + 创建一个名为python34的环境，指定Python版本是3.4（不用管是3.4.x，conda会为我们自动寻找3.4.x中的最新版本）  
 
 2. 激活环境
-    ```
-    # 安装好后，使用activate激活某个环境
-    activate python34    # for Windows
-    source activate python34     # for Linux & Mac
-    # 激活后，会发现terminal输入的地方多了python34的字样，实际上，此时系统做的事情就是把默认2.7环境从PATH中去除，再把3.4对应的命令加入PATH
-    ```
+    + Win
+        ```
+        conda activate python34 
+        ```
+        + `python34`需要更改为你想激活的环境名
+        + 若激活不成功
+            1. 选择管理员方式进入powershel
+            2. 执行 
+                ```
+                conda init powershell
+                ```
+            3. 重新打开powershell若显示`base`则成功了，可输入
+                ```
+                conda activate env_name(conda 不能省)
+                ```
+                若仍不显示`base`， 转入第4步。
+            4. 执行`get-ExecutionPolicy`，若回复`Restricted`，表示状态是禁止的。
+                执行`set-ExecutionPolicyRemoteSigned`，在出现的结果中输入`Y`并回车，设置完毕。
+            5. 重新打开powershell，即可看到命令行开头有`(base)`，输入`conda activate envs_name` 命令即可激活相应的虚拟环境
+    + Linux & Mac
+        ```
+        source activate python34 
+        ```
+        + `python34`需要更改为你想激活的环境名
+
 3. 查看python版本
     ```
     # 此时，再次输入
@@ -113,7 +132,8 @@
     # 如果不用-n指定环境名称，则被安装在当前活跃环境
     # 也可以通过-c指定通过某个channel安装
     ```
-    可通过清华镜像
+    + 可通过清华镜像
+    + 安装torch看相关blog
 4. 更新package
     ```
     conda update -n python34 numpy
@@ -147,11 +167,11 @@ conda config --set show_channel_urls yes
 ```
 
 ## Mac 中 PyCharm 配置 Anaconda环境
-1. 点击左上角PyCharm，进入偏好设置(Preferences)中，Mac 中的快捷键是command + ,
-2. 选择Project Interprete
-3. 点击右上角的齿轮，后点击Add…
-4. 选择是 System Interpreter
-5. 点击右上角省略号选择文件，选择anaconda3文件夹，并打开，找到 python.app文件夹，并打开。python.app文件夹中的 Mac OS 文件夹，并打开，选中 python
+1. 点击左上角PyCharm，进入偏好设置(Preferences)中，Mac 中的快捷键是`command` + `,`
+2. 选择`Project Interprete`
+3. 点击右上角的齿轮，后点击`Add…`
+4. 选择是 `System Interpreter`
+5. 点击右上角省略号选择文件，选择anaconda3文件夹，并打开，找到 `python.app`文件夹，并打开。python.app文件夹中的 Mac OS 文件夹，并打开，选中 python
 5. 等待完成
 
 **附**: 
