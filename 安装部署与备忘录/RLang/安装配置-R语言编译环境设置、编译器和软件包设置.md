@@ -5,14 +5,16 @@
 
 <!-- code_chunk_output -->
 
-- [R语言编译环境设置、编译器和软件包设置等](#r语言编译环境设置-编译器和软件包设置等)
+- [软件安装：R语言编译环境设置、编译器和软件包设置等 -RLang](#软件安装r语言编译环境设置-编译器和软件包设置等--rlang)
   - [一、环境安装与编译器](#一-环境安装与编译器)
     - [1. R环境](#1-r环境)
     - [2. 编译器](#2-编译器)
     - [3. 测试](#3-测试)
-  - [二、 R语言环境](#二-r语言环境)
-  - [三、 R语言软件包的安装与载入](#三-r语言软件包的安装与载入)
+  - [二、 R语言环境](#二--r语言环境)
+  - [三、 R语言软件包的安装与载入](#三--r语言软件包的安装与载入)
     - [1. 软件包的安装](#1-软件包的安装)
+  - [四. 问题解决](#四-问题解决)
+    - [1. 在Rstdio里无法画图的问题](#1-在rstdio里无法画图的问题)
 
 <!-- /code_chunk_output -->
 
@@ -95,4 +97,19 @@ RStudio： https://www.rstudio.com/
     # 彻底删除已安装的包：
     remove.packages(c("pkg1","pkg2"), lib=file.path("path", "to", "library"))
     ```
+
+
+
+
+## 四. 问题解决
+### 1. 在Rstdio里无法画图的问题
+有两种方法：
+1. 使用代码 `dev.new()` 新建一个绘图窗口
+    > 我觉得这个方法好，因为在我的plots窗口画出来的图比例是变形的
+2. 换一个系统缓存目录，详细教程可以自行在网上寻找。
+    在R里无法安装包的可以像上面的方法二一样，换个缓存目录，或者在缓存目录里找到已经下载好了的包，手动复制到R的library文件夹中。
+    在Rstdio里无法安装包的还要下载一个Rtools，在官网就有。如果还不行，就在Rstdio里找到Tools->Packages->Global Options->Primary CRAN repository，设置下载入口。
+    在Tools->General->Default working directory (when not in a project)还要设置一下默认储存目录，这样你就不用每次都用getwd()命令了。
+    如果你安装了多个R版本，不要忘记在Default working directory (when not in a project)的上面设置你想使用的R环境哦。
+
 
