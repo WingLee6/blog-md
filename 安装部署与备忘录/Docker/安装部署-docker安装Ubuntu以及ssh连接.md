@@ -49,36 +49,36 @@
     + /bin/bash: 放在镜像名后的是命令，这里我们希望有个交互式 Shell，因此用的是 /bin/bash。
     要退出容器，直接输入 exit:
     ```
-    root@ubuntu:/# exit
+    exit
     ```
 
 2. 执行更新
     ```
-    root@ubuntu:/# apt-get update
+    apt-get update
     ```
     等待更新；
 
 3. 安装ssh  
     + 安装ssh-client
         ```
-        root@ubuntu:/# apt-get install openssh-client
+        apt-get install openssh-client
         ```
     + 安装ssh-server命令
         ```
-        root@ubuntu:/# apt-get install openssh-server
+        apt-get install openssh-server
         ```
     + 安装完成后，启动服务
         ```
-        root@ubuntu:/# /etc/init.d/ssh start
+        /etc/init.d/ssh start
         * Starting OpenBSD Secure Shell server sshd                      [ OK ] 
-        root@ubuntu:/# ps -e|grep ssh
+        ps -e|grep ssh
         4079 ?        00:00:00 sshd
         ```
     + 编辑sshd_config文件  
         需要先安装vim编辑器
         ```
-        root@ubuntu:/# apt-get install vim
-        root@ubuntu:/# apt-get install vi
+        apt-get install vim
+        apt-get install vi
         ```
         编辑sshd_config文件
         ```
