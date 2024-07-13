@@ -7,7 +7,7 @@
 - [〇. 中文社区](#〇-中文社区)
 - [一. 软件概述](#一-软件概述)
 - [二. 软件设置](#二-软件设置)
-- [二. 插件推荐](#二-插件推荐)
+- [三. 插件推荐](#三-插件推荐)
   - [Jasminum - 茉莉花](#jasminum---茉莉花)
   - [zotero-pdf-preview](#zotero-pdf-preview)
   - [zotero-better-notes](#zotero-better-notes)
@@ -15,7 +15,7 @@
   - [zotero-tag](#zotero-tag)
   - [zotfile](#zotfile)
   - [gpt](#gpt)
-- [其他插件](#其他插件)
+- [四. 其他插件](#四-其他插件)
   - [zotero connector](#zotero-connector)
   - [easySchotor](#easyschotor)
 - [问题汇总](#问题汇总)
@@ -49,7 +49,7 @@
     + 文件位置在 zotfile 插件中会用到
 
 
-## 二. 插件推荐
+## 三. 插件推荐
 > 插件安装流程：
 Zotero -> 工具 -> 插件 -> 右上小齿轮图标 -> Install Add-on From File ... -> 选择下载好的xpi文件
 
@@ -390,7 +390,7 @@ Zotero -> 工具 -> 插件 -> 右上小齿轮图标 -> Install Add-on From File 
             ![gpt总结文章](./img/gpt总结文章.png)
         
 
-## 其他插件
+## 四. 其他插件
 ### zotero connector 
 1. chrome插件, 可以直接将网页的文献保存到zotero软件中
 2. 不好用
