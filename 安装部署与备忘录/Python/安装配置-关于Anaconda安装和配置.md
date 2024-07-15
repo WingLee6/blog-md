@@ -21,6 +21,7 @@
     - [4. 更新package](#4-更新package)
     - [5. 删除package](#5-删除package)
   - [设置清华镜像](#设置清华镜像)
+  - [备注](#备注)
   - [Mac 中 PyCharm 配置 Anaconda环境](#mac-中-pycharm-配置-anaconda环境)
 
 <!-- /code_chunk_output -->
@@ -195,6 +196,29 @@ conda remove -n python34 numpy
         conda config --remove-key channels
         ```
 
+## 备注
+对于conda用户，除了默认的`defaults`频道之外，这里有几个常用的、推荐的第三方频道：
+1. `conda-forge`：`conda-forge`是社区驱动的一个频道，提供了大量的开源软件包，并且通常比官方默认频道更新更频繁。许多在默认频道中找不到或版本较旧的包，在`conda-forge`频道中可能可以找到最新版本。
+    添加方法：
+    ```
+    conda config --add channels conda-forge
+    ```
+2. `anaconda`： Anaconda官方提供的额外频道，有时候会有一些预发布或者特殊版本的包。
+    添加方法： 
+    ```
+    conda config --add channels anaconda
+    ```
+3. `bioconda`： 对于生物信息学相关的包，`bioconda`频道是一个很好的资源，它专门收录了许多生物科学和计算生物学领域的软件包.
+    添加方法： 
+    ```
+    conda config --add channels bioconda
+    ```
+4. `msys2`： 用于Windows平台的一些C/C++编译工具和其他依赖项。
+    添加方法： 
+    ```
+    conda config --add channels msys2
+    ```
+    
 ## Mac 中 PyCharm 配置 Anaconda环境
 1. 点击左上角PyCharm，进入偏好设置(Preferences)中，Mac 中的快捷键是`command` + `,`
 2. 选择`Project Interprete`
