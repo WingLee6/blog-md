@@ -1,5 +1,6 @@
 # 安装配置 - Cuda安装与使用
 
+Ubuntu 20.04 server 64bit with Tesla Driver 470.223.02 and CUDA 11.4(40GiB)(de6613f7-51b5-4c75-8c71-68c172a3b6b3)
 
 ## 一. Cuda安装教程
 > 参考视频: 【Windows 下安装 CUDA 和 Pytorch 跑深度学习 - 动手学深度学习v2】 https://www.bilibili.com/video/BV18K411w7Vs/?share_source=copy_web&vd_source=f07a36b3829106945a5ec1377ecea116
