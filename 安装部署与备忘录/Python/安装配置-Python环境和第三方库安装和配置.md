@@ -7,6 +7,7 @@
 
 - [Python环境安装与设置-Python](#python环境安装与设置-python)
   - [一、Python环境安装](#一-python环境安装)
+    - [1.1 Ubuntu](#11-ubuntu)
   - [二、pip3安装与使用](#二-pip3安装与使用)
   - [三、第三方库介绍](#三-第三方库介绍)
     - [tqdm Python进度条库](#tqdm-python进度条库)
@@ -14,14 +15,39 @@
 <!-- /code_chunk_output -->
 
 ## 一、Python环境安装
-见菜鸟教程
+### 1.1 Ubuntu
+> 以win打开docker开始ubuntu为例, 默认安装新版本
+
+在命令行输入
+```shell
+apt update
+```
+> 不成功的前面加上`sudo`
+
+```shell
+apt install python3
+```
+
+安装
+```shell
+python3 --version
+```
+
 
 ## 二、pip3安装与使用
 1. pip3的安装
-    打开终端，输入
-    ```shell
-    $ 
-    ```
+    1. Ubuntu安装
+        打开终端，输入
+        ```shell
+        apt-get update
+        ```
+        ```shell
+        apt-get install python3-pip
+        ```
+        ```shell
+        pip3 --version
+        ```
+        
 
 2. 安装第三方库
     + 安装

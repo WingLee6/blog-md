@@ -1,6 +1,55 @@
 # 安装配置 - Cuda安装与使用
+## 〇. 准备Nvidia显卡驱动
+1. 命令行
+    ```shell
+    nvidia-smi
+    ```
+    driver版本号显示在输出结果中, 如图所示
+    ![alt text](./img/driver版本.png)
 
-Ubuntu 20.04 server 64bit with Tesla Driver 470.223.02 and CUDA 11.4(40GiB)(de6613f7-51b5-4c75-8c71-68c172a3b6b3)
+2. 驱动下载
+    进入[Nvidia官网](https://www.nvidia.com/Download/index.aspx?lang=en-us)
+    选择对应显卡型号, 点击"Download Drivers"
+    ![alt text](./img/驱动下载.png)
+    选择"Search"输入"CUDA"
+    选择"Download"下载最新版本的驱动程序
+
+3. 安装
+    + 在Ubuntu下安装
+        找到该文件
+        ```shell
+        sh cuda_12.3.2_418.87.00_linux.run
+        ```
+        文件名可能有变化
+        - 报错`Unable to find the module utility modprobe`
+            ![alt text](image.png)
+            - 解决:
+                1. 对于基于Debian的系统（如Ubuntu），可以使用以下命令安装：
+                    ```shell
+                    sudo apt-get update
+                    sudo apt-get install kmod
+                    ```
+                2.对于基于Red Hat的系统（如CentOS），可以使用以下命令安装：
+                    ```shell
+                    sudo yum install kmod
+                    
+                3. 或者对于较新的系统版本，可能需要使用dnf：
+                    ```shell
+                    sudo dnf install kmod
+                    ```
+    + 在win安装
+        下载完成后, 双击安装程序进行安装
+        ![alt text](./img/驱动安装.png)
+        等待安装完成, 重启电脑
+
+4. 检查是否安装成功
+    ```shell
+    nvidia-smi
+    ```
+    再次运行命令行, 确认驱动版本号是否更新
+
+
+9. 
 
 ## 一. Cuda安装教程
 > 参考视频: 【Windows 下安装 CUDA 和 Pytorch 跑深度学习 - 动手学深度学习v2】 https://www.bilibili.com/video/BV18K411w7Vs/?share_source=copy_web&vd_source=f07a36b3829106945a5ec1377ecea116
