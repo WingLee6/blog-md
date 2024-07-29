@@ -1,5 +1,19 @@
 # 备忘录-Jupyter Notebook使用
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [一. 安装和相关插件](#一-安装和相关插件)
+- [二. 魔法命令](#二-魔法命令)
+  - [2.1 行魔法命令（Line Magics）](#21-行魔法命令line-magics)
+  - [2.2 单元魔法命令（Cell Magics）](#22-单元魔法命令cell-magics)
+  - [2.3 其他常用命令](#23-其他常用命令)
+  - [2.4 永驻/清除变量内存](#24-永驻清除变量内存)
+
+<!-- /code_chunk_output -->
+
+
 ## 一. 安装和相关插件
 见文件`安装部署与备忘录\Python\安装配置-Mac的Jupyter和插件的安装和配置.md`
 

@@ -12,7 +12,8 @@
   - [问题描述](#问题描述-1)
   - [解决方法](#解决方法-1)
 - [三. 不好下载的包](#三-不好下载的包)
-  - [3.1 下载cv2](#31-下载cv2)
+  - [3.1 下载openCV / cv2](#31-下载opencv--cv2)
+- [3.2 安装d2l](#32-安装d2l)
 
 <!-- /code_chunk_output -->
 
@@ -56,7 +57,7 @@ pip安装，出现报错`ERROR: Could not find a version that satisfies the requ
 2. VPN
 
 ## 三. 不好下载的包
-### 3.1 下载cv2
+### 3.1 下载openCV / cv2
 1. 终端命令
     ```bash
     sudo pip install opencv-python -i https://mirrors.aliyun.com/pypi/simple/    
