@@ -43,7 +43,7 @@ import pcl
 
 ### 2. 下载软件
 软件在**安装部署与备忘录/Python/pcl安装软件**目录中
-- PCL-1.14.1-AllInOne-msvc2022-win64.exe
+- PCL-1.14.1-AllInOne-msvc2022-win64.exe(需要解压)
 - pcl-1.14.1-pdb-msvc2022-win64.zip
 - python_pcl-0.3.1-cp36-cp36m-win_amd64.whl
 
