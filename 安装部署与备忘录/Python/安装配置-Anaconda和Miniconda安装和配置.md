@@ -118,7 +118,7 @@ conda create --name python34 python=3.4
 + 创建一个名为python34的环境，指定Python版本是3.4（不用管是3.4.x，conda会为我们自动寻找3.4.x中的最新版本）  
 
 ### 2. 激活环境/切换环境
-+ Win
++ Win & Mac
     ```
     conda activate python34 
     ```
@@ -137,7 +137,7 @@ conda create --name python34 python=3.4
         4. 执行`get-ExecutionPolicy`，若回复`Restricted`，表示状态是禁止的。
             执行`set-ExecutionPolicyRemoteSigned`，在出现的结果中输入`Y`并回车，设置完毕。
         5. 重新打开powershell，即可看到命令行开头有`(base)`，输入`conda activate envs_name` 命令即可激活相应的虚拟环境
-+ Linux & Mac
++ Linux
     ```
     source activate python34 
     ```
