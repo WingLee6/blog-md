@@ -1,5 +1,19 @@
 # 安装部署 - Python open3d 环境配置(+conda)
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=2 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Mac版本安装](#mac版本安装)
+  - [1. 创建conda环境](#1-创建conda环境)
+  - [2. 安装open3d](#2-安装open3d)
+  - [3. 验证安装](#3-验证安装)
+- [Windows11版本安装](#windows11版本安装)
+- [问题解决](#问题解决)
+
+<!-- /code_chunk_output -->
+
+
 ## Mac版本安装
 ### 1. 创建conda环境
 + Python版本：3.9
@@ -87,3 +101,19 @@ o3d.visualization.draw_geometries([sphere])
     ```
     这个会下载很多东西, 等5分钟左右, 然后安装成功.
 
+
+
+## 问题解决
+1. 内核报错
+    在python环境中, 用pip安装open3d, 安装成功, 但是在jupyter运行出现报错,无法导入包:
+    ```
+    在当前单元格或上一个单元格中执行代码时 Kernel 崩溃。
+    请查看单元格中的代码，以确定故障的可能原因。
+    单击此处了解详细信息。
+    有关更多详细信息，请查看 Jupyter log。
+    ```
+    问题解决:
+    用conda安装更兼容环境
+    ```
+    conda install -c open3d-admin -c conda-forge open3d
+    ```
