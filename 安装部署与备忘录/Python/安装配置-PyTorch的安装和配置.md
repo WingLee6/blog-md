@@ -30,6 +30,21 @@
     >>>
     ```
 
+## 安装cuda
+安装pytorch+cuda, 检测是否可以用当前GPU
+```python
+import torch
+
+print(f"PyTorch Version: {torch.__version__}")  # 查看PyTorch版本
+print(f"CUDA Version Supported by PyTorch: {torch.version.cuda}")  # 查看PyTorch支持的CUDA版本
+print(f"CUDA Available: {torch.cuda.is_available()}")  # 检查CUDA是否可用
+print(f"Number of CUDA Devices: {torch.cuda.device_count()}")  # 输出可用的CUDA设备数量
+if torch.cuda.is_available():
+    print(f"Current CUDA Device: {torch.cuda.current_device()}")  # 输出当前使用的CUDA设备索引
+    print(f"CUDA Device Name: {torch.cuda.get_device_name(0)}")  # 输出第一个CUDA设备的名称
+```
+
+
 
         
 
