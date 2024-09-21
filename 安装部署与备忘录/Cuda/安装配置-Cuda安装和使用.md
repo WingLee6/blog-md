@@ -32,6 +32,7 @@
                 2.对于基于Red Hat的系统（如CentOS），可以使用以下命令安装：
                     ```shell
                     sudo yum install kmod
+                    ```
                     
                 3. 或者对于较新的系统版本，可能需要使用dnf：
                     ```shell
@@ -48,8 +49,6 @@
     ```
     再次运行命令行, 确认驱动版本号是否更新
 
-
-9. 
 
 ## 一. Cuda安装教程
 > 参考视频: 【Windows 下安装 CUDA 和 Pytorch 跑深度学习 - 动手学深度学习v2】 https://www.bilibili.com/video/BV18K411w7Vs/?share_source=copy_web&vd_source=f07a36b3829106945a5ec1377ecea116
